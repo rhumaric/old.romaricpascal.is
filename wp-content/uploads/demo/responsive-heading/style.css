@@ -1,0 +1,220 @@
+body {
+  margin: 0;
+  background-color: #ffc543;
+  color: #022950;
+  font-family: Open Sans,sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  background-image: url(/wp-content/themes/romaricpascal.is/assets/images/background-s.jpg);
+}
+
+.rp-LetteredHeading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+
+.rp-LetteredHeading::before {
+    display: block;
+    content: '';
+}
+
+.rp-LetteredHeading__part {
+    position: absolute;
+    color: transparent;
+    animation-name: zoomInRight;
+    animation-fill-mode: backwards;
+}
+
+.rp-LetteredHeading-greeting {
+ margin-left:auto;
+ margin-right:auto;
+ width:90vmin;
+ max-width: 80vh;
+ margin-bottom:0
+}
+.rp-LetteredHeading-greeting:before {
+ padding-top:138.7801430365579%;
+}
+.rp-LetteredHeading-greeting .rp-LetteredHeading__me {
+ background-image:url(/wp-content/themes/romaricpascal.is/assets/images/headings/me.png);
+ background-repeat:no-repeat;
+ background-size:100%;
+ height:27.88428625520636%;
+ width:38.697852349698636%;
+ top:39.28724725482772%;
+ left:61.302095101970046%
+}
+.rp-LetteredHeading-greeting .rp-LetteredHeading__romaric {
+ background-image:url(/wp-content/themes/romaricpascal.is/assets/images/headings/romaric/Romaric@0.3x.png);
+ background-repeat:no-repeat;
+ background-size:100%;
+ height:37.4858008330178%;
+ width:92.59015979947557%;
+ top:5.4365051117001135%;
+ left:.39405993662671235%
+}
+.rp-LetteredHeading-greeting .rp-LetteredHeading__romaricArrow {
+ background-image:url(/wp-content/themes/romaricpascal.is/assets/images/headings/romaric/romaric-arrow@0.3x.png);
+ background-repeat:no-repeat;
+ background-size:100%;
+ height:12.457402499053389%;
+ width:16.86801435620412%;
+ top:31.219235138205224%;
+ left:63.783054214113434%
+}
+.rp-LetteredHeading-greeting .rp-LetteredHeading__hi {
+ background-image:url(/wp-content/themes/romaricpascal.is/assets/images/headings/romaric/Hi@0.3x.png);
+ background-repeat:no-repeat;
+ background-size:100%;
+ height:19.15940931465354%;
+ width:25.95887567590291%;
+ top:0;
+ left:9.196420407669954%;
+ z-index:1
+}
+.rp-LetteredHeading-greeting .rp-LetteredHeading__im {
+ background-image:url(/wp-content/themes/romaricpascal.is/assets/images/headings/romaric/im@0.3x.png);
+ background-repeat:no-repeat;
+ background-size:100%;
+ height:17.72056039379023%;
+ width:36.153251953484215%;
+ top:1.344187807648618%;
+ left:40.46267754767447%;
+ z-index:1
+}
+.rp-LetteredHeading-greeting .rp-LetteredHeading__letters {
+ background-image:url(/wp-content/themes/romaricpascal.is/assets/images/headings/letters/Letters@0.3x.png);
+ background-repeat:no-repeat;
+ background-size:100%;
+ height:34.04013631200303%;
+ width:92.905449787442%;
+ top:65.95986368799697%;
+ left:.525945738593071%
+}
+.rp-LetteredHeading-greeting .rp-LetteredHeading__draw {
+ background-image:url(/wp-content/themes/romaricpascal.is/assets/images/headings/letters/draw@0.3x.png);
+ background-repeat:no-repeat;
+ background-size:100%;
+ height:20.068156001514577%;
+ width:47.871529839569945%;
+ top:54.846648996592194%;
+ left:2.0498473470974927%;
+ z-index:1
+}
+.rp-LetteredHeading-greeting .rp-LetteredHeading__lettersArrow {
+ background-image:url(/wp-content/themes/romaricpascal.is/assets/images/headings/letters/letters-arrow@0.3x.png);
+ background-repeat:no-repeat;
+ background-size:100%;
+ height:13.517606967057933%;
+ width:17.70878765744794%;
+ top:62.343809163195765%;
+ left:59.380076825660396%
+}
+@media (orientation:landscape) {
+ .rp-LetteredHeading-greeting:before {
+  padding-top:106.27766599597585%
+ }
+ .rp-LetteredHeading-greeting .rp-LetteredHeading__me {
+  background-image:url(/wp-content/themes/romaricpascal.is/assets/images/headings/me.png);
+  background-repeat:no-repeat;
+  background-size:100%;
+  height:27.88428625520636%;
+  width:29.63476861167002%;
+  top:40.09075728890572%;
+  left:70.36523943661972%;
+  -webkit-transform:rotate(0rad);
+  transform:rotate(0rad);
+  -webkit-transform-origin:top left;
+  transform-origin:top left
+ }
+ .rp-LetteredHeading-greeting .rp-LetteredHeading__romaricArrow {
+  background-image:url(/wp-content/themes/romaricpascal.is/assets/images/headings/romaric/romaric-arrow@0.3x.png);
+  background-repeat:no-repeat;
+  background-size:100%;
+  height:12.457402499053389%;
+  width:12.917505030181086%;
+  top:41.803347216963274%;
+  left:61.47883299798793%;
+  -webkit-transform:rotate(-.48273rad);
+  transform:rotate(-.48273rad);
+  -webkit-transform-origin:top left;
+  transform-origin:top left
+ }
+ .rp-LetteredHeading-greeting .rp-LetteredHeading__romaric {
+  background-image:url(/wp-content/themes/romaricpascal.is/assets/images/headings/romaric/Romaric@0.3x.png);
+  height:37.4858008330178%;
+  width:70.90543259557343%;
+  top:3.9856039379023094%;
+  left:11.662828973843059%
+ }
+ .rp-LetteredHeading-greeting .rp-LetteredHeading__hi,.rp-LetteredHeading-greeting .rp-LetteredHeading__romaric {
+  background-repeat:no-repeat;
+  background-size:100%;
+  -webkit-transform:rotate(.31782rad);
+  transform:rotate(.31782rad);
+  -webkit-transform-origin:top left;
+  transform-origin:top left
+ }
+ .rp-LetteredHeading-greeting .rp-LetteredHeading__hi {
+  background-image:url(/wp-content/themes/romaricpascal.is/assets/images/headings/romaric/Hi@0.3x.png);
+  height:19.15940931465354%;
+  width:19.879275653923543%;
+  top:1.9395191215448697%;
+  left:20.71668410462777%
+ }
+ .rp-LetteredHeading-greeting .rp-LetteredHeading__im {
+  background-image:url(/wp-content/themes/romaricpascal.is/assets/images/headings/romaric/im@0.3x.png);
+  background-repeat:no-repeat;
+  background-size:100%;
+  height:17.72056039379023%;
+  width:27.686116700201207%;
+  top:9.12074592957213%;
+  left:42.16965794768611%;
+  -webkit-transform:rotate(.31782rad);
+  transform:rotate(.31782rad);
+  -webkit-transform-origin:top left;
+  transform-origin:top left
+ }
+ .rp-LetteredHeading-greeting .rp-LetteredHeading__letters {
+  background-image:url(/wp-content/themes/romaricpascal.is/assets/images/headings/letters/Letters@0.3x.png);
+  background-repeat:no-repeat;
+  background-size:100%;
+  height:34.04013631200303%;
+  width:71.14688128772636%;
+  top:65.16748201438848%;
+  left:-3.541798792756539%;
+  -webkit-transform:rotate(-.26054rad);
+  transform:rotate(-.26054rad);
+  -webkit-transform-origin:top left;
+  transform-origin:top left
+ }
+ .rp-LetteredHeading-greeting .rp-LetteredHeading__draw {
+  background-image:url(/wp-content/themes/romaricpascal.is/assets/images/headings/letters/draw@0.3x.png);
+  background-repeat:no-repeat;
+  background-size:100%;
+  height:20.068156001514577%;
+  width:36.65995975855131%;
+  top:49.73559636501325%;
+  left:12.658177062374246%;
+  -webkit-transform:rotate(-.23002rad);
+  transform:rotate(-.23002rad);
+  -webkit-transform-origin:top left;
+  transform-origin:top left
+ }
+ .rp-LetteredHeading-greeting .rp-LetteredHeading__lettersArrow {
+  background-image:url(/wp-content/themes/romaricpascal.is/assets/images/headings/letters/letters-arrow@0.3x.png);
+  background-repeat:no-repeat;
+  background-size:100%;
+  height:13.517606967057933%;
+  width:13.561368209255534%;
+  top:55.44915183642559%;
+  left:66.17949698189135%;
+  -webkit-transform:rotate(.38591rad);
+  transform:rotate(.38591rad);
+  -webkit-transform-origin:top left;
+  transform-origin:top left
+ }
+}

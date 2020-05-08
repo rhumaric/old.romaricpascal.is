@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Composing animations through functions &#8211; Romaric Pascal</title>
+	<atom:link href="/writing-about/composing-animations-through-functions/feed/" rel="self" type="application/rss+xml" />
+	<link></link>
+	<description>Lettering &#38; web development</description>
+	<lastBuildDate>Thu, 13 Feb 2020 11:35:45 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.13</generator>
+	<item>
+		<title>Composing animations through functions</title>
+		<link>/writing-about/composing-animations-through-functions/</link>
+		<pubDate>Fri, 27 Oct 2017 19:37:02 +0000</pubDate>
+		<dc:creator><![CDATA[romaricpascal]]></dc:creator>
+				<category><![CDATA[Animations]]></category>
+		<category><![CDATA[JS]]></category>
+		<description><![CDATA[<p>In <a href="/writing-about/animations-with-javascript-functions/">the introduction of this venture into animations</a> and functions, the animation was simply fading in one element (linearly). Enough for an example, but not really fitting if we talk animating multiple elements, or multiple properties.</p>
+<p>We&rsquo;d want to run multiple animations at the same time, maybe with specific timings, perhaps also control how the progress flows (easing, revert&hellip;). </p>
+<p>Focus on the animation functions rather than the sources.</p>
+<p>Let&rsquo;s see how we can express that with little functions to compose into a bigger animation.</p>
+<h2 id="controlling-progress"><a name="user-content-controlling-progress" href="#controlling-progress" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Controlling progress</h2>
+<p>Progress, with a time source at least, flows linearly. It&rsquo;s simple, but doesn&rsquo;t give the animation a natural feel. In the real world, objects don&rsquo;t start moving at their cruise speed straight away. If they ever move at a constant speed anyway. And equally, they don&rsquo;t stop instantly once they&rsquo;ve finished moving.</p>
+<p>To mimic that in animations, we need something to alter how progress&hellip; well&hellip; progresses. That&rsquo;s the role of easing functions. This is not only important for things to look natural, but easings also allow to play on the feelings conveyed by the animation: make something hurry out of the screen, or instead enter with a sluggish, heavy feel.</p>
+<p>Easing functions have been around for a while, the most used being the list by Robert Penner, though you can define custom bezier curves or even use spring physics. So let&rsquo;s focus on how we can use them with our animation. For that, we can write a wrapper function that will apply the easing before delegating the rest to the animation.</p>
+<figure>
+    <script src="https://gist.github.com/rhumaric/7921124960e3a48511315c3f123c2626.js?file=easing.js"></script><br />
+</figure>
+<p>And with that, we can control how progress flows. On the same principle, we can write a function that will revert the animations.</p>
+<figure>
+<script src="https://gist.github.com/rhumaric/7921124960e3a48511315c3f123c2626.js?file=revert.js"></script></p>
+<div class="o-ratio o-ratio--16:9">
+    <iframe src="/wp-content/uploads/demo/animation-with-functions/composing-animations/progress/"><br />
+    <a href="/wp-content/uploads/demo/animation-with-functions/composing-animations/progress/">See the demo</a><br />
+</iframe>
+</div><figcaption class="u-ta-c" style="padding: 0.5em;">Click the dots to run the animation.<br />Notice how the second dot accelerates and decelerates more naturally.</figcaption></figure>
+<p>These two simple examples show the general pattern we&rsquo;ll be applying for the rest of the article and go towards coordinating the animation of multiple elements.</p>
+<h2 id="multiple-animations"><a name="user-content-multiple-animations" href="#multiple-animations" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Multiple animations</h2>
+<p>So far, we&rsquo;re still stuck with running just one animation at a time. To animate the 3 dots, we need 3 sources of times.</p>
+<figure>
+    <script src="https://gist.github.com/rhumaric/7921124960e3a48511315c3f123c2626.js?file=time-sources.js"></script><br />
+</figure>
+<p>It works, but if we could run it with only one source of time, it would make things a bit more reusable. With the same pattern as before (creating a new function that wraps the various animations we want to play) we can write this little function for playing them all in one go:</p>
+<figure>
+    <script src="https://gist.github.com/rhumaric/7921124960e3a48511315c3f123c2626.js?file=parallel.js"></script></p>
+<div class="o-ratio o-ratio--16:9">
+    <iframe src="/wp-content/uploads/demo/animation-with-functions/composing-animations/parallel/"><br />
+    <a href="/wp-content/uploads/demo/animation-with-functions/composing-animations/parallel/">See the demo</a><br />
+</iframe>
+</div><figcaption class="u-ta-c" style="padding: 0.5em;">Click the dots to run the animation.</figcaption></figure>
+<p>There we go! We can now play several animations from the same source of progress. One little issue though, they all run for the full duration. Let&rsquo;s see how we can tackle that.</p>
+<h2 id="shifting-timings"><a name="user-content-shifting-timings" href="#shifting-timings" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Shifting timings</h2>
+<p>So let&rsquo;s see how we can coordinate the movements of the 3 dots. Maybe make the second wait a little before it goes and quickly reaches the end so that the 3rd still have some time left to make its way back.</p>
+<p>For this, we need to transform the progress that each animation receives. Each will need to go from 0 to 1 while the progress of the <code>parallel</code> animation goes over smaller intervals.</p>
+<p>Sounds a bit like easing, but it&rsquo;s a very specific one. It sticks the progress to 0 while the progress hasn&rsquo;t been enough, then ramps to 1 until the animation is done and from there sticks to one. It&rsquo;s not so big to write on its own as:</p>
+<figure>
+    <script src="https://gist.github.com/rhumaric/7921124960e3a48511315c3f123c2626.js?file=shift.js"></script></p>
+<div class="o-ratio o-ratio--16:9">
+    <iframe src="/wp-content/uploads/demo/animation-with-functions/composing-animations/shift/"><br />
+    <a href="/wp-content/uploads/demo/animation-with-functions/composing-animations/shift/">See the demo</a><br />
+</iframe>
+</div><figcaption class="u-ta-c" style="padding: 0.5em;">Click the dots to run the animation.</figcaption></figure>
+<p>We got there! Composing functions we managed to animate different things on their own timing.</p>
+<p>Of course, like the rest of this adventure, this is just a base to get started. On this topic especially, reasoning in percentages quickly becomes tricky if we want to create complex animations, for example. <a href="https://github.com/rhumaric/tinymation/issues/10">Reasoning in absolute units, like milliseconds</a> would be much easier.</p>
+<p>And of course around the areas for making animations with functions. I&rsquo;ve started to gather some code on the <a href="https://github.com/rhumaric/tinymation">tinymation project on Github</a>. If you have thoughts on the topic, maybe specific use case, I&rsquo;d be really happy to head about them. Feel free to <a href="https://github.com/rhumaric/tinymation">look at the code</a> and <a href="https://github.com/rhumaric/tinymation/issues">add issues (or comment on the existing ones)</a>.</p>
+]]></description>
+		<guid isPermaLink="false">/?p=1114</guid>
+		</item>
+	</channel>
+</rss>

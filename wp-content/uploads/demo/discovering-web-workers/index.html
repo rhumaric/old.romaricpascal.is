@@ -1,0 +1,131 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Web worker example</title>
+    <style>
+        * {
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            background: #757A7C0E92CD;
+            text-align: center;
+            font-family: sans-serif;
+        }
+
+        button {
+            display: block;
+            width: 50%;
+            margin: 1em auto;
+            max-width: 450px;
+            background: #BD2A4E;
+            border: none;
+            color: #eee;
+            padding: .5em;
+            border-radius: .5em;
+        }
+
+        .animated {
+            height: 100px;
+            width: 100px;
+            background: #0E92CD;
+            margin: 50px;
+            border-radius: 15px;
+            display: inline-block;
+            line-height: 100px;
+            font-size: 36px;
+            color: #eee;
+        }
+
+        .animated-css {
+            -webkit-animation: spin;
+            -webkit-animation-duration: 3s;
+            -webkit-animation-timing-function: linear;
+            -webkit-animation-iteration-count: infinite;
+
+            animation: spin;
+            animation-duration: 3s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @-webkit-keyframes spin{
+          
+          from { -webkit-transform: rotate(0deg); }
+          to { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+            from {
+                -moz-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            to {
+                -moz-transform: rotate(0deg);
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated animated-css">CSS</div>
+    <div class="animated animated-js">JS</div>
+    <div class="display"></div>
+    <button class="action">Do the maths</button>
+    <button class="action-worker">Delegate maths</button>
+
+   <script>
+        var animatedElement = document.querySelector('.animated-js');
+        var rotation = 0;
+        var rotationIncrement = 2;
+        setInterval(function () {
+            rotation = (rotation + rotationIncrement)%360;
+            animatedElement.style.webkitTransform = 'rotate('+rotation+'deg)';
+            animatedElement.style.transform = 'rotate('+rotation+'deg)';
+        }, 1000/60);
+    </script>
+
+    <script>
+
+        var doTheMath = document.querySelector('.action');
+
+        doTheMath.addEventListener('click', function () {
+
+            if(!this.computing) {
+
+                this.innerHTML = 'Computing...';
+                this.computing = true;
+
+                var position = 100000;
+                var fibonacci = 1;
+                var previous = 0;
+
+                // Loop simulating a time consuming operation
+                for(var i = 1; i < position * position ; i++) {}
+
+                this.computing = false;
+                this.innerHTML = 'Do the maths';
+            }
+        });
+    </script>
+
+    <script>
+        var delegateToWorker = document.querySelector('.action-worker');
+
+        var worker = new Worker('js/slow-computation.js');
+        worker.addEventListener('message', function (event) {
+            console.log('Received a message', event.data);
+            delegateToWorker.innerHTML = 'Delegate maths';
+        });
+
+        delegateToWorker.addEventListener('click', function () {
+
+            this.innerHTML = 'Computing...';
+            worker.postMessage(100000);
+        });
+    </script>
+</body>
+</html>

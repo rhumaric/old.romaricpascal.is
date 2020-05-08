@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Illustrator &#8211; Romaric Pascal</title>
+	<atom:link href="/writing-about/category/techniques/digital/illustrator/feed/" rel="self" type="application/rss+xml" />
+	<link></link>
+	<description>Lettering &#38; web development</description>
+	<lastBuildDate>Thu, 13 Feb 2020 11:35:45 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.13</generator>
+	<item>
+		<title>Go faster when digitizing lettering with the Pen tool</title>
+		<link>/writing-about/go-faster-when-digitizing-lettering-with-the-pen-tool/</link>
+		<pubDate>Thu, 13 Apr 2017 10:32:17 +0000</pubDate>
+		<dc:creator><![CDATA[romaricpascal]]></dc:creator>
+				<category><![CDATA[Digital]]></category>
+		<category><![CDATA[Illustrator]]></category>
+		<category><![CDATA[Techniques]]></category>
+		<description><![CDATA[<p><a href="/paper-to-pixels-with-the-pen-tool/">Digitizing a lettering artwork with the Pen tool</a> can take quite a while. Fortunately, there&#8217;s a few things that can speed things up and get you quicker to a final piece.</p>
+<h2 id="keep-handles-horizontal-and-vertical"><a class="headeranchor-link" href="#keep-handles-horizontal-and-vertical" name="user-content-keep-handles-horizontal-and-vertical"></a>Keep handles horizontal and vertical</h2>
+<p>Saving time on where to place the curves handles will yield big gains. Putting these handles down is most of what digitizing with the Pen tool is about after all.</p>
+<p>A good way to go for it is to try and use horizontal or vertical handles as much as possible. This reduces the questions you have to ask yourself when placing the handles to “where is the curve tangent to a vertical or horizontal line?”. Only a few places on the curve answer that question, compared to basically anywhere on the curve if you consider “where can I put a handle at any angle?”. And these points are much easier to spot. Less questions, easier answers, faster tracing!</p>
+<p>For some parts, you’ll even be able to stick to only one kind of handles (all horizontal or all vertical) and leave it to the Bezier maths to draw super smooth curves. But for other bits, there’ll be no other way than to put the handles at an angle (letter endings are a usual one). It’s OK, the aim is not 100% horizontal and vertical, but gaining time positioning most of the handles.</p>
+<p><img class="alignnone wp-image-703 size-full" src="/wp-content/uploads/2017/04/letters-for-good-handles.jpg" alt="Handle positioning - Letters for good" width="741" height="741" srcset="/wp-content/uploads/2017/04/letters-for-good-handles.jpg 741w, /wp-content/uploads/2017/04/letters-for-good-handles-150x150.jpg 150w, /wp-content/uploads/2017/04/letters-for-good-handles-300x300.jpg 300w, /wp-content/uploads/2017/04/letters-for-good-handles-200x200.jpg 200w, /wp-content/uploads/2017/04/letters-for-good-handles-400x400.jpg 400w" sizes="(max-width: 741px) 100vw, 741px" /></p>
+<h2 id="loop-around-corners"><a class="headeranchor-link" href="#loop-around-corners" name="user-content-loop-around-corners"></a>Loop around corners</h2>
+<p>Another tricky point placement is when curves intersect one another. It can be tedious to eyeball the correct handle placement to get a sharp angle and keep both curves natural.</p>
+<p>A trick for that is to leave it to the maths to compute the handles and anchor position. By drawing the curves past their intersection point, we can make sure the curves look right. Then once we’re done with the drawing, we can get rid of the lump(s) it created with the <a href="https://helpx.adobe.com/illustrator/using/combining-objects.html">Pathfinder tool</a>:</p>
+<ul>
+<li>first <em>Add</em> to make sure any lump inside the object get merged into it,</li>
+<li>then <em>Divide</em> to split the curves where they intersect,</li>
+<li>after which all that’s left is to delete the unnecessary bits.</li>
+</ul>
+<p><iframe style="width: 100%;" src="https://player.vimeo.com/video/187024021" width="640" height="360" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
+<p><a href="https://vimeo.com/187024021">TaskFight &#8211; Tracing</a> from <a href="https://vimeo.com/user57767932">Romaric Pascal &#8211; Web &amp; Lettering</a>.</p>
+<h2 id="split-it-into-multiple-curves"><a class="headeranchor-link" href="#split-it-into-multiple-curves" name="user-content-split-it-into-multiple-curves"></a>Split it into multiple curves</h2>
+<p>It’s tempting to want to draw the whole word in one curve, especially when digitizing script lettering where letters flow into the next one. This makes it harder to move letters later on to make small adjustments. Keeping letters, or even parts of letters (eg. the loop of a ‘d’ and it’s vertical bar), separate will make the editing afterward way faster. And once everything is all set, you can make it a unique shape with the Pathfinder.</p>
+<h2 id="learn-the-shortcuts"><a class="headeranchor-link" href="#learn-the-shortcuts" name="user-content-learn-the-shortcuts"></a>Use the shortcuts</h2>
+<p>An obvious one to finish: software shortcuts are here to save time (it’s in their name). I’m not just talking about the ones to quickly change tools (<em>P</em> for the Pen tool, <em>A</em> for the Direct selection tool for editing drawn curves, <em>Shift + C</em> for the <a href="https://helpx.adobe.com/illustrator/using/editing-paths.html#convert_an_anchor_point_precisely_using_the_convert_anchor_point_tool">Convert anchor point</a> tool, <em>+</em> and <em>&#8211;</em> to add &amp; remove anchors…).</p>
+<p>Of course, you’ll save time switching that way, but you’ll also gain time by not switching tools when drawing with the Pen tool:</p>
+<ul>
+<li><em>Shift</em>, while dragging the handles, will save you eyeballing if they are actually horizontal or vertical. It constrains the handles angle to multiples of 45°.</li>
+<li><em>Ctrl</em> will give you quick access to the previous selection tool you had. Pick the Direct Selection one before the pen tool and you can quickly reposition misplaced points or adjust handles before getting back to putting that next point.</li>
+<li><em>Alt</em>, before dragging a handle, will let you move it out of alignment with the other handle and create a sharp corner</li>
+<li><em>Space</em>, while dragging the handles again, will switch to moving the anchor rather than the handles. It also works when using the Direct Selection tool.</li>
+</ul>
+<p>I hope this will help you get faster when digitizing your letters with the Pen tool. If you know any other trick I’ll be <a href="mailto:hello@romaricpascal.is">happy to hear about them</a>. And as usual, if you have any questions about lettering, feel free to <a href="mailto:hello@romaricpascal.is">drop me a mail</a>.</p>
+<p><span style="border-radius: 2px; text-indent: 20px; width: auto; padding: 0px 4px 0px 0px; text-align: center; font: bold 11px/20px 'Helvetica Neue',Helvetica,sans-serif; color: #ffffff; background: #bd081c no-repeat scroll 3px 50% / 14px 14px; position: absolute; opacity: 1; z-index: 8675309; display: none; cursor: pointer; top: 592px; left: 20px;">Save</span></p>
+<p><span style="border-radius: 2px; text-indent: 20px; width: auto; padding: 0px 4px 0px 0px; text-align: center; font: bold 11px/20px 'Helvetica Neue',Helvetica,sans-serif; color: #ffffff; background: #bd081c  no-repeat scroll 3px 50% / 14px 14px; position: absolute; opacity: 1; z-index: 8675309; display: none; cursor: pointer; top: 328px; left: 20px;">Save</span></p>
+]]></description>
+		<guid isPermaLink="false">/?p=697</guid>
+		</item>
+	</channel>
+</rss>

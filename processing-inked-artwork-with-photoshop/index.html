@@ -1,0 +1,201 @@
+
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .u-troisCoups body>* {
+            visibility: hidden;
+        }
+    </style>
+    <script>
+        (function (window) {
+            if (document.documentElement.classList) {
+                window.troisCoups = {
+                    reveal: function () {
+                        document.documentElement.classList.remove('u-troisCoups');
+                    }
+                };
+
+
+                document.documentElement.classList.add('u-troisCoups');
+                setTimeout(window.troisCoups.reveal, 1500);
+            }
+        })(window);
+    </script>
+
+    <link rel="stylesheet" href="/wp-content/themes/romaricpascal.is/style.css">
+    <link rel="alternate" type="application/rss+xml" title="Romaric Pascal | Lettering &amp; web development" href="/feed">
+
+    <title>   Processing inked artwork with Photoshop | Romaric Pascal</title>
+    <meta name="description" content="Lettering &amp; web development">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/wp-content/themes/romaricpascal.is/assets/images/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/wp-content/themes/romaricpascal.is/assets/images/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/wp-content/themes/romaricpascal.is/assets/images/favicons/favicon-16x16.png">
+<link rel="manifest" href="/wp-content/themes/romaricpascal.is/assets/images/favicons/manifest.json">
+<link rel="mask-icon" href="/wp-content/themes/romaricpascal.is/assets/images/favicons/safari-pinned-tab.svg" color="#022950">
+<link rel="shortcut icon" href="/wp-content/themes/romaricpascal.is/assets/images/favicons/favicon.ico">
+<meta name="msapplication-config" content="/wp-content/themes/romaricpascal.is/assets/images/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffc744">
+    <!-- FB OpenGraph info -->
+        <meta prefix="og:http://ogp.me/ns#" property="og:url" content="/writing-about/processing-inked-artwork-with-photoshop/">
+        <meta prefix="og:http://ogp.me/ns#" property="og:title" content="   Processing inked artwork with Photoshop | Romaric Pascal">
+    <meta prefix="og:http://ogp.me/ns#" property="og:description" content="Lettering &amp; web development">
+    <meta prefix="og:http://ogp.me/ns#" property="og:image" content="/wp-content/themes/romaricpascal.is/assets/images/rp_with-padding_yellowbg_480.png">
+
+    <!-- Twitter cards -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@romaricpascal" />
+    <meta name="twitter:title" content="   Processing inked artwork with Photoshop | Romaric Pascal" />
+    <meta name="twitter:description" content="Lettering &amp; web development" />
+    <meta name="twitter:image" content="/wp-content/themes/romaricpascal.is/assets/images/rp_with-padding_yellowbg_480.png" />
+
+    <link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Romaric Pascal &raquo; Processing inked artwork with Photoshop Comments Feed" href="/writing-about/processing-inked-artwork-with-photoshop/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/romaricpascal.is\/wordpress\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.13"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='contact-form-7-css'  href='/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.9' type='text/css' media='all' />
+<script type='text/javascript' src='/wordpress/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='/wordpress/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<link rel="canonical" href="/writing-about/processing-inked-artwork-with-photoshop/" />
+  </head>
+  <body class="post-template-default single single-post postid-658 single-format-standard flexbug3Wrapper">
+    <header id="#header" class="rp-Header">
+        <a class="rp-Logo" href="" title="Home">
+    <img src="/wp-content/themes/romaricpascal.is/assets/images/rp-letters_144.png" alt="R-P monogram">
+</a>
+<nav class="rp-BreadcrumbNav">
+    <div class="rp-CollapsedItemsMenu">
+        <a class="rp-BreadcrumbLink rp-CollapsedItemsMenuToggle js-toggle" data-toggle-group="overlays" data-toggle-target=".rp-CollapsedItems">
+            <span class="rp-BreadcrumbLinkSeparator"></span>
+            <span class="rp-BreadcrumbLink__title">...</span>
+        </a>
+        <div class="rp-CollapsedItems js-outsideToggle"></div>
+    </div>
+    <div class="rp-BreadcrumbNavItems js-collapsible">
+				<a href="/writing-about/" class="rp-BreadcrumbLink">
+			<span class="rp-BreadcrumbLinkSeparator"></span>
+			<span class="rp-BreadcrumbLink__title">Posts</span>
+		</a>
+		    </div>
+</nav>      <nav class="rp-MainNav">
+        <a class="t-hidden-visually" tabindex="1" href="#content">Skip to content</a>
+        <a href="#main-nav" class="js-toggle" data-toggle-group="overlays" data-toggle-target=".rp-MenuContainer">Menu</a>
+        <div class="rp-MenuContainer js-outsideToggle" id="main-nav">
+        <a class="rp-NavLogo" href="" title="Home">
+            <img src="/wp-content/themes/romaricpascal.is/assets/images/rp-knockout_shade_144.png" alt="Home">
+        </a>
+        <div class="menu-site-navigation-container"><ul id="menu-site-navigation" class="rp-Menu rp-Header__menuI"><li id="menu-item-936" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-936"><a href="/">Home</a></li>
+<li id="menu-item-960" class="menu-item menu-item-type-post_type_archive menu-item-object-project menu-item-has-children menu-item-960"><a href="/proud-of/">Portfolio</a>
+<ul  class="sub-menu">
+	<li id="menu-item-942" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-942"><a href="/proud-of/logo-brand-designs">Logo &#038; Brand</a></li>
+	<li id="menu-item-954" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-954"><a href="/proud-of/tshirts-merch-designs/">T-shirts &#038; merch</a></li>
+	<li id="menu-item-957" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-957"><a href="/proud-of/print-illustration-designs">Print &#038; illustration</a></li>
+</ul>
+</li>
+<li id="menu-item-964" class="menu-item menu-item-type-post_type_archive menu-item-object-artwork menu-item-964"><a href="/drawing-letters/">Artworks</a></li>
+<li id="menu-item-935" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-935"><a href="/writing-about/">Blog</a></li>
+<li id="menu-item-933" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-933"><a href="/happy-to-chat/">Contact</a></li>
+<li id="menu-item-1022" class="menu-item menu-item-type-taxonomy menu-item-object-craft menu-item-1022"><a href="/writing-about/craft/web/">Web</a></li>
+<li id="menu-item-934" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-934"><a target="_blank" href="/selling-nice-stuff/">Shop</a></li>
+</ul></div>        <a class="rp-MenuToggle js-toggle" href="#" data-toggle-group="overlays" data-toggle-target=".rp-MenuContainer">Close menu</a>
+        <small class="rp-Legal l-Container">© Romaric Pascal (trading name of <a href="https://beta.companieshouse.gov.uk/company/08544032">Rhumaric Ltd</a>)</small>
+        </div>
+      </nav>
+    </header>
+    <div class="rp-Viewport l-vertCentered u-mh-100vh">
+
+
+<article class="rp-Content">
+  <header class="rp-HeaderWithSubhead u-mb-2">
+    <h1 class="rp-HeaderWithSubhead__heading">
+        Processing inked artwork with Photoshop    </h1>
+    <p><time datetime="2017-04-05T12:59:25+00:00">05 Apr 2017</time> — An article about: <a href="/writing-about/craft/lettering/" rel="tag">Lettering</a> - <a href="/writing-about/category/techniques/digital/" rel="category tag">Digital</a> - <a href="/writing-about/category/techniques/digital/photoshop/" rel="category tag">Photoshop</a> - <a href="/writing-about/category/process/" rel="category tag">Process</a> - <a href="/writing-about/category/techniques/" rel="category tag">Techniques</a></p>
+  </header>
+  <main>
+    <p><a href="/inking-and-scanning-lettering-artworks/">The artwork is inked and scanned</a>, ready to be processed on the computer. Again, there’s plenty of ways to go for it. If the scanned artworks resolution is big enough for your end projects, Photoshop will do just fine to create your final image. Here’s the workflow I use most of the time. It which relies on fill layers and layer masks to make is super easy to pick colors for the final piece.</p>
+<p>The process also focuses on working non-destructively, through masks, adjustments layers and painting on new layers. It would be a shame to mess things up after spending so much time sketching and inking the piece. Ctrl-Z will only go back so far, it’s safer this way. Plus this makes things more flexible.</p>
+<h2 id="importing-the-artworks"><a class="headeranchor-link" href="#importing-the-artworks" name="user-content-importing-the-artworks"></a>Importing the artworks</h2>
+<p>First part is obviously bringing in the scans into your new Photoshop document (<em>File&gt;Place</em> or just dropping them there). If you inked the artwork on multiple sheets (to separate the letters and their ornaments for example), you’ll need to set the upper layers blending mode to <em>Multiply</em> to make the white part transparent and let the lower ones appear through. Don’t forget to adjust their positioning if the scans aren’t quite aligned properly, and to mask out any part that had to be redrawn on another layer.</p>
+<p>Once everything is there, the process can start. Depending on your artwork and how things overlap, you might have to repeat the steps for each of the layers.</p>
+<p style="text-align: center;"><img class="alignnone wp-image-667 size-full" src="/wp-content/uploads/2017/04/inking-replacement.gif" alt="Importing scans" width="600" height="600" /></p>
+<h2 id="black-white"><a class="headeranchor-link" href="#black-white" name="user-content-black-white"></a>Black &amp; white</h2>
+<p>Layer masks are black and white images attached to a layer to control which part of it appears. White displays the corresponding area of the layer, black hides it (and grey values give some transparency). So the first step is to get our inked scans proper black &amp; white, with values ranging from pure black to pure white.</p>
+<p>This requires two layers:</p>
+<ol>
+<li>A <a href="https://helpx.adobe.com/photoshop/using/convert-color-image-black-white.html" target="_blank">Black and White</a> layer, that will convert the scan to greyscale. I usually just go with the <em>Auto</em> setting for this one.</li>
+<li>A <a href="https://helpx.adobe.com/photoshop/using/levels-adjustment.html" target="_blank">Levels</a> layer that will make sure the values go from pure black to pure dark. The graph shows the range of values on the image, black on the left and white to the right. Adjusting the toggles under the horizontal axis, you map the current values to a new range turning any value before the black toggle into proper black and any after the light one into proper white.</li>
+</ol>
+<p style="text-align: center;"><img class="alignnone size-full wp-image-671" src="/wp-content/uploads/2017/04/inking-bw-adjustment.gif" alt="Black and white adjustment" width="600" height="600" /></p>
+<h2 id="fix-details"><a class="headeranchor-link" href="#fix-details" name="user-content-fix-details"></a>Fix details</h2>
+<p>The scan might have some undesired imperfections (small dots of ink or unnoticed dust on the scanner window, misplaced stroke, lines not quite at the right angle…). Before going any further, let’s clean things up!</p>
+<p>On a separate layer (to keep avoiding any unrecoverable damage), you can:</p>
+<ul>
+<li>cover small dots &amp; imperfections with some digital <em>Brush</em> strokes</li>
+<li>use the <a href="https://helpx.adobe.com/photoshop/using/retouching-repairing-images.html" target="_blank">Stamp</a> tool to erase some misplaced stroke along the edges of a letter, while keeping the texture.</li>
+</ul>
+<p>When it comes to moving things, cutting the area and pasting them on a separate layer to move it around is the most non-destructive method I could find. Probably worth working on a duplicate layer to keep safe.</p>
+<p>If things don’t quite have the right size though, using the <em>transform</em> tool to stretch them (on a separate layer, again) is a risky business. It’ll alter the width of the strokes, which might make them look different than their neighbours. The <a href="http://www.photoshop.com/tutorials/7874" target="_blank">Puppet Warp</a> tool (and lots of patience) might save a trip back to the drawing board, but sometimes, it’s just best to redraw, re-ink and re-scan the part.</p>
+<h2 id="prepare-for-masks"><a class="headeranchor-link" href="#prepare-for-masks" name="user-content-prepare-for-masks"></a>Prepare for masking</h2>
+<p>At this stage, the artwork is clean, with values ranging from pure white to pure black. Almost ready to be used as a mask for the fill layers.</p>
+<p>To save time during inking, you can sometimes just trace the outlines and leave it to the <em>Paint Bucket</em> tool to do the filling. If that’s the road you took, it’s time to get these areas filled (as always, on a separate layer). It’s faster than covering with ink, but you don’t get paper texture or small “handmade” imperfections. Speed or texture, it all depends on what you’re after.</p>
+<p>Often, a thin line will remain unfilled between you fill and the inked edge. Another go of the bucket tool will usually fill the gap. Also, if you’re artwork has inline inside letters, you might need to hide them while you create the fills to make sure the whole shape of the letter gets covered.</p>
+<p>Last, the current artwork is black on white. If you remember the way layer masks work, this means all the inked part will actually be hidden. The opposite of what we need, so we need to invert the colors with an <em>Invert</em> layer.</p>
+<p style="text-align: center;"><img class="alignnone wp-image-678 size-full" src="/wp-content/uploads/2017/04/inking-fixing-filling-inverting.gif" alt="Fixing filling and inverting" width="600" height="600" /></p>
+<h2 id="separating-the-parts-of-the-artwork-on-different-layers"><a class="headeranchor-link" href="#separating-the-parts-of-the-artwork-on-different-layers" name="user-content-separating-the-parts-of-the-artwork-on-different-layers"></a>Separating the parts of the artwork on different layers</h2>
+<p>It’s now time to take each element of the design onto its own fill layer, so we can easily adjust their color later.</p>
+<p>How many layers depends on how you want things to look in the end. One per letter or line of ornament is definitely overkill (unless you intend each to have a separate color of course). One layer per elements you think will be of the same color might lack some flexibility to experiment getting some part of a different color. A good middle ground is one layer per word and “type of ornament”.</p>
+<p>To prepare for the separation, I’ll create a fill layer, discard its mask and replace it by Alt-clicking the mask icon. This layer will serve as a base to duplicate and copy the parts of the artwork onto. The reason for this extra step is that new fill layers come with a “reveal all” mask (start all white). If you expand your canvas, this kind of mask will… well… reveal the new area and let it be filled with color. Usually not what’s needed, hence the replacement with a “hide all” mask.</p>
+<p>From there, it’s a game of duplicating the layer, then selecting and copying on its mask whichever part of the prepared artwork is needed.</p>
+<p style="max-height: 400px; overflow-y: auto; text-align: center;"><img class="alignnone size-full wp-image-679" src="/wp-content/uploads/2017/04/layer-split.png" alt="Each element on its layer" width="233" height="820" srcset="/wp-content/uploads/2017/04/layer-split.png 233w, /wp-content/uploads/2017/04/layer-split-85x300.png 85w, /wp-content/uploads/2017/04/layer-split-200x704.png 200w" sizes="(max-width: 233px) 100vw, 233px" /></p>
+<p>Let’s be honest, it&#8217;s quite a tedious part. But once it’s done, the fun can begin and you can easily adjust colors for each part of your design, add texture, easily duplicate layers to create a drop shadow, and whatnot to make it the final artwork. If you want to see how it looks like, here&#8217;s a (low res) <a href="/wp-content/uploads/2017/04/throw-me-the-money.process.psd">copy of the PSD file for my &#8220;Throw me the money&#8221; design</a>.</p>
+<p>If you try this process and have any questions or remark about it, I’ll be happy to <a href="mailto:hello@romaricpascal.is">hear about them</a>. And more generally, if you have any questions regarding lettering (techniques, applications…), feel free to <a href="mailto:hello@romaricpascal.is">send them my way</a>.</p>
+  </main>
+  <aside>
+
+  </aside>
+  <nav class="rp-PrevNextNav">
+		<a class="rp-PrevNextLink rp-PrevNextLink-prev rp-PrevNextNav__previous" 
+	   href="/writing-about/inking-and-scanning-lettering-artworks/"
+	   rel="prev"
+	   	   accesskey="j"
+	   data-key="left"
+			   title="Inking and scanning lettering artworks">
+	   	title	</a>
+		<a class="rp-PrevNextLink rp-PrevNextLink-next rp-PrevNextNav__next" 
+	   href="/writing-about/go-faster-when-digitizing-lettering-with-the-pen-tool/"
+	   rel="next"
+	   		accesskey="k"
+	   	data-key="right"
+			   title="Go faster when digitizing lettering with the Pen tool">
+	   	title	</a>
+</nav>
+</article>
+
+  </div>
+  <script type='text/javascript'>
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"https:\/\/romaricpascal.is\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"},"recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.9'></script>
+  <script defer src="/wp-content/themes/romaricpascal.is/main.js"></script>
+</body>

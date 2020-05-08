@@ -1,0 +1,151 @@
+body {
+	background: hsl(210, 95%, 8%);
+	color:  white;
+	font-family: monospace;
+	font-size: 1rem;
+	height:  calc(200vh - 8.5em);
+	margin:  0;
+	padding:  0;
+	line-height: 1.5em;
+}
+
+dd {
+	margin-left:  0;
+	margin-bottom:  0.5em;
+}
+
+.u-d-ib {
+	display: inline-block;
+}
+
+.dots {
+	position:  absolute;
+	top:  calc(100% - 3em);
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.dot {
+	position: relative;
+	height:  14px;
+	width: 14px;
+	border: solid 3px #b4d9fd;
+	border-radius: 999px;
+	padding: 4px;
+	margin:  auto;
+}
+.dot::before {
+	position: absolute;
+	top:  0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: #b4d9fd;
+	border-radius: 999px;
+	opacity: 0.5;
+	content:  '';
+	filter: blur(0.3em);
+	z-index: -1;
+}
+
+.innerDot {
+	background: #b4d9fd;
+	color:  hsl(280, 50%, 15%);
+	border-radius: 999px;
+	height:  100%;
+	width: 100%;
+}
+
+.value {
+	text-align: center;
+	font-size: 0.9em;
+	color: #b4d9fd;
+}
+
+.quote {
+  position:fixed;
+  top: 0;
+  width: calc(50vw - 1em);
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 25;
+}
+
+.quote--withMarker {
+	border-bottom: dotted 1px;
+}
+
+.quote::before {
+	content:  '';
+	position:  absolute;
+	top: 0;
+	bottom:  0;
+	left: 0;
+	border-top: solid 1px white;
+  	border-bottom: solid 1px white;
+  	width:9px;
+    background: linear-gradient(90deg, transparent, transparent 4px, white 4px, white 5px, transparent 0);	
+}
+
+.quote__label {
+	position: absolute;
+	top: 0;
+	left: 1em;
+}
+
+.quote__value {
+	position: absolute;
+	top: 50%;
+	left:  1em;
+	transform: translateY(-50%);
+	white-space: nowrap;
+}
+
+.quote--right {
+	left: auto;
+	right: 2px;	
+}
+
+.quote--right::before {
+	right: 0;
+	left:  auto;
+}
+
+.quote--right .quote__value,
+.quote--right .quote__label {
+	left:  auto;
+	right:  1em;
+}
+.quote--right .quote__label {
+	text-align: right;
+}
+
+.quote--bottom,
+.quote--bottom .quote__label {
+	bottom:  0;
+	top: auto;
+}
+.marker {
+  position:fixed;
+  border-bottom:dashed 1px #ff884d;
+  width:100%;
+}
+
+.marker__label {
+	position: absolute;
+	right: 1em;
+	color: #ff884d;
+	font-family: monospace;
+}
+
+.marker--labelOnTop .marker__label {
+	bottom: 0;
+}
+.marker--bottom {
+	bottom: 33%;
+}
+.marker--top {
+	bottom: 66%;
+}

@@ -1,0 +1,185 @@
+
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .u-troisCoups body>* {
+            visibility: hidden;
+        }
+    </style>
+    <script>
+        (function (window) {
+            if (document.documentElement.classList) {
+                window.troisCoups = {
+                    reveal: function () {
+                        document.documentElement.classList.remove('u-troisCoups');
+                    }
+                };
+
+
+                document.documentElement.classList.add('u-troisCoups');
+                setTimeout(window.troisCoups.reveal, 1500);
+            }
+        })(window);
+    </script>
+
+    <link rel="stylesheet" href="/wp-content/themes/romaricpascal.is/style.css">
+    <link rel="alternate" type="application/rss+xml" title="Romaric Pascal | Lettering &amp; web development" href="/feed">
+
+    <title>   CSS animations and Javascript | Romaric Pascal</title>
+    <meta name="description" content="Lettering &amp; web development">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/wp-content/themes/romaricpascal.is/assets/images/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/wp-content/themes/romaricpascal.is/assets/images/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/wp-content/themes/romaricpascal.is/assets/images/favicons/favicon-16x16.png">
+<link rel="manifest" href="/wp-content/themes/romaricpascal.is/assets/images/favicons/manifest.json">
+<link rel="mask-icon" href="/wp-content/themes/romaricpascal.is/assets/images/favicons/safari-pinned-tab.svg" color="#022950">
+<link rel="shortcut icon" href="/wp-content/themes/romaricpascal.is/assets/images/favicons/favicon.ico">
+<meta name="msapplication-config" content="/wp-content/themes/romaricpascal.is/assets/images/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffc744">
+    <!-- FB OpenGraph info -->
+        <meta prefix="og:http://ogp.me/ns#" property="og:url" content="/writing-about/css-animations-and-javascript/">
+        <meta prefix="og:http://ogp.me/ns#" property="og:title" content="   CSS animations and Javascript | Romaric Pascal">
+    <meta prefix="og:http://ogp.me/ns#" property="og:description" content="Lettering &amp; web development">
+    <meta prefix="og:http://ogp.me/ns#" property="og:image" content="/wp-content/themes/romaricpascal.is/assets/images/rp_with-padding_yellowbg_480.png">
+
+    <!-- Twitter cards -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@romaricpascal" />
+    <meta name="twitter:title" content="   CSS animations and Javascript | Romaric Pascal" />
+    <meta name="twitter:description" content="Lettering &amp; web development" />
+    <meta name="twitter:image" content="/wp-content/themes/romaricpascal.is/assets/images/rp_with-padding_yellowbg_480.png" />
+
+    <link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Romaric Pascal &raquo; CSS animations and Javascript Comments Feed" href="/writing-about/css-animations-and-javascript/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/romaricpascal.is\/wordpress\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.13"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='contact-form-7-css'  href='/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.9' type='text/css' media='all' />
+<script type='text/javascript' src='/wordpress/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='/wordpress/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<link rel="canonical" href="/writing-about/css-animations-and-javascript/" />
+  </head>
+  <body class="post-template-default single single-post postid-409 single-format-standard flexbug3Wrapper">
+    <header id="#header" class="rp-Header">
+        <a class="rp-Logo" href="" title="Home">
+    <img src="/wp-content/themes/romaricpascal.is/assets/images/rp-letters_144.png" alt="R-P monogram">
+</a>
+<nav class="rp-BreadcrumbNav">
+    <div class="rp-CollapsedItemsMenu">
+        <a class="rp-BreadcrumbLink rp-CollapsedItemsMenuToggle js-toggle" data-toggle-group="overlays" data-toggle-target=".rp-CollapsedItems">
+            <span class="rp-BreadcrumbLinkSeparator"></span>
+            <span class="rp-BreadcrumbLink__title">...</span>
+        </a>
+        <div class="rp-CollapsedItems js-outsideToggle"></div>
+    </div>
+    <div class="rp-BreadcrumbNavItems js-collapsible">
+				<a href="/writing-about/" class="rp-BreadcrumbLink">
+			<span class="rp-BreadcrumbLinkSeparator"></span>
+			<span class="rp-BreadcrumbLink__title">Posts</span>
+		</a>
+		    </div>
+</nav>      <nav class="rp-MainNav">
+        <a class="t-hidden-visually" tabindex="1" href="#content">Skip to content</a>
+        <a href="#main-nav" class="js-toggle" data-toggle-group="overlays" data-toggle-target=".rp-MenuContainer">Menu</a>
+        <div class="rp-MenuContainer js-outsideToggle" id="main-nav">
+        <a class="rp-NavLogo" href="" title="Home">
+            <img src="/wp-content/themes/romaricpascal.is/assets/images/rp-knockout_shade_144.png" alt="Home">
+        </a>
+        <div class="menu-site-navigation-container"><ul id="menu-site-navigation" class="rp-Menu rp-Header__menuI"><li id="menu-item-936" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-936"><a href="/">Home</a></li>
+<li id="menu-item-960" class="menu-item menu-item-type-post_type_archive menu-item-object-project menu-item-has-children menu-item-960"><a href="/proud-of/">Portfolio</a>
+<ul  class="sub-menu">
+	<li id="menu-item-942" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-942"><a href="/proud-of/logo-brand-designs">Logo &#038; Brand</a></li>
+	<li id="menu-item-954" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-954"><a href="/proud-of/tshirts-merch-designs/">T-shirts &#038; merch</a></li>
+	<li id="menu-item-957" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-957"><a href="/proud-of/print-illustration-designs">Print &#038; illustration</a></li>
+</ul>
+</li>
+<li id="menu-item-964" class="menu-item menu-item-type-post_type_archive menu-item-object-artwork menu-item-964"><a href="/drawing-letters/">Artworks</a></li>
+<li id="menu-item-935" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-935"><a href="/writing-about/">Blog</a></li>
+<li id="menu-item-933" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-933"><a href="/happy-to-chat/">Contact</a></li>
+<li id="menu-item-1022" class="menu-item menu-item-type-taxonomy menu-item-object-craft current-post-ancestor current-menu-parent current-post-parent menu-item-1022"><a href="/writing-about/craft/web/">Web</a></li>
+<li id="menu-item-934" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-934"><a target="_blank" href="/selling-nice-stuff/">Shop</a></li>
+</ul></div>        <a class="rp-MenuToggle js-toggle" href="#" data-toggle-group="overlays" data-toggle-target=".rp-MenuContainer">Close menu</a>
+        <small class="rp-Legal l-Container">© Romaric Pascal (trading name of <a href="https://beta.companieshouse.gov.uk/company/08544032">Rhumaric Ltd</a>)</small>
+        </div>
+      </nav>
+    </header>
+    <div class="rp-Viewport l-vertCentered u-mh-100vh">
+
+
+<article class="rp-Content">
+  <header class="rp-HeaderWithSubhead u-mb-2">
+    <h1 class="rp-HeaderWithSubhead__heading">
+        CSS animations and Javascript    </h1>
+    <p><time datetime="2013-12-10T23:25:30+00:00">10 Dec 2013</time> — An article about: <a href="/writing-about/craft/web/" rel="tag">Web</a> - <a href="/writing-about/category/uncategorized/" rel="category tag">Uncategorized</a></p>
+  </header>
+  <main>
+    <p>Usualy, to animate CSS properties with Javascript, you&#8217;d use a tweening library to progressively transition their values. But this uses precious UI thread time and CSS3 brings in CSS animations, which run off the UI thread. Performance improvement sounds good, so let&#39;s have a look at how they play along with Javascript!</p>
+<h2 id="a-quick-intro-to-css-animations">A quick intro to CSS animations</h2>
+<p>CSS animations are based on keyframes that define the style of the animated element<br />
+at different stages of the animation. Only <a href="https://www.w3.org/TR/2013/WD-css3-transitions-20131119/#animatable-properties">animatable properties</a><br />
+will be taken into account, though. Not all of them have the same <a href="https://www.html5rocks.com/en/tutorials/speed/high-performance-animations/">impact on performances</a> when getting animated, though.</p>
+<p>You define the set of keyframes for a specific animation using the <code>@keyframes</code> rule.</p>
+<p><iframe width="100%" height="300" src="//jsfiddle.net/rhumaric/4aehmmua/embedded/result,css,html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></p>
+<p>You can notice that keyframe position in the animations are defined in percent, not time units.<br />
+The actual time of the animation is set on the animated element, along with the set of keyframes<br />
+to use (among <a href="https://www.w3.org/TR/css3-animations/#contents">other properties</a>, using the <code>animation</code> property.</p>
+<h2 id="triggering-an-animation">Triggering an animation</h2>
+<p>Triggering your animation with Javascript is as simple as <a href="/keeping-old-stuff/updating-style-with-javascript/">setting the appropriate CSS</a> <code>animation</code> property on your element, using the <code>style</code> Javascript property, or a class, whichever you prefer. Actually, you can set any of the <code>animation-…</code> properties this way, which allows you a bit more control on what you set/orverride.</p>
+<p><iframe width="100%" height="300" src="//jsfiddle.net/rhumaric/4aehmmua/3/embedded/result,js,css,html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></p>
+<p>That&#8217;s already a good deal of control over your animations in Javascript. You can change their duration, play them backwards, pause them… However, if you need to manipulate the keyframes or their content, things get a bit trickier.</p>
+<h2 id="generating-keyframes-on-the-fly">Javascript generated keyframes</h2>
+<p>Sometimes, you&#8217;ll want to control the intervals between the keyframes at runtime, rather than having them pre-defined in your stylesheet. You might also need to tune the properties inside those keyframes. In this situation, you&#8217;ll have to generate the keyframes with Javascript before setting the <code>animation</code> property on the element.</p>
+<p><a href="https://dev.w3.org/csswg/cssom/#dom-cssstylesheet-insertrule">CSSOM</a> provides a handy <code>insertRule</code> for dynamically adding CSS rules (provided you already have a stylesheet in your page in which to insert the rule, which is often the case). I prefer inserting <code>&lt;style&gt;</code> tags, which make it easier to remove the animation definition once they&#8217;re over (CSSOM <code>deleteRule</code> function works using an index, not ideal if your animations don&#8217;t finish in the order they started).</p>
+<p>In both cases, you&#8217;ll need to generate a String containing the <code>@keyframes</code> rule.</p>
+<p><iframe width="100%" height="300" src="//jsfiddle.net/rhumaric/4aehmmua/4/embedded/result,js,css,html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></p>
+<h2 id="wrapping-it-up">Wrapping it up</h2>
+<p>Javascript provided various ways of interacting with CSS animations. It it pretty simple to tweak the CSS properties configuring the animation on a given element. Despite being a bit trickier, creating custom animations by injecting new sets of keyframe in the page is also possible. Not to mention (well, they were not mentioned in this article actually) the events dispatched by the element when the animation starts, ends or progresses. Generating the keyframes with string templates is still a bit tedious though. Maybe an idea for a nice Javascript library 😉</p>
+  </main>
+  <aside>
+
+  </aside>
+  <nav class="rp-PrevNextNav">
+		<a class="rp-PrevNextLink rp-PrevNextLink-prev rp-PrevNextNav__previous" 
+	   href="/writing-about/updating-style-with-javascript/"
+	   rel="prev"
+	   	   accesskey="j"
+	   data-key="left"
+			   title="Updating style with Javascript">
+	   	title	</a>
+		<a class="rp-PrevNextLink rp-PrevNextLink-next rp-PrevNextNav__next" 
+	   href="/writing-about/hiding-elements-and-css-animations/"
+	   rel="next"
+	   		accesskey="k"
+	   	data-key="right"
+			   title="Hiding elements and CSS animations">
+	   	title	</a>
+</nav>
+</article>
+
+  </div>
+  <script type='text/javascript'>
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"https:\/\/romaricpascal.is\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"},"recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.9'></script>
+  <script defer src="/wp-content/themes/romaricpascal.is/main.js"></script>
+</body>

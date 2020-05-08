@@ -1,0 +1,6 @@
+.rp-ArtworkSingle {
+	max-width: -webkit-calc(100vh - 3em - 2em);
+    max-width: calc(100vh - 3em - 2em);
+    margin-left: auto;
+    margin-right: auto;
+}

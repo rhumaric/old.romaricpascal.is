@@ -1,0 +1,55 @@
+@import 'https://fonts.googleapis.com/css?family=Londrina+Solid';
+
+body {
+  background: #1a1a1a;
+  margin: 0;
+}
+
+.particles {
+  text-align: center;
+  /* padding: 50px; */
+}
+
+.particles-js-canvas-el {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.lettering {
+  display:  block;
+  width: calc(468em/70);
+  height: auto;
+  position:  absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.branding {
+  position: relative;
+  display:inline-block;
+  color: white;
+  font-size: calc(15px + (100vw - 200px) * 55 / 380);
+  min-height: 98vh;
+}
+
+.branding-withSubhead .bottomWhiteFlare,
+.branding-withSubhead .bottomRedFlares {
+  display: none;
+}
+
+.withoutBottomWhiteFlares .bottomWhiteFlares {
+  display: none;
+}
+
+.branding_subhead {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(1.14em) translateX(-50%) rotate(-3.6deg);
+  text-transform: uppercase;
+  font-family: Londrina Solid, sans-serif;
+}

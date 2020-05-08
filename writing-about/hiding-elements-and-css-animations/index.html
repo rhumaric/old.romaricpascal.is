@@ -1,0 +1,192 @@
+
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .u-troisCoups body>* {
+            visibility: hidden;
+        }
+    </style>
+    <script>
+        (function (window) {
+            if (document.documentElement.classList) {
+                window.troisCoups = {
+                    reveal: function () {
+                        document.documentElement.classList.remove('u-troisCoups');
+                    }
+                };
+
+
+                document.documentElement.classList.add('u-troisCoups');
+                setTimeout(window.troisCoups.reveal, 1500);
+            }
+        })(window);
+    </script>
+
+    <link rel="stylesheet" href="/wp-content/themes/romaricpascal.is/style.css">
+    <link rel="alternate" type="application/rss+xml" title="Romaric Pascal | Lettering &amp; web development" href="/feed">
+
+    <title>   Hiding elements and CSS animations | Romaric Pascal</title>
+    <meta name="description" content="Lettering &amp; web development">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/wp-content/themes/romaricpascal.is/assets/images/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/wp-content/themes/romaricpascal.is/assets/images/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/wp-content/themes/romaricpascal.is/assets/images/favicons/favicon-16x16.png">
+<link rel="manifest" href="/wp-content/themes/romaricpascal.is/assets/images/favicons/manifest.json">
+<link rel="mask-icon" href="/wp-content/themes/romaricpascal.is/assets/images/favicons/safari-pinned-tab.svg" color="#022950">
+<link rel="shortcut icon" href="/wp-content/themes/romaricpascal.is/assets/images/favicons/favicon.ico">
+<meta name="msapplication-config" content="/wp-content/themes/romaricpascal.is/assets/images/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffc744">
+    <!-- FB OpenGraph info -->
+        <meta prefix="og:http://ogp.me/ns#" property="og:url" content="/writing-about/hiding-elements-and-css-animations/">
+        <meta prefix="og:http://ogp.me/ns#" property="og:title" content="   Hiding elements and CSS animations | Romaric Pascal">
+    <meta prefix="og:http://ogp.me/ns#" property="og:description" content="Lettering &amp; web development">
+    <meta prefix="og:http://ogp.me/ns#" property="og:image" content="/wp-content/themes/romaricpascal.is/assets/images/rp_with-padding_yellowbg_480.png">
+
+    <!-- Twitter cards -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@romaricpascal" />
+    <meta name="twitter:title" content="   Hiding elements and CSS animations | Romaric Pascal" />
+    <meta name="twitter:description" content="Lettering &amp; web development" />
+    <meta name="twitter:image" content="/wp-content/themes/romaricpascal.is/assets/images/rp_with-padding_yellowbg_480.png" />
+
+    <link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Romaric Pascal &raquo; Hiding elements and CSS animations Comments Feed" href="/writing-about/hiding-elements-and-css-animations/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/romaricpascal.is\/wordpress\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.13"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='contact-form-7-css'  href='/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.9' type='text/css' media='all' />
+<script type='text/javascript' src='/wordpress/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='/wordpress/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<link rel="canonical" href="/writing-about/hiding-elements-and-css-animations/" />
+  </head>
+  <body class="post-template-default single single-post postid-416 single-format-standard flexbug3Wrapper">
+    <header id="#header" class="rp-Header">
+        <a class="rp-Logo" href="" title="Home">
+    <img src="/wp-content/themes/romaricpascal.is/assets/images/rp-letters_144.png" alt="R-P monogram">
+</a>
+<nav class="rp-BreadcrumbNav">
+    <div class="rp-CollapsedItemsMenu">
+        <a class="rp-BreadcrumbLink rp-CollapsedItemsMenuToggle js-toggle" data-toggle-group="overlays" data-toggle-target=".rp-CollapsedItems">
+            <span class="rp-BreadcrumbLinkSeparator"></span>
+            <span class="rp-BreadcrumbLink__title">...</span>
+        </a>
+        <div class="rp-CollapsedItems js-outsideToggle"></div>
+    </div>
+    <div class="rp-BreadcrumbNavItems js-collapsible">
+				<a href="/writing-about/" class="rp-BreadcrumbLink">
+			<span class="rp-BreadcrumbLinkSeparator"></span>
+			<span class="rp-BreadcrumbLink__title">Posts</span>
+		</a>
+		    </div>
+</nav>      <nav class="rp-MainNav">
+        <a class="t-hidden-visually" tabindex="1" href="#content">Skip to content</a>
+        <a href="#main-nav" class="js-toggle" data-toggle-group="overlays" data-toggle-target=".rp-MenuContainer">Menu</a>
+        <div class="rp-MenuContainer js-outsideToggle" id="main-nav">
+        <a class="rp-NavLogo" href="" title="Home">
+            <img src="/wp-content/themes/romaricpascal.is/assets/images/rp-knockout_shade_144.png" alt="Home">
+        </a>
+        <div class="menu-site-navigation-container"><ul id="menu-site-navigation" class="rp-Menu rp-Header__menuI"><li id="menu-item-936" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-936"><a href="/">Home</a></li>
+<li id="menu-item-960" class="menu-item menu-item-type-post_type_archive menu-item-object-project menu-item-has-children menu-item-960"><a href="/proud-of/">Portfolio</a>
+<ul  class="sub-menu">
+	<li id="menu-item-942" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-942"><a href="/proud-of/logo-brand-designs">Logo &#038; Brand</a></li>
+	<li id="menu-item-954" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-954"><a href="/proud-of/tshirts-merch-designs/">T-shirts &#038; merch</a></li>
+	<li id="menu-item-957" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-957"><a href="/proud-of/print-illustration-designs">Print &#038; illustration</a></li>
+</ul>
+</li>
+<li id="menu-item-964" class="menu-item menu-item-type-post_type_archive menu-item-object-artwork menu-item-964"><a href="/drawing-letters/">Artworks</a></li>
+<li id="menu-item-935" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-935"><a href="/writing-about/">Blog</a></li>
+<li id="menu-item-933" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-933"><a href="/happy-to-chat/">Contact</a></li>
+<li id="menu-item-1022" class="menu-item menu-item-type-taxonomy menu-item-object-craft current-post-ancestor current-menu-parent current-post-parent menu-item-1022"><a href="/writing-about/craft/web/">Web</a></li>
+<li id="menu-item-934" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-934"><a target="_blank" href="/selling-nice-stuff/">Shop</a></li>
+</ul></div>        <a class="rp-MenuToggle js-toggle" href="#" data-toggle-group="overlays" data-toggle-target=".rp-MenuContainer">Close menu</a>
+        <small class="rp-Legal l-Container">© Romaric Pascal (trading name of <a href="https://beta.companieshouse.gov.uk/company/08544032">Rhumaric Ltd</a>)</small>
+        </div>
+      </nav>
+    </header>
+    <div class="rp-Viewport l-vertCentered u-mh-100vh">
+
+
+<article class="rp-Content">
+  <header class="rp-HeaderWithSubhead u-mb-2">
+    <h1 class="rp-HeaderWithSubhead__heading">
+        Hiding elements and CSS animations    </h1>
+    <p><time datetime="2013-12-18T16:58:08+00:00">18 Dec 2013</time> — An article about: <a href="/writing-about/craft/web/" rel="tag">Web</a> - <a href="/writing-about/category/uncategorized/" rel="category tag">Uncategorized</a></p>
+  </header>
+  <main>
+    <p>Following the last article about <a href="/keeping-old-stuff/css-animations-and-javascript/">CSS animations using Javascript</a>, let&#39;s see how we can apply this to something closer to a real life situation than a bouncing ball. Animating the disapearance of an element in a list, for example. Something to make the situation below a bit smoother:</p>
+<p><iframe width="100%" height="400" src="//jsfiddle.net/rhumaric/4pnxzsp1/1/embedded/result,js,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></p>
+<p>At the moment, the element removal is pretty abrupt: click the button, boom it&#39;s just gone. Simply removing an element from the DOM does not bring the smoothest visual experience. Let&#39;s bring in some CSS animations to make things a bit more pleasant.</p>
+<p><em>Note: The code in this article focuses on what happens when CSS animations are available. For a production website, you&#8217;d need to detect if they are available (using Modernizr, for example), and choose what to do if they aren&#8217;t to make sure the element still gets removed.</em></p>
+<h2 id="making-the-element-disapear">Making elements disapear in CSS</h2>
+<p>If you think of hiding elements with CSS, <code>display: none;</code> is probably that first comes to your mind. Unfortunately, the values taken by the display property are not of a <a href="https://www.w3.org/TR/css3-transitions/#animation-of-property-types-">type that can be animated</a>.</p>
+<p>The next option in mind would be <code>visibility: hidden;</code>, but it has the same &quot;I-am-not-animatable&quot; issue.</p>
+<p>Looking at the properties that <strong>are</strong> animatable, there are a few interesting options to make an element smoothly disapear, with these two probably being the most interesting:</p>
+<ul>
+<li><code>opacity</code>: to fade the element out</li>
+<li><code>transform</code>: to scale the element or translate it out of screen</li>
+</ul>
+<h2 id="move-out!">Get it out of the way</h2>
+<p>Let&#39;s go with the <code>transform</code> property to make the removed element disapear to the right of the screen. The animation does not depend on dynamic values, so its keyframes can sit quitely in a stylesheet. It&#39;ll get triggered by adding the <code>removed</code> class to the element that&#39;s disapearing. The <code>removed</code> class also bears the <code>animation-fill-mode: forwards;</code> property to make sure the element keeps the styles at the end of the animation. Without it, the element would instantly got back to where it was at the start of the animation&#8230; not really what we want.</p>
+<p><iframe width="100%" height="400" src="//jsfiddle.net/rhumaric/4pnxzsp1/2/embedded/result,css,js,html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></p>
+<p>The translation works well. Click, and off the screen is the removed element! Unfortunately, it leaves a massive blank space where the element was. <code>transform</code> We still need to remove the element once it&#39;s out of the screen. CSS animations trigger a <code>animationend</code> event once they complete, so we&#39;ll use it to detect when to remove the element.</p>
+<p><iframe width="100%" height="400" src="//jsfiddle.net/rhumaric/4pnxzsp1/3/embedded/result,css,js,html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></p>
+<p>The element now slides out of the screen before it gets removed. Better! But the list still collapses quite abruptly once the element is removed. Let&#8217;s improve that.</p>
+<p><em>Note</em>: Removing the element makes the <code>animation-fill-mode</code> property redundant. No risk for the element to revert to its initial style, it&#39;s not there anymore. </p>
+<h2 id="collapsing-smoothly">Collapsing smoothly</h2>
+<p>This time, we&#39;ll animate the <code>height</code> property to reclaim the vertical space previously occupied by the object.</p>
+<p>Sounds simple, but the fact that <code>height</code> does not animate if its value is <code>auto</code> makes things a bit tricky. For height to be animatable, it needs both its start value and end value to be a specific length.</p>
+<p>This means we&#39;ll need to measure the item and set its <code>height</code> before we trigger the animation. And as we want the element to collapse only at a certain point in the animation, we&#39;ll need to <a href="/keeping-old-stuff/css-animations-and-javascript/">generate the keyframes with Javascript</a> to maintain the height constant during the first part of the animation.</p>
+<p><iframe width="100%" height="400" src="//jsfiddle.net/rhumaric/4pnxzsp1/4/embedded/result,css,js,html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></p>
+<p>The first keyframe sets the initial height of the element to the one measured. Without it, the blank space will just snap instantly rather than smoothly collapsing. At the other end of the keyframes, we need to make sure the element is kept outside of the screen, which means repeating the transform in the last keyframe. And here we are, the element nicely moves out of the screen.</p>
+<p><em>Note: Measuring the height of the removed element might impact the performances of your application (if you do it on to many of elements at the same time, for example, but probably not the only example). If it happens, animating <code>max-height</code> is a way to avoid measuring your elements. It might introduce a different perceived speed in the animations if your elements height are really different one from another, though.</em></p>
+<h2 id="wrapping-it-up!">Wrapping it up!</h2>
+<p>Despite not being able to animate <code>display: none;</code> or <code>visiblity: hidden;</code>, CSS animations are a great help when you want to make the removal of an element nicer to the eye. Especially if you need complex animations that could not be handled by CSS transitions on their own. No reason to have blinky disapearances anymore 🙂</p>
+  </main>
+  <aside>
+
+  </aside>
+  <nav class="rp-PrevNextNav">
+		<a class="rp-PrevNextLink rp-PrevNextLink-prev rp-PrevNextNav__previous" 
+	   href="/writing-about/css-animations-and-javascript/"
+	   rel="prev"
+	   	   accesskey="j"
+	   data-key="left"
+			   title="CSS animations and Javascript">
+	   	title	</a>
+		<a class="rp-PrevNextLink rp-PrevNextLink-next rp-PrevNextNav__next" 
+	   href="/writing-about/apparition-and-css-animations/"
+	   rel="next"
+	   		accesskey="k"
+	   	data-key="right"
+			   title="Apparition and CSS Animations">
+	   	title	</a>
+</nav>
+</article>
+
+  </div>
+  <script type='text/javascript'>
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"https:\/\/romaricpascal.is\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"},"recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.9'></script>
+  <script defer src="/wp-content/themes/romaricpascal.is/main.js"></script>
+</body>

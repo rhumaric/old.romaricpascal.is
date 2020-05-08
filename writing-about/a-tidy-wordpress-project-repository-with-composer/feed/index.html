@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>A tidy WordPress project repository with Composer &#8211; Romaric Pascal</title>
+	<atom:link href="/writing-about/a-tidy-wordpress-project-repository-with-composer/feed/" rel="self" type="application/rss+xml" />
+	<link></link>
+	<description>Lettering &#38; web development</description>
+	<lastBuildDate>Thu, 13 Feb 2020 11:35:45 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.13</generator>
+	<item>
+		<title>A tidy WordPress project repository with Composer</title>
+		<link>/writing-about/a-tidy-wordpress-project-repository-with-composer/</link>
+		<pubDate>Wed, 08 Feb 2017 15:47:00 +0000</pubDate>
+		<dc:creator><![CDATA[romaricpascal]]></dc:creator>
+				<category><![CDATA[Composer]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Wordpress]]></category>
+		<description><![CDATA[<p>A WordPress project usually involves creating custom theme(s) and/or plugin(s) and adding them to a WordPress install, along with maybe a few 3rd party plugins or a parent theme. Having WordPress and these 3rd party elements in the repository make it unnecessarily big.</p>
+<p>An alternative to storing the 3rd party code your project use into its repository is to use a dependency manager. Dependency managers are tools that let you store a list of these 3rd party libraries in your repository, and will take charge of downloading them and installing them in your project. Which is what <a href="https://getcomposer.org/">Composer</a> does. Let’s see how we can use it to keep our repository tidy.</p>
+<h2><a href="#composer-in-a-few-lines" name="user-content-composer-in-a-few-lines"></a>Composer in a few lines</h2>
+<p>First step is obviously to install Composer on your machine. <a href="https://getcomposer.org/doc/00-intro.md">The tool’s getting started guide</a> will guide you through these steps.</p>
+<p>Composer works with a <code>composer.json</code> file that lists the dependencies of your project. The most common type of dependencies are 3rd party libraries. Composer will fetch them from its default package repository <a href="https://packagist.org/">Packagist</a> (or other repositories listed in the <code>composer.json</code> file). Additionaly, you can specify that your project needs specific PHP extensions to work properly or features from a minimum PHP version. This helps making sure all necessary things are present for your project to work properly.</p>
+<p>The <code>composer install</code> command then installs all the listed dependencies, downloading them as needed.</p>
+<h2><a href="#downloading-wordpress-with-composer" name="user-content-downloading-wordpress-with-composer"></a>Downloading WordPress with Composer</h2>
+<p>With composer ready, let’s set it up to download WordPress. Unfortunately, WordPress doesn’t have any package stored on <a href="https://packagist.org/">Packagist</a>. That doesn’t mean Composer can’t work with it, though. Composer can <a href="https://getcomposer.org/doc/05-repositories.md">use other repositories</a> and is perfectly capable to download a zip file from Github, for example. The corresponding <code>composer.json</code> is the following.</p>
+<div>
+<pre>{
+  "repositories":[{
+    "type": "package",
+    "package": {
+      "name": "wordpress",
+      "version": "4.7.2",
+      "dist": {
+        "type": "zip",
+        "url": "https://github.com/WordPress/WordPress/archive/4.7.2.zip"
+      }
+    }
+  }],
+  "require": {
+    "wordpress":"4.7.2"
+  }
+}
+</pre>
+</div>
+<p>Run <code>composer install</code> and WordPress will be downloaded… in the <code>vendor/wordpress</code> folder. Not quite where you’d want it…</p>
+<h2><a href="#downloading-wordpress-in-a-handier-location" name="user-content-downloading-wordpress-in-a-handier-location"></a>Downloading WordPress in a handier location</h2>
+<p>A more common folder structure would be having WordPress’ files at the root of the project. This structure makes it a hassle when it comes to manage files blacklisted in <code>.gitignore</code> (or <code>.hgignore</code>, or <code>.&lt;whatever&gt;ignore</code>). Instead, we’ll aim to have it in a <code>wordpress</code> folder.</p>
+<p>For this we’ll need a tool called <a href="https://github.com/fancyguy/webroot-installer">webroot-installer</a>. It’ll let us pull wordpress out of the vendor folder and into a folder of our choice. Composer will take care of downloading it and its configuration will be stored in the <code>composer.json</code> file. This requires 3 changes to the file:</p>
+<ol>
+<li>Listing webroot-installer as a dependency of the project</li>
+<li>Marking WordPress package to be handled by webroot-installer</li>
+<li>Configuring webroot-installer to let it know where to put WordPress</li>
+</ol>
+<div>
+<pre>{
+  "repositories":[{
+    "type": "package",
+    "package": {
+      "name": "wordpress",
+      "version": "4.7.2",
+      "type": "webroot",
+      "dist": {
+        "type": "zip",
+        "url": "https://github.com/WordPress/WordPress/archive/4.7.2.zip"
+      }
+    }
+  }],
+  "require": {
+    "wordpress":"4.7.2",
+    "fancyguy/webroot-installer": "1.0.0"
+  },
+  "extra": {
+    "webroot-dir": "wordpress",
+    "webroot-package": "wordpress"
+  }
+}
+</pre>
+</div>
+<p>Let’s not forget to setup the <code>.gitignore</code> file to blacklist <code>wordpress</code> and <code>vendor</code> (aim is to keep things tidy, after all). Here we go, we now have a repository for a WordPress project clean of WordPress code. Except given WordPress architecture, the code for plugins/themes resides in the <code>wp-content</code> folder… Which is into the <code>wordpress</code> folder… Which we just kicked out of our repository… Echec.</p>
+<h2><a href="#running-wordpress-with-an-external-wp-content" name="user-content-running-wordpress-with-an-external-wp-content"></a>Running <code>wordpress</code> with an external <code>wp-content</code></h2>
+<p>Fortunately, the <code>wp-content</code> folder used by WordPress doesn’t need to be inside the <code>wordpress</code> folder. With a couple of constants, we can configure WordPress to run with the following project structure. This will allow to keep <code>wp-content</code> in the repository, holding our code and exclude <code>wordpress</code> from the repository (as well as other 3rd party plugins/themes) via the <code>.gitignore</code>.</p>
+<div>
+<pre> - wordpress-project
+ |-- wordpress
+ |-- wp-content
+ |-- composer.json
+ |-- composer.lock
+ |-- wp-config.php
+ |-- index.php
+</pre>
+</div>
+<p>The <code>index.php</code> file is a copy of WordPress’ one, with an update to the path for loading WordPress. It needs to account for the <code>wordpress</code> folder now.</p>
+<div>
+<pre>require( dirname( __FILE__ ) . '/wordpress/wp-blog-header.php' );
+</pre>
+</div>
+<p>The rest of the setup is setting up 3 constants so WordPress knows it’s in a separate folder, where the <code>wp-content</code> folder actually is and which URL it has when serving it.</p>
+<div>
+<pre>define( 'WP_CONTENT_DIR', dirname(__FILE__) . '/wp-content');
+define('WP_CONTENT_URL', 'http://PROJECT_URL/wp-content');
+define('WP_SITEURL', 'http://PROJECT_URL/wordpress');
+</pre>
+</div>
+<p>With these set, WordPress will run with its <code>wp-content</code> folder sitting next to it and the repository is now tidy. Now let’s see how we can use Composer to download WordPress plugins &amp; themes. It’d be a shame to have to do that by hand while we have a dependency manager.</p>
+<h2><a href="#installing-wordpress-plugins-with-composer" name="user-content-installing-wordpress-plugins-with-composer"></a>Installing WordPress plugins with Composer</h2>
+<p>Like WordPress, it’s plugins and themes usually aren’t available on <a href="https://packagist.org/">Packagist</a>. Adding a new repository for each like we did for WordPress isn’t very manageable either. Fortunately, there’s a separate Composer repository, called <a href="https://wpackagist.org">WPackagist</a> which provides WordPress plugins &amp; themes.</p>
+<p>You’ll need to add the repository to the <code>composer.json</code> file, and then the WPackagist website will give you the JSON bit to insert in the <code>require</code> section for the plugin/theme you want to download. You can search the plugins directly there, or keep looking them up on the WordPress site and just go to WPackagist to find the JSON snippet.</p>
+<div>
+<pre>{
+  "type":"composer",
+  "url":"https://wpackagist.org"
+}
+</pre>
+</div>
+<p>That’s it. This set up lets you have a repository with only the files you write, leaving the downloading of external code to Composer. There’s still a bit of <code>.gitignore</code> management to do to exclude 3rd party themes &amp; plugins, but that’s not too terrible. <a href="https://getcomposer.org/doc/05-repositories.md#path">Path repositories</a> might help get your code live outside <code>wp-content</code> entirely, which would allow an easy blacklisting of the entire <code>wp-content</code> folder. Maybe I’ll give it a go someday, for now this setup works well enough for my needs.</p>
+]]></description>
+		<guid isPermaLink="false">/?p=265</guid>
+		</item>
+	</channel>
+</rss>

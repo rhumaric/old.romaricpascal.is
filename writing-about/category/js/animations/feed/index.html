@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Animations &#8211; Romaric Pascal</title>
+	<atom:link href="/writing-about/category/js/animations/feed/" rel="self" type="application/rss+xml" />
+	<link></link>
+	<description>Lettering &#38; web development</description>
+	<lastBuildDate>Thu, 13 Feb 2020 11:35:45 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.13</generator>
+	<item>
+		<title>Composing animations through functions</title>
+		<link>/writing-about/composing-animations-through-functions/</link>
+		<pubDate>Fri, 27 Oct 2017 19:37:02 +0000</pubDate>
+		<dc:creator><![CDATA[romaricpascal]]></dc:creator>
+				<category><![CDATA[Animations]]></category>
+		<category><![CDATA[JS]]></category>
+		<description><![CDATA[<p>In <a href="/writing-about/animations-with-javascript-functions/">the introduction of this venture into animations</a> and functions, the animation was simply fading in one element (linearly). Enough for an example, but not really fitting if we talk animating multiple elements, or multiple properties.</p>
+<p>We&rsquo;d want to run multiple animations at the same time, maybe with specific timings, perhaps also control how the progress flows (easing, revert&hellip;). </p>
+<p>Focus on the animation functions rather than the sources.</p>
+<p>Let&rsquo;s see how we can express that with little functions to compose into a bigger animation.</p>
+<h2 id="controlling-progress"><a name="user-content-controlling-progress" href="#controlling-progress" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Controlling progress</h2>
+<p>Progress, with a time source at least, flows linearly. It&rsquo;s simple, but doesn&rsquo;t give the animation a natural feel. In the real world, objects don&rsquo;t start moving at their cruise speed straight away. If they ever move at a constant speed anyway. And equally, they don&rsquo;t stop instantly once they&rsquo;ve finished moving.</p>
+<p>To mimic that in animations, we need something to alter how progress&hellip; well&hellip; progresses. That&rsquo;s the role of easing functions. This is not only important for things to look natural, but easings also allow to play on the feelings conveyed by the animation: make something hurry out of the screen, or instead enter with a sluggish, heavy feel.</p>
+<p>Easing functions have been around for a while, the most used being the list by Robert Penner, though you can define custom bezier curves or even use spring physics. So let&rsquo;s focus on how we can use them with our animation. For that, we can write a wrapper function that will apply the easing before delegating the rest to the animation.</p>
+<figure>
+    <script src="https://gist.github.com/rhumaric/7921124960e3a48511315c3f123c2626.js?file=easing.js"></script><br />
+</figure>
+<p>And with that, we can control how progress flows. On the same principle, we can write a function that will revert the animations.</p>
+<figure>
+<script src="https://gist.github.com/rhumaric/7921124960e3a48511315c3f123c2626.js?file=revert.js"></script></p>
+<div class="o-ratio o-ratio--16:9">
+    <iframe src="/wp-content/uploads/demo/animation-with-functions/composing-animations/progress/"><br />
+    <a href="/wp-content/uploads/demo/animation-with-functions/composing-animations/progress/">See the demo</a><br />
+</iframe>
+</div><figcaption class="u-ta-c" style="padding: 0.5em;">Click the dots to run the animation.<br />Notice how the second dot accelerates and decelerates more naturally.</figcaption></figure>
+<p>These two simple examples show the general pattern we&rsquo;ll be applying for the rest of the article and go towards coordinating the animation of multiple elements.</p>
+<h2 id="multiple-animations"><a name="user-content-multiple-animations" href="#multiple-animations" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Multiple animations</h2>
+<p>So far, we&rsquo;re still stuck with running just one animation at a time. To animate the 3 dots, we need 3 sources of times.</p>
+<figure>
+    <script src="https://gist.github.com/rhumaric/7921124960e3a48511315c3f123c2626.js?file=time-sources.js"></script><br />
+</figure>
+<p>It works, but if we could run it with only one source of time, it would make things a bit more reusable. With the same pattern as before (creating a new function that wraps the various animations we want to play) we can write this little function for playing them all in one go:</p>
+<figure>
+    <script src="https://gist.github.com/rhumaric/7921124960e3a48511315c3f123c2626.js?file=parallel.js"></script></p>
+<div class="o-ratio o-ratio--16:9">
+    <iframe src="/wp-content/uploads/demo/animation-with-functions/composing-animations/parallel/"><br />
+    <a href="/wp-content/uploads/demo/animation-with-functions/composing-animations/parallel/">See the demo</a><br />
+</iframe>
+</div><figcaption class="u-ta-c" style="padding: 0.5em;">Click the dots to run the animation.</figcaption></figure>
+<p>There we go! We can now play several animations from the same source of progress. One little issue though, they all run for the full duration. Let&rsquo;s see how we can tackle that.</p>
+<h2 id="shifting-timings"><a name="user-content-shifting-timings" href="#shifting-timings" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Shifting timings</h2>
+<p>So let&rsquo;s see how we can coordinate the movements of the 3 dots. Maybe make the second wait a little before it goes and quickly reaches the end so that the 3rd still have some time left to make its way back.</p>
+<p>For this, we need to transform the progress that each animation receives. Each will need to go from 0 to 1 while the progress of the <code>parallel</code> animation goes over smaller intervals.</p>
+<p>Sounds a bit like easing, but it&rsquo;s a very specific one. It sticks the progress to 0 while the progress hasn&rsquo;t been enough, then ramps to 1 until the animation is done and from there sticks to one. It&rsquo;s not so big to write on its own as:</p>
+<figure>
+    <script src="https://gist.github.com/rhumaric/7921124960e3a48511315c3f123c2626.js?file=shift.js"></script></p>
+<div class="o-ratio o-ratio--16:9">
+    <iframe src="/wp-content/uploads/demo/animation-with-functions/composing-animations/shift/"><br />
+    <a href="/wp-content/uploads/demo/animation-with-functions/composing-animations/shift/">See the demo</a><br />
+</iframe>
+</div><figcaption class="u-ta-c" style="padding: 0.5em;">Click the dots to run the animation.</figcaption></figure>
+<p>We got there! Composing functions we managed to animate different things on their own timing.</p>
+<p>Of course, like the rest of this adventure, this is just a base to get started. On this topic especially, reasoning in percentages quickly becomes tricky if we want to create complex animations, for example. <a href="https://github.com/rhumaric/tinymation/issues/10">Reasoning in absolute units, like milliseconds</a> would be much easier.</p>
+<p>And of course around the areas for making animations with functions. I&rsquo;ve started to gather some code on the <a href="https://github.com/rhumaric/tinymation">tinymation project on Github</a>. If you have thoughts on the topic, maybe specific use case, I&rsquo;d be really happy to head about them. Feel free to <a href="https://github.com/rhumaric/tinymation">look at the code</a> and <a href="https://github.com/rhumaric/tinymation/issues">add issues (or comment on the existing ones)</a>.</p>
+]]></description>
+		<guid isPermaLink="false">/?p=1114</guid>
+		</item>
+		<item>
+		<title>Expressive scroll animations</title>
+		<link>/writing-about/expressive-scroll-animations/</link>
+		<pubDate>Fri, 27 Oct 2017 19:36:58 +0000</pubDate>
+		<dc:creator><![CDATA[romaricpascal]]></dc:creator>
+				<category><![CDATA[Animations]]></category>
+		<category><![CDATA[JS]]></category>
+		<description><![CDATA[<p><a href="/writing-about/animations-with-javascript-functions/">The introduction of this venture in animations with JavaScript functions</a> created a source of progress to handle scroll animations.<br />
+Its features were a bit basic though, limiting to &ldquo;over N% of the viewport height once past D%&rdquo;.</p>
+<p>I mean, it works but leaves it all to the developer to figure out those percentages, which might vary from screen size to screen size as the responsive design puts the element in a different position&hellip; Not to mention the next change of design, introducing a new element higher up in the page and shifting the animated element down.</p>
+<p>Let&rsquo;s see if we can create something more expressive and resilient to design changes. When animating elements on scroll, percents of the viewport are not really the things we reason about first. It&rsquo;s more natural to go for &ldquo;start when the <em>distance</em> from the <em>top of</em> the element to the <em>bottom of the viewport</em> reaches S<em>%</em> of the ~screen~<em>viewport height</em> and until it reaches E<em>%</em>&rdquo;. So let&rsquo;s shoot for that.</p>
+<p>The highlighted parts of the sentence are each one concept we&rsquo;re going to translate into JavaScript for this to work. There are two kinds of things there:</p>
+<ol>
+<li>Values, like the <em>top of</em> the element, the <em>bottom of the viewport</em> or the <em>viewport height</em>. But those vary with time: the window can be resized, the user can scroll&hellip; So similarly to the sources of progress we have for the animations, we&rsquo;ll need sources of values here. </li>
+<li>Computation over those values, like getting the <em>distance</em> between two points, or getting a <em>percentage</em>. Like a simple <code>-</code> or <code>/</code> operator, except they&rsquo;ll have to work with our sources of values we said we needed just above.</li>
+</ol>
+<h2 id="bottom-of-viewport-and-viewport-height"><a name="user-content-bottom-of-viewport-and-viewport-height" href="#bottom-of-viewport-and-viewport-height" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Bottom of viewport and viewport height</h2>
+<p>Let&rsquo;s start with the simplest values here, which are actually the same value if you think about it. From the top of the viewport (which we&rsquo;ll use as a common origin for our coordinates), they are the same value. And we don&rsquo;t even need any computation to get it, the DOM provides it straight away: <code>document.body.clientHeight</code>.</p>
+<p>The main thing we need to handle is making sure we can observe the changes of this value when the screen is resized.</p>
+<figure><script src="https://gist.github.com/rhumaric/7e9497cdd97b9c839581105525e10585.js?file=bottomOfViewport.js"></script></figure>
+<h2 id="top-of-el"><a name="user-content-top-of-el" href="#top-of-el" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Top of el</h2>
+<p>Now we&rsquo;ve got our information about the viewport, let&rsquo;s get those about the element. That&rsquo;s the one that&rsquo;ll actually trigger changes on scroll, as the position of the element relative to the top of the viewport will change then.<br />
+Here again, the DOM is pretty handdy providing that, with <code>el.getClientBoundingRect().top</code>.</p>
+<figure>
+<script src="https://gist.github.com/rhumaric/7e9497cdd97b9c839581105525e10585.js?file=topOf.js"></script></p>
+<div class="o-ratio o-ratio--4:3">
+<iframe src="/wp-content/uploads/demo/animation-with-functions/expressive-scroll/sources/"><br />
+    <a href="wp-content/uploads/demo/animation-with-functions/expressive-scroll/sources/">See the demo</a><br />
+</iframe>
+</div><figcaption class="u-ta-c" style="padding: 0.5em;">First step out of the way, we can measure some dimensions \o/</figcaption></figure>
+<p>And with that, we&rsquo;re ready to move on to computing the distance and percentage.</p>
+<h2 id="tbd"><a name="user-content-tbd" href="#tbd" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>TBD</h2>
+<p>As the values above change, so will the distance and percentage. This means they also need to be sources of values. Sources of value that will:</p>
+<ol>
+<li>combine the value from different sources</li>
+<li>compute a new value from there</li>
+</ol>
+<p>Combine, first. When observed, it&rsquo;ll need to observe the sources it combines and just provide their values in an array.</p>
+<figure><script src="https://gist.github.com/rhumaric/7e9497cdd97b9c839581105525e10585.js?file=combine.js"></script></figure>
+<p>From there we can create the final sources, consuming this array for computation, but only after all data is there:</p>
+<figure>
+<script src="https://gist.github.com/rhumaric/7e9497cdd97b9c839581105525e10585.js?file=distance.js"></script></p>
+<div class="o-ratio o-ratio--4:3">
+<iframe src="/wp-content/uploads/demo/animation-with-functions/expressive-scroll/combined/"><br />
+    <a href="wp-content/uploads/demo/animation-with-functions/expressive-scroll/combined/">See the demo</a><br />
+</iframe>
+</div><figcaption class="u-ta-c" style="padding: 0.5em;">Combining all this, we can now fade the circle out on scroll \o/.</figcaption></figure>
+<h2 id="tying-it-all-together"><a name="user-content-tying-it-all-together" href="#tying-it-all-together" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Tying it all together</h2>
+<p>There we go! We have everything we need and can now write a more understandable: <code>percentOf(viewportHeight, distance(topOf(el), bottomOfViewport))</code> to use as our source of progress. As it is, it would animate as the element goes through the whole viewport. We just need one last wrapping source that will scale the percentage into a neat [0..1] range according to our wishes. Let&rsquo;s call it <code>between(range, source)</code>.</p>
+<figure>
+<script src="https://gist.github.com/rhumaric/7e9497cdd97b9c839581105525e10585.js?file=between.js"></script></p>
+<div class="o-ratio o-ratio--4:3">
+<iframe src="/wp-content/uploads/demo/animation-with-functions/expressive-scroll/final/"><br />
+    <a href="wp-content/uploads/demo/animation-with-functions/expressive-scroll/final/">See the demo</a><br />
+</iframe>
+</div><figcaption class="u-ta-c" style="padding: 0.5em;">Notice how the left circle only animates between the selected range.</figcaption></figure>
+<p>And voila! Combining functions, we have a pretty expressive way to define scroll based animations.</p>
+<p>As with the first article, this is just a base to start with, that I got from implementing scroll based animations on this website. There&rsquo;d be plenty more to explore around those scroll sources like :<br />
+ &#8211; <a href="https://github.com/rhumaric/tinymation/issues/8">providing some based on the <code>intersectionRatio</code></a> from <a href="https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver"><code>IntersectionObservers</code></a>,<br />
+ &#8211; <a href="https://github.com/rhumaric/tinymation/issues/9">handling conditions different landmarks on the element &amp; viewport</a> (for example: start when the top of the element crosses the bottom of the viewport and end when its bottom crosses the top of the viewport&hellip;)<br />
+ &#8211; <a href="https://github.com/rhumaric/tinymation/issues">&hellip;</a></p>
+<p>And of course around the areas for making animations with functions. I&rsquo;ve started to gather some code on the <a href="https://github.com/rhumaric/tinymation">tinymation project on Github</a>. If you have thoughts on the topic, maybe specific use case, I&rsquo;d be really happy to head about them. Feel free to <a href="https://github.com/rhumaric/tinymation">look at the code</a> and <a href="https://github.com/rhumaric/tinymation/issues">add issues (or comment on the existing ones)</a>.</p>
+<p>PS. If you enjoyed combining this concept of sources of values that vary over time, you might want to have a look around Observables and reactive libraries like <a href="https://github.com/Reactive-Extensions/RxJS">RxJS</a>, <a href="https://github.com/staltz/xstream">xstream</a>&hellip;</p>
+]]></description>
+		<guid isPermaLink="false">/?p=1108</guid>
+		</item>
+		<item>
+		<title>Animations with JavaScript functions</title>
+		<link>/writing-about/animations-with-javascript-functions/</link>
+		<pubDate>Fri, 27 Oct 2017 19:36:54 +0000</pubDate>
+		<dc:creator><![CDATA[romaricpascal]]></dc:creator>
+				<category><![CDATA[Animations]]></category>
+		<category><![CDATA[JS]]></category>
+		<description><![CDATA[<p>This all started when I was looking to add scroll based animations to the home page of this portfolio. I set out to find a library to help a bit with that. There’s quite a few in the wild. Time-based animations libraries that I could then tie to the scroll position (like <a href="https://greensock.com/">greensock</a>, <a href="http://animejs.com">anime.js</a>, <a href="http://velocityjs.org">velocity</a> or <a href="https://github.com/tweenjs/tween.js/">tweenjs</a>). Or more scroll specific things (like <a href="http://scrollmagic.io">scrollmagic</a>).</p>
+<p>While they all seemed to do a pretty good job (a lot of websites use them in production), they all had one major flaw to me. They’re all quite monolithic. They provide plenty, and your users download all that plenty, whether your website uses 1% or 99% of their features.</p>
+<p>I used this as an excuse to explore how animations could be expressed through functions, rather than OOP APIs. Looking to compose just the features that the animations needed to limit what visitors would have to download. Let’s see how it went!</p>
+<h2 id="a-simple-starting-point"><a class="headeranchor-link" href="#a-simple-starting-point" name="user-content-a-simple-starting-point" aria-hidden="true"></a>A simple starting point</h2>
+<p>Before diving into complex animations driven by scroll, let’s start with a more restricted case: a simple time driven fade-in. Written in plain JS, this goes like this:</p>
+<figure><script src="https://gist.github.com/rhumaric/c6c2c5b7382d4148df6119b5f1d473a8.js?file=time-from-scratch.js "></script></p>
+<div class="o-ratio o-ratio--16:9"><iframe src="/wp-content/uploads/demo/animation-with-functions/intro/time-from-scratch/" width="300" height="150"><br />
+<a href="wp-content/uploads/demo/animation-with-functions/intro/time-from-scratch/">Demo fading a button on click</a><br />
+</iframe></div>
+</figure>
+<p>Definitely smaller than embedding a library. But while it’s nice to know how to write it all from scratch by hand, a bit of abstraction would help to reuse things from one animation to another.</p>
+<h2 id="divide-and-conquer"><a class="headeranchor-link" href="#divide-and-conquer" name="user-content-divide-and-conquer" aria-hidden="true"></a>Divide and conquer</h2>
+<p>The code above mixes two main parts of the animation:<br />
+&#8211; generating some measure of <code>progress</code> (here using <a href="https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame">requestAnimationFrame</a> ticks)<br />
+&#8211; interpolating this <code>progress</code> into updates of the UI (here with <code>target.style.opacity</code>)</p>
+<p>So let’s split things up accordingly.</p>
+<figure><script src="https://gist.github.com/rhumaric/c6c2c5b7382d4148df6119b5f1d473a8.js?file=time-split.js "></script></p>
+<div class="o-ratio o-ratio--16:9"><iframe src="/wp-content/uploads/demo/animation-with-functions/intro/time-split/" width="300" height="150"><br />
+<a href="wp-content/uploads/demo/animation-with-functions/intro/time-split/">Demo fading the button again on click</a><br />
+</iframe></div>
+</figure>
+<p>That’s a first step! We can use our <code>timer</code> to power all kinds of animations. And control the <code>fadeIn</code> from other sources of progress… the scroll position maybe.</p>
+<h2 id="progress-on-scroll"><a class="headeranchor-link" href="#progress-on-scroll" name="user-content-progress-on-scroll" aria-hidden="true"></a>Progress on scroll</h2>
+<p>A time-based source of progress works like this: “run for N ms (after a delay of D ms maybe)”. In the same spirit, a scroll based source of progress would go “run for N% of the scroll (after a delay of D% maybe)”. Pixels would work too, but given the diversity of screen heights around… best use percents.</p>
+<p>So let’s create just that (ignoring for now that the viewportHeight might change when resizing the browser):</p>
+<figure><script src="https://gist.github.com/rhumaric/c6c2c5b7382d4148df6119b5f1d473a8.js?file=scroll-basic.js "></script></p>
+<div class="o-ratio o-ratio--16:9"><iframe src="/wp-content/uploads/demo/animation-with-functions/intro/scroll-basic/" width="300" height="150"><br />
+<a href="wp-content/uploads/demo/animation-with-functions/intro/scroll-basic/">Demo</a><br />
+</iframe></div>
+</figure>
+<h2 id="going-further"><a class="headeranchor-link" href="#going-further" name="user-content-going-further" aria-hidden="true"></a>Going further</h2>
+<p>This is just a simple base to start with. From there, there’s plenty more to explore, keeping this idea of composing functions to create animations. While creating this portfolio, I touched on:</p>
+<ul>
+<li><a href="/writing-about/expressive-scroll-animations/">having a more expressive source of “scroll” events</a></li>
+<li><a href="/writing-about/composing-animations-through-functions">composing animations on different elements</a></li>
+</ul>
+<p>And other topics come to mind too:</p>
+<ul>
+<li><a href="https://github.com/rhumaric/tinymation/issues/4">enhancing the rudimentary timer</a>: play/pause, reset, seek, repeat (alternating)</li>
+<li><a href="https://github.com/rhumaric/tinymation/issues/5">splitting the computation of values from their use</a>, so they can be applied via CSS variables (to keep specificity low), used with canvas…</li>
+<li><a href="https://github.com/rhumaric/tinymation/issues/6">listening on progress</a>, <a href="https://github.com/rhumaric/tinymation/issues/7">obtaining a promise of animation completion</a></li>
+<li><a href="https://github.com/rhumaric/tinymation/issues">…</a></li>
+</ul>
+<p>I’ve started to gather some code on the <a href="https://github.com/rhumaric/tinymation">tinymation project on Github</a>. If you have thoughts on the topic, maybe specific use case, I’d be really happy to head about them. Feel free to <a href="https://github.com/rhumaric/tinymation">look at the code</a> and <a href="https://github.com/rhumaric/tinymation/issues">add issues (or comment on the existing ones)</a>.</p>
+]]></description>
+		<guid isPermaLink="false">/?p=1102</guid>
+		</item>
+	</channel>
+</rss>

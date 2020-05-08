@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Quick tip: console logs with conditional breakpoints &#8211; Romaric Pascal</title>
+	<atom:link href="/writing-about/quick-tip-console-logs-with-conditional-breakpoints/feed/" rel="self" type="application/rss+xml" />
+	<link></link>
+	<description>Lettering &#38; web development</description>
+	<lastBuildDate>Thu, 13 Feb 2020 11:35:45 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.13</generator>
+	<item>
+		<title>Quick tip: console logs with conditional breakpoints</title>
+		<link>/writing-about/quick-tip-console-logs-with-conditional-breakpoints/</link>
+		<pubDate>Sat, 01 Feb 2014 14:09:09 +0000</pubDate>
+		<dc:creator><![CDATA[romaricpascal]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<description><![CDATA[<p>When debugging a Javascript program, breakpoints are definitely one of the most useful tool we have. Pausing our app to inspect what&#39;s going on inside is a great way to find out what&#39;s not working as expected.</p>
+<p>There are times, however, when they become a bit tedious to use. Pause, inspect whatever you need, resume, pause again&#8230; A couple of times doesn&#39;t feel too bad. But whent it&#39;s inside a loop going over a fair number of time, I feel it&#39;d be<br />
+    faster to just let the app run though and <code>console.log</code> whatever I wanted to inspect.</p>
+<p>Rather than coming back to my text editor to add the logging instructions in the sources, I&#39;d rather stay in the browser (lazy me 😉 ). Especially as this will limit the risk of leaving <code>console.log</code> calls in production code (though this<br />
+    should be checked by some build tools anyways). If I&#39;m using the Chrome Dev Tools, I&#8217;m halfway there. I can edit the JS sources to do the logging, and maybe even try out some code correcting the bug&#8230; But this will all be gone when I reload the page and not all devtools allow that.</p>
+<p>Enter the conditional breakpoints! Browsers dev tools (<a href="https://developers.google.com/chrome-developer-tools/docs/javascript-debugging#breakpoints">Chrome, Opera</a>, <a href="https://developer.mozilla.org/en-US/docs/Tools/Debugger#Set_a_conditional_breakpoint">Firefox</a>,<br />
+    even <a href="https://msdn.microsoft.com/en-us/library/dd565625%28v=vs.85%29.aspx#_break">IE</a>) allow you to add some code at your breakpoint, and before it pauses the app, run the code to check if it returns true. Any code, even something <code>console.log(mySuperInterestingVariable)</code> (which<br />
+    returns <code>undefined</code> so won&#39;t pause execution).</p>
+<figure style="text-align: center; margin-bottom: 1em;"><a href="/wp-content/uploads/2014/02/conditional-breakpoint.png"><img src="/wp-content/uploads/2014/02/conditional-breakpoint.png" alt="Conditional breakpoint example" width="699" height="249" class="alignnone size-full wp-image-485" style="width: 100%; height: auto; max-width: 699px;" /></a><figcaption style="font-size: .8em; line-height: 2.16;">Setting a conditional breakpoint in Firefox Dev Tools</figcaption></figure>
+<p>So there it is: adding logging, without leaving the browser, without modifiying the sources, and staying there when the page is reloaded.</p>
+<p>Thanks for reading, I hope this&#39;ll prove useful to you. Happy coding 🙂</p>
+]]></description>
+		<guid isPermaLink="false">http://rhumaric.com/?p=481</guid>
+		</item>
+	</channel>
+</rss>
