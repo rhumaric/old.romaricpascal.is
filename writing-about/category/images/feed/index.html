@@ -1,103 +1,96 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
-	xmlns:content="http://purl.org/rss/1.0/modules/content/"
-	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
-	xmlns:dc="http://purl.org/dc/elements/1.1/"
-	xmlns:atom="http://www.w3.org/2005/Atom"
-	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
-	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
-	>
+<!--?xml version="1.0" encoding="UTF-8"?--><html><head></head><body><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/">
 
 <channel>
-	<title>Images &#8211; Romaric Pascal</title>
-	<atom:link href="/writing-about/category/images/feed/" rel="self" type="application/rss+xml" />
-	<link></link>
-	<description>Lettering &#38; web development</description>
-	<lastBuildDate>Thu, 13 Feb 2020 11:35:45 +0000</lastBuildDate>
+	<title>Images – Romaric Pascal</title>
+	<atom:link href="/writing-about/category/images/feed/" rel="self" type="application/rss+xml">
+	<link>
+	<description>Lettering &#x26; web development</description>
+	<lastbuilddate>Thu, 13 Feb 2020 11:35:45 +0000</lastbuilddate>
 	<language>en-US</language>
-	<sy:updatePeriod>hourly</sy:updatePeriod>
-	<sy:updateFrequency>1</sy:updateFrequency>
+	<sy:updateperiod>hourly</sy:updateperiod>
+	<sy:updatefrequency>1</sy:updatefrequency>
 	<generator>https://wordpress.org/?v=4.8.13</generator>
 	<item>
 		<title>Reduce loading times of image-heavy sites with `srcset`</title>
-		<link>/writing-about/reduce-loading-times-of-image-heavy-sites-with-srcset/</link>
-		<pubDate>Tue, 26 Sep 2017 12:52:52 +0000</pubDate>
-		<dc:creator><![CDATA[romaricpascal]]></dc:creator>
-				<category><![CDATA[Images]]></category>
-		<category><![CDATA[Performances]]></category>
-		<description><![CDATA[<style>
+		<link>/writing-about/reduce-loading-times-of-image-heavy-sites-with-srcset/
+		<pubdate>Tue, 26 Sep 2017 12:52:52 +0000</pubdate>
+		<dc:creator><!--[CDATA[romaricpascal]]--></dc:creator>
+				<category><!--[CDATA[Images]]--></category>
+		<category><!--[CDATA[Performances]]--></category>
+		<description><!--[CDATA[<style-->
 code { font-size: 135%; font-weight: bold; }
-</style>
+
 <p>This is the first article of a small series about techniques for keeping the loading times of image-heavy websites in check. Lots of images mean more KB to download for the browser. And in turn, longer loading times.</p>
-<p>An obvious answer to the problem would be to cut down the number of images. But on some websites (this portfolio, for example) images are one of the main part of the content. Let&rsquo;s see what we can do to keep things light.</p>
+<p>An obvious answer to the problem would be to cut down the number of images. But on some websites (this portfolio, for example) images are one of the main part of the content. Let’s see what we can do to keep things light.</p>
 <blockquote style="margin-left: 0;margin-right: 0;padding: 1em;background: #FEE7B0;border-left: 5px solid #DCCCB1;font-size: 1.1em;">
 <p>Use images at the right resolution in the right format </p>
 </blockquote>
-<p>For the first download at least, it pretty much comes down to that (you can set up caching rules to make future loads faster). Let&rsquo;s leave the &ldquo;right format&rdquo;  to its own future article (between vector or raster, optimised images, new formats like WebP and the <code>&lt;picture&gt;</code> element there&rsquo;s a fair bit to explore). This article will focus on the &ldquo;right resolution&rdquo; bit.</p>
-<p>Loading an HD image when it&rsquo;s only displayed 200px wide has several issues:</p>
+<p>For the first download at least, it pretty much comes down to that (you can set up caching rules to make future loads faster). Let’s leave the “right format”  to its own future article (between vector or raster, optimised images, new formats like WebP and the <code>&#x3C;picture></code> element there’s a fair bit to explore). This article will focus on the “right resolution” bit.</p>
+<p>Loading an HD image when it’s only displayed 200px wide has several issues:</p>
 <ul>
 <li>it makes users wait, augmenting the risk of abandoning their visit</li>
 <li>it needs more bandwidth, making users pay unnecessarily for their visit</li>
 <li>it requires the browser to resize it heavily, making their device use more battery</li>
 </ul>
-<p>This article will also only deal with content images (<code>&lt;img&gt;</code> tags). A future one will deal with those that are in the CSS.</p>
+<p>This article will also only deal with content images (<code>&#x3C;img></code> tags). A future one will deal with those that are in the CSS.</p>
 <h2 id="the-problem"><a name="user-content-the-problem" href="#the-problem" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>The problem</h2>
-<p>This &ldquo;right resolution&rdquo; is not quite easy to pin, with websites getting accessed through a wide variety of devices:</p>
+<p>This “right resolution” is not quite easy to pin, with websites getting accessed through a wide variety of devices:</p>
 <ul>
 <li>with different screen sizes,</li>
 <li>and different pixel density.</li>
 </ul>
-<p>This means there won&rsquo;t be a unique &ldquo;right resolution&rdquo;. An image that 400px wide on a phone screen might get a much larger share of the screen on a desktop monitor.</p>
-<p>Historically, the <code>&lt;img&gt;</code> tag only had the <code>src</code> attribute to provide the image URL. So which one to choose? A low res image will look terrible when scaled up on large displays. But a large image will blow up the loading times 🙁</p>
+<p>This means there won’t be a unique “right resolution”. An image that 400px wide on a phone screen might get a much larger share of the screen on a desktop monitor.</p>
+<p>Historically, the <code>&#x3C;img></code> tag only had the <code>src</code> attribute to provide the image URL. So which one to choose? A low res image will look terrible when scaled up on large displays. But a large image will blow up the loading times 🙁</p>
 <h2 id="srcset-to-the-rescue"><code>srcset</code> to the rescue</h2>
-<p>What if we could let the browser choose? Give it a list of image URLs with different resolutions and let it pick which is the most appropriate to load. It&rsquo;s well aware of the device that&rsquo;s using it after all. Way more than the server it&rsquo;s requesting the image to.</p>
-<p>This is exactly the role of the <code>srcset</code> attribute on the <code>&lt;img&gt;</code> tag. Inside, you can list additional URLs the browser can load instead of the <code>src</code> one. Each is associated with a width or pixel density which will help the browser make its choice.</p>
-<p>To pick an image with the appropriate width, though, the browser will need a bit more help. Viewing the website in a 1080px wide browser doesn&rsquo;t mean all images will be 1080px wide. So we need to add some more hints with the <code>sizes</code> attribute. It contains a list of media queries (just like in CSS) to tell the browser which image to look for in the <code>srcset</code> depending on the situation. First match goes! (unlike in CSS).</p>
+<p>What if we could let the browser choose? Give it a list of image URLs with different resolutions and let it pick which is the most appropriate to load. It’s well aware of the device that’s using it after all. Way more than the server it’s requesting the image to.</p>
+<p>This is exactly the role of the <code>srcset</code> attribute on the <code>&#x3C;img></code> tag. Inside, you can list additional URLs the browser can load instead of the <code>src</code> one. Each is associated with a width or pixel density which will help the browser make its choice.</p>
+<p>To pick an image with the appropriate width, though, the browser will need a bit more help. Viewing the website in a 1080px wide browser doesn’t mean all images will be 1080px wide. So we need to add some more hints with the <code>sizes</code> attribute. It contains a list of media queries (just like in CSS) to tell the browser which image to look for in the <code>srcset</code> depending on the situation. First match goes! (unlike in CSS).</p>
 <p>This leads to markup that looks like that:</p>
-<pre style="margin-left: 0;margin-right: 0;padding: 1em;background: #FEE7B0;border-left: 5px solid #DCCCB1;">
-<code class="html">&lt;img 
-  src=&quot;/images/funnycat-200x150.jpg&quot;
-  height=&quot;150&quot;
-  width=&quot;200&quot;
-  srcset=&quot;/images/funnycat-400x300.jpg 400w,
+<pre style="margin-left: 0;margin-right: 0;padding: 1em;background: #FEE7B0;border-left: 5px solid #DCCCB1;"><code class="html">&#x3C;img 
+  src="/images/funnycat-200x150.jpg"
+  height="150"
+  width="200"
+  srcset="/images/funnycat-400x300.jpg 400w,
           /images/funnycat-800x600.jpg 800w,
-          /images/funnycat-800x600.jpg 3x&quot;
-  sizes=&quot;(min-width: 1600px) 800px,
+          /images/funnycat-800x600.jpg 3x"
+  sizes="(min-width: 1600px) 800px,
          (min-width: 800px) 400px,
-         200px&quot;&gt;
+         200px">
 </code></pre>
-<p>With this, the browser can say &ldquo;hey! my screen is between 800 and 1600px wide. I can use the <code>funnycat-400x300.jpg</code> image instead of the <code>src</code> one&rdquo;.</p>
+<p>With this, the browser can say “hey! my screen is between 800 and 1600px wide. I can use the <code>funnycat-400x300.jpg</code> image instead of the <code>src</code> one”.</p>
 <p>A couple of things to note:</p>
 <ul>
-<li>the width in the <code>srcset</code> are suffixed by <code>w</code>, but they&rsquo;re actual CSS length in the <code>sizes</code> attributes. Easy to mix them up, so watch out! On the plus side, that means you can <code>calc()</code> things in the <code>sizes</code>.</li>
-<li>the <code>src</code> is not necessarily the smallest image. A few browser don&rsquo;t support <code>srcset</code> (<a href="http://caniuse.com/#search=srcset" target="blank" rel="noopener">IE, Edge 15 and before, and Opera Mini</a> as I&rsquo;m writing this). They&rsquo;ll just use <code>src</code>, so a compromise will be needed between quality and load times there.</li>
-<li>to follow the specs, the original <code>src</code> image must not appear in the <code>srcset</code> (nor should there be duplicate entries). Doesn&rsquo;t seem to break the behaviour, just make the markup invalid.</li>
-<li>to follow the specs again, if there are widths in the <code>srcset</code>, <a href="https://html.spec.whatwg.org/multipage/embedded-content.html#attr-img-sizes" target="blank" rel="noopener">the <code>sizes</code> attribute must be present</a>. Didn&rsquo;t seem to break things either, just use the whole viewport width to pick the image width.</li>
+<li>the width in the <code>srcset</code> are suffixed by <code>w</code>, but they’re actual CSS length in the <code>sizes</code> attributes. Easy to mix them up, so watch out! On the plus side, that means you can <code>calc()</code> things in the <code>sizes</code>.</li>
+<li>the <code>src</code> is not necessarily the smallest image. A few browser don’t support <code>srcset</code> (<a href="http://caniuse.com/#search=srcset" target="blank" rel="noopener">IE, Edge 15 and before, and Opera Mini</a> as I’m writing this). They’ll just use <code>src</code>, so a compromise will be needed between quality and load times there.</li>
+<li>to follow the specs, the original <code>src</code> image must not appear in the <code>srcset</code> (nor should there be duplicate entries). Doesn’t seem to break the behaviour, just make the markup invalid.</li>
+<li>to follow the specs again, if there are widths in the <code>srcset</code>, <a href="https://html.spec.whatwg.org/multipage/embedded-content.html#attr-img-sizes" target="blank" rel="noopener">the <code>sizes</code> attribute must be present</a>. Didn’t seem to break things either, just use the whole viewport width to pick the image width.</li>
 </ul>
 <h2 id="adding-the-srcset-attribute-to-your-site"><a name="user-content-adding-the-srcset-attribute-to-your-site" href="#adding-the-srcset-attribute-to-your-site" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Adding the <code>srcset</code> attribute to your site</h2>
 <p>From a practical point of view, implementing <code>srcset</code> in your design is best done once the CSS has been finalised (or at least finalised enough for the image sizes to be set in stone).</p>
 <h3 id="making-an-image-width-inventory"><a name="user-content-making-an-image-width-inventory" href="#making-an-image-width-inventory" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Making an image width inventory</h3>
-<p>The first step is making an inventory of the image sizes for the different pages of your website at different screen sizes. Unfortunately, I don&rsquo;t know of any crawler that does that automatically (that would be ideal, if you know of one, <a href="[/happy-to-chat]">please let me know</a>!), so it&rsquo;ll have to be a manual process.</p>
-<p>There&rsquo;s no need to go through each page, though. Only each &ldquo;template&rdquo;. And equally, there&rsquo;s no need to go through the whole width spectrum as you know the breakpoints in your CSS. </p>
-<p>Some images might also be percent or viewport unit based. For those, you&rsquo;ll need to decide of size increments to adapt the served asset to the final design, just like more &ldquo;fixed&rdquo; images.</p>
+<p>The first step is making an inventory of the image sizes for the different pages of your website at different screen sizes. Unfortunately, I don’t know of any crawler that does that automatically (that would be ideal, if you know of one, <a href="[/happy-to-chat]">please let me know</a>!), so it’ll have to be a manual process.</p>
+<p>There’s no need to go through each page, though. Only each “template”. And equally, there’s no need to go through the whole width spectrum as you know the breakpoints in your CSS. </p>
+<p>Some images might also be percent or viewport unit based. For those, you’ll need to decide of size increments to adapt the served asset to the final design, just like more “fixed” images.</p>
 <h3 id="aggregating-the-sizes"><a name="user-content-aggregating-the-sizes" href="#aggregating-the-sizes" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Aggregating the sizes</h3>
-<p>The inventory might leave you with quite a collection of sizes. In an ideal world, you&rsquo;d provide each <code>&lt;img&gt;</code> tag its very own list of URLs and sizes. That can quickly lead to a maintenance overhead:</p>
+<p>The inventory might leave you with quite a collection of sizes. In an ideal world, you’d provide each <code>&#x3C;img></code> tag its very own list of URLs and sizes. That can quickly lead to a maintenance overhead:</p>
 <ul>
 <li>generating and storing/caching of the images,</li>
 <li>filling the <code>srcset</code> and <code>sizes</code> attributes accurately.</li>
 </ul>
-<p>To ease the burden a bit, you can regroup the sizes into similar sizes to reduce the number of images you have to handle. This might mean a few more pixels to download as the price of an easier maintenance. You&rsquo;ll have to weight if the trade-off is worth it.</p>
+<p>To ease the burden a bit, you can regroup the sizes into similar sizes to reduce the number of images you have to handle. This might mean a few more pixels to download as the price of an easier maintenance. You’ll have to weight if the trade-off is worth it.</p>
 <h3 id="plan-for-different-pixel-densities"><a name="user-content-plan-for-different-pixel-densities" href="#plan-for-different-pixel-densities" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Plan for different pixel densities</h3>
-<p>We now have a list of the images sizes we&rsquo;ll be implementing for our design. This is time to think of screens with high pixel density and not forget to plan for 2x and 3x versions of these images.</p>
+<p>We now have a list of the images sizes we’ll be implementing for our design. This is time to think of screens with high pixel density and not forget to plan for 2x and 3x versions of these images.</p>
 <p>With a little <del>luck</del><ins>planning</ins>, these 2x and 3x might even match some of the other sizes, which will lower the number of images to generate.</p>
 <h3 id="generate-the-images-and-write-the-srcset-and-sizes-attributes"><a name="user-content-generate-the-images-and-write-the-srcset-and-sizes-attributes" href="#generate-the-images-and-write-the-srcset-and-sizes-attributes" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Generate the images and write the <code>srcset</code> and <code>sizes</code> attributes</h3>
 <p>These last two part will very much depend on how your website is set up.</p>
-<p>For the generation, exporting every size from your favourite image editor will be tedious. I&rsquo;d recommend leaving that to your CMS, some scripts or a SaaS platform.</p>
+<p>For the generation, exporting every size from your favourite image editor will be tedious. I’d recommend leaving that to your CMS, some scripts or a SaaS platform.</p>
 <p>Once all your images are ready, you can add the attributes to the markup and voila! Your users will load the appropriate image for their screen!</p>
 <h2 id="in-the-end"><a name="user-content-in-the-end" href="#in-the-end" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>In the end</h2>
-<p>The <code>srcset</code> attribute is a great way to shave some KB of download for your users by making your website load just the right image for the screen it&rsquo;s viewed in. Of course, associating the screen size to the bandwidth available (and in turn loading time) is not a perfect correlation. But it&rsquo;s a good place to start.</p>
+<p>The <code>srcset</code> attribute is a great way to shave some KB of download for your users by making your website load just the right image for the screen it’s viewed in. Of course, associating the screen size to the bandwidth available (and in turn loading time) is not a perfect correlation. But it’s a good place to start.</p>
 <p>Hope this article was helpful to you. If you want to chat about it, feel free to <a href="/happy-to-chat">get in touch here</a> or on <a href="//twitter.com/romaricpascal">Twitter</a>.  </p>
 ]]></description>
-		<guid isPermaLink="false">/?p=1040</guid>
+		<guid ispermalink="false">/?p=1040</guid>
 		</item>
-	</channel>
+	</atom:link></channel>
 </rss>
+</body></html>

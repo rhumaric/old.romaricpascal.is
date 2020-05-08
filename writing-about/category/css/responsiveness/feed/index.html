@@ -1,30 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
-	xmlns:content="http://purl.org/rss/1.0/modules/content/"
-	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
-	xmlns:dc="http://purl.org/dc/elements/1.1/"
-	xmlns:atom="http://www.w3.org/2005/Atom"
-	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
-	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
-	>
+<!--?xml version="1.0" encoding="UTF-8"?--><html><head></head><body><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/">
 
 <channel>
-	<title>Responsiveness &#8211; Romaric Pascal</title>
-	<atom:link href="/writing-about/category/css/responsiveness/feed/" rel="self" type="application/rss+xml" />
-	<link></link>
-	<description>Lettering &#38; web development</description>
-	<lastBuildDate>Thu, 13 Feb 2020 11:35:45 +0000</lastBuildDate>
+	<title>Responsiveness – Romaric Pascal</title>
+	<atom:link href="/writing-about/category/css/responsiveness/feed/" rel="self" type="application/rss+xml">
+	<link>
+	<description>Lettering &#x26; web development</description>
+	<lastbuilddate>Thu, 13 Feb 2020 11:35:45 +0000</lastbuilddate>
 	<language>en-US</language>
-	<sy:updatePeriod>hourly</sy:updatePeriod>
-	<sy:updateFrequency>1</sy:updateFrequency>
+	<sy:updateperiod>hourly</sy:updateperiod>
+	<sy:updatefrequency>1</sy:updatefrequency>
 	<generator>https://wordpress.org/?v=4.8.13</generator>
 	<item>
 		<title>Responsive layout beyond width media queries</title>
-		<link>/writing-about/responsive-layout-beyond-width-media-queries/</link>
-		<pubDate>Wed, 09 Aug 2017 12:01:35 +0000</pubDate>
-		<dc:creator><![CDATA[romaricpascal]]></dc:creator>
-				<category><![CDATA[CSS]]></category>
-		<category><![CDATA[Responsiveness]]></category>
-		<description><![CDATA[<p>When thinking of responsive layouts, the first thing that comes to mind is probably width based media queries: (<code>@media (min-width:...)</code> or <code>@media(max-width:...)</code>. CSS provides other means to adjust your designs to the screen size. Viewport units, calc, height and aspect-ratio media queries… these are just a few of them. Let’s see how they can be of help following the enhancement of a page I’ve recently been working on.</p>
+		<link>/writing-about/responsive-layout-beyond-width-media-queries/
+		<pubdate>Wed, 09 Aug 2017 12:01:35 +0000</pubdate>
+		<dc:creator><!--[CDATA[romaricpascal]]--></dc:creator>
+				<category><!--[CDATA[CSS]]--></category>
+		<category><!--[CDATA[Responsiveness]]--></category>
+		<description><!--[CDATA[<p-->When thinking of responsive layouts, the first thing that comes to mind is probably width based media queries: (<code>@media (min-width:...)</code> or <code>@media(max-width:...)</code>. CSS provides other means to adjust your designs to the screen size. Viewport units, calc, height and aspect-ratio media queries… these are just a few of them. Let’s see how they can be of help following the enhancement of a page I’ve recently been working on.<p></p>
 <h2 id="starting-point"><a class="headeranchor-link" href="#starting-point" name="user-content-starting-point" aria-hidden="true"></a>Starting point</h2>
 <p>The page in question is the <a href="/drawing-letters">artwork page</a> of my (soon to be)updated portfolio. Content-wise, there’s nothing too fancy. It’ll obviously show a picture of the artwork. And provide a few additional things to complement it:</p>
 <ul>
@@ -35,7 +28,7 @@
 </ul>
 <p>To navigate through the artworks, the page also features previous/next buttons. And that’s it. Like I said, nothing crazy, which leads to the no crazier HTML markup:</p>
 <p><script src="https://gist.github.com/rhumaric/07b24a6779674b06fa55d6c4ba8158da.js?file=index.html"></script></p>
-<p>With nothing more to control the layout, each block of content will just be stacked under the previous one and expand as the viewport’s width grow. <a href="/wp-content/uploads/responsive-layout-beyond-width-media-queries/starting-point/" target="_blank" rel="noopener">Here&#8217;s how it looks</a>. Let’s see how we can improve on that!</p>
+<p>With nothing more to control the layout, each block of content will just be stacked under the previous one and expand as the viewport’s width grow. <a href="/wp-content/uploads/responsive-layout-beyond-width-media-queries/starting-point/" target="_blank" rel="noopener">Here’s how it looks</a>. Let’s see how we can improve on that!</p>
 <h2 id="viewport-units-and-calc"><a class="headeranchor-link" href="#viewport-units-and-calc" name="user-content-viewport-units-and-calc" aria-hidden="true"></a>Viewport units (and calc)</h2>
 <p>First, we’ll make some adjustments to the image. People get to this specific page to look at a picture. As the picture grows with the width, a limited height might come and crop it, only revealing the top part of the image at first.</p>
 <p>Not an ideal first impression of the artwork, so let’s remedy to that and make sure the image is always visible in full. This means adapting its size to the height of the viewport, rather than the width, which is where viewport units come handy.</p>
@@ -46,9 +39,9 @@
 <li><code>vmin</code> for the smallest of these dimensions</li>
 <li><code>vmax</code> for the largest</li>
 </ul>
-<p>Using <code>vh</code>, we can now limit the size of the image so it fits the screen perfectly. We need to account for the header at the top though, which steals some space (`3em`) from the full height (which would be 100vh). <code><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/calc">calc</a></code> to the rescue! It&#8217;ll do the computation using the different units to account for that. While we’re reducing the size we might as well shave a bit more height to make sure the caption starts showing and entices the user to scroll and read it.</p>
+<p>Using <code>vh</code>, we can now limit the size of the image so it fits the screen perfectly. We need to account for the header at the top though, which steals some space (`3em`) from the full height (which would be 100vh). <code><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/calc">calc</a></code> to the rescue! It’ll do the computation using the different units to account for that. While we’re reducing the size we might as well shave a bit more height to make sure the caption starts showing and entices the user to scroll and read it.</p>
 <p><script src="https://gist.github.com/rhumaric/07b24a6779674b06fa55d6c4ba8158da.js?file=viewport-units.css"></script></p>
-<p>Good! Now whatever the screen, the image is always visible in full to start with. Let’s remember to add a link to a zoomed in version to let people look at the details too (but this part is not really about responsiveness, so let’s leave it out for now). <a href="/wp-content/uploads/responsive-layout-beyond-width-media-queries/viewport-units/" target="_blank" rel="noopener">Here&#8217;s the result</a>.</p>
+<p>Good! Now whatever the screen, the image is always visible in full to start with. Let’s remember to add a link to a zoomed in version to let people look at the details too (but this part is not really about responsiveness, so let’s leave it out for now). <a href="/wp-content/uploads/responsive-layout-beyond-width-media-queries/viewport-units/" target="_blank" rel="noopener">Here’s the result</a>.</p>
 <h2 id="height-media-queries"><a class="headeranchor-link" href="#height-media-queries" name="user-content-height-media-queries" aria-hidden="true"></a>Height media queries</h2>
 <p>As the height grows now, so will the image, and if the width of the screen allows it, it’ll take the whole viewport if it can. This works well on small screens but feels a bit cramped past a certain width. Not to mention the line length of the caption growing past what’s comfortable for reading. Let’s improve that!</p>
 <p>Playing with the width of the viewport (resizing the browser or using its responsive design dev tools), we can decide past which width things are breaking.</p>
@@ -57,8 +50,8 @@
 <p>This makes things much nicer on a bigger screen. Win! <a href="/wp-content/uploads/responsive-layout-beyond-width-media-queries/height-media-queries/" target="_blank" rel="noopener">It looks like this now</a>.</p>
 <h2 id="aspect-ratio-media-queries"><a class="headeranchor-link" href="#aspect-ratio-media-queries" name="user-content-aspect-ratio-media-queries" aria-hidden="true"></a>Aspect ratio media queries</h2>
 <p>That last adjustment gained us quite a bit of space (when available) on the sides of the content. This would be a much-improved place for the previous/next links, promoting navigation through the series of artworks.</p>
-<p>The question is… when is that space available? We’ve got space when the overall width is more than the sum of the image width and the necessary width to put the two buttons: <code>min-width: &lt;image-width&gt; + 2 * &lt;button-width&gt;</code>.</p>
-<p>Like earlier, though, the viewport’s height is at play here, because of it’s relation to the content width. Our minimum width is actually: <code>min-width: (&lt;full-height&gt; - &lt;reserved-spacing&gt;) + 2 * &lt;button-width&gt;</code>.</p>
+<p>The question is… when is that space available? We’ve got space when the overall width is more than the sum of the image width and the necessary width to put the two buttons: <code>min-width: &#x3C;image-width> + 2 * &#x3C;button-width></code>.</p>
+<p>Like earlier, though, the viewport’s height is at play here, because of it’s relation to the content width. Our minimum width is actually: <code>min-width: (&#x3C;full-height> - &#x3C;reserved-spacing>) + 2 * &#x3C;button-width></code>.</p>
 <p>It looks like another job for <code>calc</code>… except <a href="https://www.w3.org/TR/css3-mediaqueries/#media1">media queries do not support <code>calc</code>ed values</a> 🙁 Fortunately, they do support a media feature that expresses a relation between the width and height: <code>aspect-ratio</code>. Rounding the previous sum into a ratio will not make things as precise, but will be enough to guarantee the space for small width.</p>
 <p><script src="https://gist.github.com/rhumaric/07b24a6779674b06fa55d6c4ba8158da.js?file=aspect-ratio-media-queries.css"></script></p>
 <p>Great! When there’s enough space, people now get a quicker access to the navigation! <a href="/wp-content/uploads/responsive-layout-beyond-width-media-queries/aspect-ratio-media-queries/" target="_blank" rel="noopener">Check it out</a>.</p>
@@ -71,13 +64,14 @@
 <h2 id="conclusion"><a class="headeranchor-link" href="#conclusion" name="user-content-conclusion" aria-hidden="true"></a>Conclusion</h2>
 <p>Further improvements could be made to the design (that unique column makes things look a bit empty at large width, for example). They wouldn’t rely on different mechanisms than the ones already described so let’s leave it there. Plus, that would spoil the surprise of unveiling the new design 😉</p>
 <p>These 4 CSS features have allowed us to get finer control on how the content would adapt to different viewports. I hope you’ll find them useful if <code>min-width</code> or <code>max-width</code> don’t solve your layout problem. I’d be happy to hear how they worked for you, or if you use other features too to adapt your designs.</p>
-<p><span style="border-radius: 2px; text-indent: 20px; width: auto; padding: 0px 4px 0px 0px; text-align: center; font: bold 11px/20px 'Helvetica Neue',Helvetica,sans-serif; color: #ffffff; background: #bd081c no-repeat scroll 3px 50% / 14px 14px; position: absolute; opacity: 1; z-index: 8675309; display: none; cursor: pointer;">Save</span></p>
-<p><span style="border-radius: 2px; text-indent: 20px; width: auto; padding: 0px 4px 0px 0px; text-align: center; font: bold 11px/20px 'Helvetica Neue',Helvetica,sans-serif; color: #ffffff; background: #bd081c no-repeat scroll 3px 50% / 14px 14px; position: absolute; opacity: 1; z-index: 8675309; display: none; cursor: pointer;">Save</span></p>
-<p><span style="border-radius: 2px; text-indent: 20px; width: auto; padding: 0px 4px 0px 0px; text-align: center; font: bold 11px/20px 'Helvetica Neue',Helvetica,sans-serif; color: #ffffff; background: #bd081c no-repeat scroll 3px 50% / 14px 14px; position: absolute; opacity: 1; z-index: 8675309; display: none; cursor: pointer;">Save</span></p>
-<p><span style="border-radius: 2px; text-indent: 20px; width: auto; padding: 0px 4px 0px 0px; text-align: center; font: bold 11px/20px 'Helvetica Neue',Helvetica,sans-serif; color: #ffffff; background: #bd081c no-repeat scroll 3px 50% / 14px 14px; position: absolute; opacity: 1; z-index: 8675309; display: none; cursor: pointer;">Save</span></p>
-<p><span style="border-radius: 2px; text-indent: 20px; width: auto; padding: 0px 4px 0px 0px; text-align: center; font: bold 11px/20px 'Helvetica Neue',Helvetica,sans-serif; color: #ffffff; background: #bd081c  no-repeat scroll 3px 50% / 14px 14px; position: absolute; opacity: 1; z-index: 8675309; display: none; cursor: pointer;">Save</span></p>
+<p><span style="border-radius: 2px; text-indent: 20px; width: auto; padding: 0px 4px 0px 0px; text-align: center; font: bold 11px/20px &#x27;Helvetica Neue&#x27;,Helvetica,sans-serif; color: #ffffff; background: #bd081c no-repeat scroll 3px 50% / 14px 14px; position: absolute; opacity: 1; z-index: 8675309; display: none; cursor: pointer;">Save</span></p>
+<p><span style="border-radius: 2px; text-indent: 20px; width: auto; padding: 0px 4px 0px 0px; text-align: center; font: bold 11px/20px &#x27;Helvetica Neue&#x27;,Helvetica,sans-serif; color: #ffffff; background: #bd081c no-repeat scroll 3px 50% / 14px 14px; position: absolute; opacity: 1; z-index: 8675309; display: none; cursor: pointer;">Save</span></p>
+<p><span style="border-radius: 2px; text-indent: 20px; width: auto; padding: 0px 4px 0px 0px; text-align: center; font: bold 11px/20px &#x27;Helvetica Neue&#x27;,Helvetica,sans-serif; color: #ffffff; background: #bd081c no-repeat scroll 3px 50% / 14px 14px; position: absolute; opacity: 1; z-index: 8675309; display: none; cursor: pointer;">Save</span></p>
+<p><span style="border-radius: 2px; text-indent: 20px; width: auto; padding: 0px 4px 0px 0px; text-align: center; font: bold 11px/20px &#x27;Helvetica Neue&#x27;,Helvetica,sans-serif; color: #ffffff; background: #bd081c no-repeat scroll 3px 50% / 14px 14px; position: absolute; opacity: 1; z-index: 8675309; display: none; cursor: pointer;">Save</span></p>
+<p><span style="border-radius: 2px; text-indent: 20px; width: auto; padding: 0px 4px 0px 0px; text-align: center; font: bold 11px/20px &#x27;Helvetica Neue&#x27;,Helvetica,sans-serif; color: #ffffff; background: #bd081c  no-repeat scroll 3px 50% / 14px 14px; position: absolute; opacity: 1; z-index: 8675309; display: none; cursor: pointer;">Save</span></p>
 ]]></description>
-		<guid isPermaLink="false">/?p=894</guid>
+		<guid ispermalink="false">/?p=894</guid>
 		</item>
-	</channel>
+	</atom:link></channel>
 </rss>
+</body></html>

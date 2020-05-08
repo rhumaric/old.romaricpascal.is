@@ -1,57 +1,50 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
-	xmlns:content="http://purl.org/rss/1.0/modules/content/"
-	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
-	xmlns:dc="http://purl.org/dc/elements/1.1/"
-	xmlns:atom="http://www.w3.org/2005/Atom"
-	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
-	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
-	>
+<!--?xml version="1.0" encoding="UTF-8"?--><html><head></head><body><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/">
 
 <channel>
-	<title>Animations with JavaScript functions &#8211; Romaric Pascal</title>
-	<atom:link href="/writing-about/animations-with-javascript-functions/feed/" rel="self" type="application/rss+xml" />
-	<link></link>
-	<description>Lettering &#38; web development</description>
-	<lastBuildDate>Thu, 13 Feb 2020 11:35:45 +0000</lastBuildDate>
+	<title>Animations with JavaScript functions – Romaric Pascal</title>
+	<atom:link href="/writing-about/animations-with-javascript-functions/feed/" rel="self" type="application/rss+xml">
+	<link>
+	<description>Lettering &#x26; web development</description>
+	<lastbuilddate>Thu, 13 Feb 2020 11:35:45 +0000</lastbuilddate>
 	<language>en-US</language>
-	<sy:updatePeriod>hourly</sy:updatePeriod>
-	<sy:updateFrequency>1</sy:updateFrequency>
+	<sy:updateperiod>hourly</sy:updateperiod>
+	<sy:updatefrequency>1</sy:updatefrequency>
 	<generator>https://wordpress.org/?v=4.8.13</generator>
 	<item>
 		<title>Animations with JavaScript functions</title>
-		<link>/writing-about/animations-with-javascript-functions/</link>
-		<pubDate>Fri, 27 Oct 2017 19:36:54 +0000</pubDate>
-		<dc:creator><![CDATA[romaricpascal]]></dc:creator>
-				<category><![CDATA[Animations]]></category>
-		<category><![CDATA[JS]]></category>
-		<description><![CDATA[<p>This all started when I was looking to add scroll based animations to the home page of this portfolio. I set out to find a library to help a bit with that. There’s quite a few in the wild. Time-based animations libraries that I could then tie to the scroll position (like <a href="https://greensock.com/">greensock</a>, <a href="http://animejs.com">anime.js</a>, <a href="http://velocityjs.org">velocity</a> or <a href="https://github.com/tweenjs/tween.js/">tweenjs</a>). Or more scroll specific things (like <a href="http://scrollmagic.io">scrollmagic</a>).</p>
+		<link>/writing-about/animations-with-javascript-functions/
+		<pubdate>Fri, 27 Oct 2017 19:36:54 +0000</pubdate>
+		<dc:creator><!--[CDATA[romaricpascal]]--></dc:creator>
+				<category><!--[CDATA[Animations]]--></category>
+		<category><!--[CDATA[JS]]--></category>
+		<description><!--[CDATA[<p-->This all started when I was looking to add scroll based animations to the home page of this portfolio. I set out to find a library to help a bit with that. There’s quite a few in the wild. Time-based animations libraries that I could then tie to the scroll position (like <a href="https://greensock.com/">greensock</a>, <a href="http://animejs.com">anime.js</a>, <a href="http://velocityjs.org">velocity</a> or <a href="https://github.com/tweenjs/tween.js/">tweenjs</a>). Or more scroll specific things (like <a href="http://scrollmagic.io">scrollmagic</a>).<p></p>
 <p>While they all seemed to do a pretty good job (a lot of websites use them in production), they all had one major flaw to me. They’re all quite monolithic. They provide plenty, and your users download all that plenty, whether your website uses 1% or 99% of their features.</p>
 <p>I used this as an excuse to explore how animations could be expressed through functions, rather than OOP APIs. Looking to compose just the features that the animations needed to limit what visitors would have to download. Let’s see how it went!</p>
 <h2 id="a-simple-starting-point"><a class="headeranchor-link" href="#a-simple-starting-point" name="user-content-a-simple-starting-point" aria-hidden="true"></a>A simple starting point</h2>
 <p>Before diving into complex animations driven by scroll, let’s start with a more restricted case: a simple time driven fade-in. Written in plain JS, this goes like this:</p>
-<figure><script src="https://gist.github.com/rhumaric/c6c2c5b7382d4148df6119b5f1d473a8.js?file=time-from-scratch.js "></script></p>
-<div class="o-ratio o-ratio--16:9"><iframe src="/wp-content/uploads/demo/animation-with-functions/intro/time-from-scratch/" width="300" height="150"><br />
-<a href="wp-content/uploads/demo/animation-with-functions/intro/time-from-scratch/">Demo fading a button on click</a><br />
+<figure><script src="https://gist.github.com/rhumaric/c6c2c5b7382d4148df6119b5f1d473a8.js?file=time-from-scratch.js "></script><p></p>
+<div class="o-ratio o-ratio--16:9"><iframe src="/wp-content/uploads/demo/animation-with-functions/intro/time-from-scratch/" width="300" height="150">&#x3C;br />
+&#x3C;a href="wp-content/uploads/demo/animation-with-functions/intro/time-from-scratch/">Demo fading a button on click&#x3C;/a>&#x3C;br />
 </iframe></div>
 </figure>
 <p>Definitely smaller than embedding a library. But while it’s nice to know how to write it all from scratch by hand, a bit of abstraction would help to reuse things from one animation to another.</p>
 <h2 id="divide-and-conquer"><a class="headeranchor-link" href="#divide-and-conquer" name="user-content-divide-and-conquer" aria-hidden="true"></a>Divide and conquer</h2>
-<p>The code above mixes two main parts of the animation:<br />
-&#8211; generating some measure of <code>progress</code> (here using <a href="https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame">requestAnimationFrame</a> ticks)<br />
-&#8211; interpolating this <code>progress</code> into updates of the UI (here with <code>target.style.opacity</code>)</p>
+<p>The code above mixes two main parts of the animation:<br>
+– generating some measure of <code>progress</code> (here using <a href="https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame">requestAnimationFrame</a> ticks)<br>
+– interpolating this <code>progress</code> into updates of the UI (here with <code>target.style.opacity</code>)</p>
 <p>So let’s split things up accordingly.</p>
-<figure><script src="https://gist.github.com/rhumaric/c6c2c5b7382d4148df6119b5f1d473a8.js?file=time-split.js "></script></p>
-<div class="o-ratio o-ratio--16:9"><iframe src="/wp-content/uploads/demo/animation-with-functions/intro/time-split/" width="300" height="150"><br />
-<a href="wp-content/uploads/demo/animation-with-functions/intro/time-split/">Demo fading the button again on click</a><br />
+<figure><script src="https://gist.github.com/rhumaric/c6c2c5b7382d4148df6119b5f1d473a8.js?file=time-split.js "></script><p></p>
+<div class="o-ratio o-ratio--16:9"><iframe src="/wp-content/uploads/demo/animation-with-functions/intro/time-split/" width="300" height="150">&#x3C;br />
+&#x3C;a href="wp-content/uploads/demo/animation-with-functions/intro/time-split/">Demo fading the button again on click&#x3C;/a>&#x3C;br />
 </iframe></div>
 </figure>
 <p>That’s a first step! We can use our <code>timer</code> to power all kinds of animations. And control the <code>fadeIn</code> from other sources of progress… the scroll position maybe.</p>
 <h2 id="progress-on-scroll"><a class="headeranchor-link" href="#progress-on-scroll" name="user-content-progress-on-scroll" aria-hidden="true"></a>Progress on scroll</h2>
 <p>A time-based source of progress works like this: “run for N ms (after a delay of D ms maybe)”. In the same spirit, a scroll based source of progress would go “run for N% of the scroll (after a delay of D% maybe)”. Pixels would work too, but given the diversity of screen heights around… best use percents.</p>
 <p>So let’s create just that (ignoring for now that the viewportHeight might change when resizing the browser):</p>
-<figure><script src="https://gist.github.com/rhumaric/c6c2c5b7382d4148df6119b5f1d473a8.js?file=scroll-basic.js "></script></p>
-<div class="o-ratio o-ratio--16:9"><iframe src="/wp-content/uploads/demo/animation-with-functions/intro/scroll-basic/" width="300" height="150"><br />
-<a href="wp-content/uploads/demo/animation-with-functions/intro/scroll-basic/">Demo</a><br />
+<figure><script src="https://gist.github.com/rhumaric/c6c2c5b7382d4148df6119b5f1d473a8.js?file=scroll-basic.js "></script><p></p>
+<div class="o-ratio o-ratio--16:9"><iframe src="/wp-content/uploads/demo/animation-with-functions/intro/scroll-basic/" width="300" height="150">&#x3C;br />
+&#x3C;a href="wp-content/uploads/demo/animation-with-functions/intro/scroll-basic/">Demo&#x3C;/a>&#x3C;br />
 </iframe></div>
 </figure>
 <h2 id="going-further"><a class="headeranchor-link" href="#going-further" name="user-content-going-further" aria-hidden="true"></a>Going further</h2>
@@ -69,7 +62,8 @@
 </ul>
 <p>I’ve started to gather some code on the <a href="https://github.com/rhumaric/tinymation">tinymation project on Github</a>. If you have thoughts on the topic, maybe specific use case, I’d be really happy to head about them. Feel free to <a href="https://github.com/rhumaric/tinymation">look at the code</a> and <a href="https://github.com/rhumaric/tinymation/issues">add issues (or comment on the existing ones)</a>.</p>
 ]]></description>
-		<guid isPermaLink="false">/?p=1102</guid>
+		<guid ispermalink="false">/?p=1102</guid>
 		</item>
-	</channel>
+	</atom:link></channel>
 </rss>
+</body></html>

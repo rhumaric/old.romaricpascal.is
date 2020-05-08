@@ -1,51 +1,45 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
-	xmlns:content="http://purl.org/rss/1.0/modules/content/"
-	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
-	xmlns:dc="http://purl.org/dc/elements/1.1/"
-	xmlns:atom="http://www.w3.org/2005/Atom"
-	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
-	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
-	>
+<!--?xml version="1.0" encoding="UTF-8"?--><html><head></head><body><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/">
 
 <channel>
-	<title>CSS animations and Javascript &#8211; Romaric Pascal</title>
-	<atom:link href="/writing-about/css-animations-and-javascript/feed/" rel="self" type="application/rss+xml" />
-	<link></link>
-	<description>Lettering &#38; web development</description>
-	<lastBuildDate>Thu, 13 Feb 2020 11:35:45 +0000</lastBuildDate>
+	<title>CSS animations and Javascript – Romaric Pascal</title>
+	<atom:link href="/writing-about/css-animations-and-javascript/feed/" rel="self" type="application/rss+xml">
+	<link>
+	<description>Lettering &#x26; web development</description>
+	<lastbuilddate>Thu, 13 Feb 2020 11:35:45 +0000</lastbuilddate>
 	<language>en-US</language>
-	<sy:updatePeriod>hourly</sy:updatePeriod>
-	<sy:updateFrequency>1</sy:updateFrequency>
+	<sy:updateperiod>hourly</sy:updateperiod>
+	<sy:updatefrequency>1</sy:updatefrequency>
 	<generator>https://wordpress.org/?v=4.8.13</generator>
 	<item>
 		<title>CSS animations and Javascript</title>
-		<link>/writing-about/css-animations-and-javascript/</link>
-		<pubDate>Tue, 10 Dec 2013 23:25:30 +0000</pubDate>
-		<dc:creator><![CDATA[romaricpascal]]></dc:creator>
-				<category><![CDATA[Uncategorized]]></category>
-		<description><![CDATA[<p>Usualy, to animate CSS properties with Javascript, you&#8217;d use a tweening library to progressively transition their values. But this uses precious UI thread time and CSS3 brings in CSS animations, which run off the UI thread. Performance improvement sounds good, so let&#39;s have a look at how they play along with Javascript!</p>
+		<link>/writing-about/css-animations-and-javascript/
+		<pubdate>Tue, 10 Dec 2013 23:25:30 +0000</pubdate>
+		<dc:creator><!--[CDATA[romaricpascal]]--></dc:creator>
+				<category><!--[CDATA[Uncategorized]]--></category>
+		<description><!--[CDATA[<p-->Usualy, to animate CSS properties with Javascript, you’d use a tweening library to progressively transition their values. But this uses precious UI thread time and CSS3 brings in CSS animations, which run off the UI thread. Performance improvement sounds good, so let's have a look at how they play along with Javascript!<p></p>
 <h2 id="a-quick-intro-to-css-animations">A quick intro to CSS animations</h2>
-<p>CSS animations are based on keyframes that define the style of the animated element<br />
-at different stages of the animation. Only <a href="https://www.w3.org/TR/2013/WD-css3-transitions-20131119/#animatable-properties">animatable properties</a><br />
+<p>CSS animations are based on keyframes that define the style of the animated element<br>
+at different stages of the animation. Only <a href="https://www.w3.org/TR/2013/WD-css3-transitions-20131119/#animatable-properties">animatable properties</a><br>
 will be taken into account, though. Not all of them have the same <a href="https://www.html5rocks.com/en/tutorials/speed/high-performance-animations/">impact on performances</a> when getting animated, though.</p>
 <p>You define the set of keyframes for a specific animation using the <code>@keyframes</code> rule.</p>
-<p><iframe width="100%" height="300" src="//jsfiddle.net/rhumaric/4aehmmua/embedded/result,css,html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></p>
-<p>You can notice that keyframe position in the animations are defined in percent, not time units.<br />
-The actual time of the animation is set on the animated element, along with the set of keyframes<br />
+<p><iframe width="100%" height="300" src="//jsfiddle.net/rhumaric/4aehmmua/embedded/result,css,html/" allowfullscreen frameborder="0"></iframe></p>
+<p>You can notice that keyframe position in the animations are defined in percent, not time units.<br>
+The actual time of the animation is set on the animated element, along with the set of keyframes<br>
 to use (among <a href="https://www.w3.org/TR/css3-animations/#contents">other properties</a>, using the <code>animation</code> property.</p>
 <h2 id="triggering-an-animation">Triggering an animation</h2>
 <p>Triggering your animation with Javascript is as simple as <a href="/keeping-old-stuff/updating-style-with-javascript/">setting the appropriate CSS</a> <code>animation</code> property on your element, using the <code>style</code> Javascript property, or a class, whichever you prefer. Actually, you can set any of the <code>animation-…</code> properties this way, which allows you a bit more control on what you set/orverride.</p>
-<p><iframe width="100%" height="300" src="//jsfiddle.net/rhumaric/4aehmmua/3/embedded/result,js,css,html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></p>
-<p>That&#8217;s already a good deal of control over your animations in Javascript. You can change their duration, play them backwards, pause them… However, if you need to manipulate the keyframes or their content, things get a bit trickier.</p>
+<p><iframe width="100%" height="300" src="//jsfiddle.net/rhumaric/4aehmmua/3/embedded/result,js,css,html/" allowfullscreen frameborder="0"></iframe></p>
+<p>That’s already a good deal of control over your animations in Javascript. You can change their duration, play them backwards, pause them… However, if you need to manipulate the keyframes or their content, things get a bit trickier.</p>
 <h2 id="generating-keyframes-on-the-fly">Javascript generated keyframes</h2>
-<p>Sometimes, you&#8217;ll want to control the intervals between the keyframes at runtime, rather than having them pre-defined in your stylesheet. You might also need to tune the properties inside those keyframes. In this situation, you&#8217;ll have to generate the keyframes with Javascript before setting the <code>animation</code> property on the element.</p>
-<p><a href="https://dev.w3.org/csswg/cssom/#dom-cssstylesheet-insertrule">CSSOM</a> provides a handy <code>insertRule</code> for dynamically adding CSS rules (provided you already have a stylesheet in your page in which to insert the rule, which is often the case). I prefer inserting <code>&lt;style&gt;</code> tags, which make it easier to remove the animation definition once they&#8217;re over (CSSOM <code>deleteRule</code> function works using an index, not ideal if your animations don&#8217;t finish in the order they started).</p>
-<p>In both cases, you&#8217;ll need to generate a String containing the <code>@keyframes</code> rule.</p>
-<p><iframe width="100%" height="300" src="//jsfiddle.net/rhumaric/4aehmmua/4/embedded/result,js,css,html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></p>
+<p>Sometimes, you’ll want to control the intervals between the keyframes at runtime, rather than having them pre-defined in your stylesheet. You might also need to tune the properties inside those keyframes. In this situation, you’ll have to generate the keyframes with Javascript before setting the <code>animation</code> property on the element.</p>
+<p><a href="https://dev.w3.org/csswg/cssom/#dom-cssstylesheet-insertrule">CSSOM</a> provides a handy <code>insertRule</code> for dynamically adding CSS rules (provided you already have a stylesheet in your page in which to insert the rule, which is often the case). I prefer inserting <code>&#x3C;style></code> tags, which make it easier to remove the animation definition once they’re over (CSSOM <code>deleteRule</code> function works using an index, not ideal if your animations don’t finish in the order they started).</p>
+<p>In both cases, you’ll need to generate a String containing the <code>@keyframes</code> rule.</p>
+<p><iframe width="100%" height="300" src="//jsfiddle.net/rhumaric/4aehmmua/4/embedded/result,js,css,html/" allowfullscreen frameborder="0"></iframe></p>
 <h2 id="wrapping-it-up">Wrapping it up</h2>
 <p>Javascript provided various ways of interacting with CSS animations. It it pretty simple to tweak the CSS properties configuring the animation on a given element. Despite being a bit trickier, creating custom animations by injecting new sets of keyframe in the page is also possible. Not to mention (well, they were not mentioned in this article actually) the events dispatched by the element when the animation starts, ends or progresses. Generating the keyframes with string templates is still a bit tedious though. Maybe an idea for a nice Javascript library 😉</p>
 ]]></description>
-		<guid isPermaLink="false">http://rhumaric.com/?p=409</guid>
+		<guid ispermalink="false">http://rhumaric.com/?p=409</guid>
 		</item>
-	</channel>
+	</atom:link></channel>
 </rss>
+</body></html>

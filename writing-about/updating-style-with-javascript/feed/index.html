@@ -1,29 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
-	xmlns:content="http://purl.org/rss/1.0/modules/content/"
-	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
-	xmlns:dc="http://purl.org/dc/elements/1.1/"
-	xmlns:atom="http://www.w3.org/2005/Atom"
-	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
-	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
-	>
+<!--?xml version="1.0" encoding="UTF-8"?--><html><head></head><body><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/">
 
 <channel>
-	<title>Updating style with Javascript &#8211; Romaric Pascal</title>
-	<atom:link href="/writing-about/updating-style-with-javascript/feed/" rel="self" type="application/rss+xml" />
-	<link></link>
-	<description>Lettering &#38; web development</description>
-	<lastBuildDate>Thu, 13 Feb 2020 11:35:45 +0000</lastBuildDate>
+	<title>Updating style with Javascript – Romaric Pascal</title>
+	<atom:link href="/writing-about/updating-style-with-javascript/feed/" rel="self" type="application/rss+xml">
+	<link>
+	<description>Lettering &#x26; web development</description>
+	<lastbuilddate>Thu, 13 Feb 2020 11:35:45 +0000</lastbuilddate>
 	<language>en-US</language>
-	<sy:updatePeriod>hourly</sy:updatePeriod>
-	<sy:updateFrequency>1</sy:updateFrequency>
+	<sy:updateperiod>hourly</sy:updateperiod>
+	<sy:updatefrequency>1</sy:updatefrequency>
 	<generator>https://wordpress.org/?v=4.8.13</generator>
 	<item>
 		<title>Updating style with Javascript</title>
-		<link>/writing-about/updating-style-with-javascript/</link>
-		<pubDate>Wed, 27 Nov 2013 12:41:45 +0000</pubDate>
-		<dc:creator><![CDATA[romaricpascal]]></dc:creator>
-				<category><![CDATA[Uncategorized]]></category>
-		<description><![CDATA[<style>
+		<link>/writing-about/updating-style-with-javascript/
+		<pubdate>Wed, 27 Nov 2013 12:41:45 +0000</pubdate>
+		<dc:creator><!--[CDATA[romaricpascal]]--></dc:creator>
+				<category><!--[CDATA[Uncategorized]]--></category>
+		<description><!--[CDATA[<style-->
 /* https://github.com/richleland/pygments-css/blob/master/github.css */
 .highlight {background-color: #F8F5F1; padding: 1em 1em 1em; margin-bottom: 1.728em;}
 .highlight pre {margin-bottom: 0;}
@@ -88,18 +81,18 @@
 .highlight .vg { color: #008080 } /* Name.Variable.Global */
 .highlight .vi { color: #008080 } /* Name.Variable.Instance */
 .highlight .il { color: #009999 } /* Literal.Number.Integer.Long */
-</style>
-<p><a href="/keeping-old-stuff/testing-your-javascript-ui-with-simulated-events/">Testing is great</a>, but let&#39;s face it not the most fun part of front-end development. Manipulating elements&#39; style with Javascript, now that&#39;s something way more enjoyable. Let&#39;s have a look at the different techniques at our disposal.</p>
+
+<p><a href="/keeping-old-stuff/testing-your-javascript-ui-with-simulated-events/">Testing is great</a>, but let's face it not the most fun part of front-end development. Manipulating elements' style with Javascript, now that's something way more enjoyable. Let's have a look at the different techniques at our disposal.</p>
 <h2 id="doing-it-with-style">Doing it with style</h2>
-<p>The first things that comes to mind is probably to use the element&#39;s <code>style</code> property (vendor prefixed one included). It contains an object representing the properties defined in the <code>style</code> attribute. Way easier to handle than updating the style attribute directly.</p>
+<p>The first things that comes to mind is probably to use the element's <code>style</code> property (vendor prefixed one included). It contains an object representing the properties defined in the <code>style</code> attribute. Way easier to handle than updating the style attribute directly.</p>
 <p>Say you want to highlight a field in a form because it contains invalid input, you would go:</p>
 <div class="highlight">
-<pre><span class="kd">var</span> <span class="nx">loginField</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;[name=&quot;login&quot;]&#39;</span><span class="p">);</span>
+<pre><span class="kd">var</span> <span class="nx">loginField</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'[name="login"]'</span><span class="p">);</span>
 <span class="nx">loginField</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="err">#</span><span class="nx">f00</span><span class="p">;</span>
 </pre>
 </div>
-<p>Easy for one or two property, it becomes a little more tedious with multiple properties (though things like Underscore&#39;s <code>extend()</code> can help here). But this is not the main issue with this approach.</p>
-<p>Styles set using this method have the highest <a href="https://tzi.fr/CSS/Selector/Meaningful-selector-specificity-measure#How-it-actually-works">specificity</a> possible. This means they will override anything set in your stylesheet and won&#39;t play well with the style declarations you have there.</p>
+<p>Easy for one or two property, it becomes a little more tedious with multiple properties (though things like Underscore's <code>extend()</code> can help here). But this is not the main issue with this approach.</p>
+<p>Styles set using this method have the highest <a href="https://tzi.fr/CSS/Selector/Meaningful-selector-specificity-measure#How-it-actually-works">specificity</a> possible. This means they will override anything set in your stylesheet and won't play well with the style declarations you have there.</p>
 <p>This also puts presentation bits in the Javascript, which makes things harder to maintain. If bits of styling are in the Javascript and bits are in the CSS, it becomes hard to know where to look when you need to, say, update the color of invalid inputs.</p>
 <h2 id="having-some-class">Having some class</h2>
 <p>A method I find more maintainable is to keep the style defined in the stylesheets and use the Javascript to set specific classes:</p>
@@ -110,17 +103,18 @@
 </pre>
 </div>
 <div class="highlight">
-<pre><span class="kd">var</span> <span class="nx">loginField</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;[name=&quot;login&quot;]&#39;</span><span class="p">);</span>
-<span class="nx">loginField</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">&#39;field-invalid&#39;</span><span class="p">);</span>
+<pre><span class="kd">var</span> <span class="nx">loginField</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'[name="login"]'</span><span class="p">);</span>
+<span class="nx">loginField</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">'field-invalid'</span><span class="p">);</span>
 </pre>
 </div>
 <p>This makes the Javascript focused on the logic of the application: marking that the field is invalid. And it leaves the styling of the fields marked as invalid to the CSS.</p>
-<p>This also allows to take advantage of the CSS selectors to do multiple presentation updates at once. For example, by setting a class on the <code>&lt;body&gt;</code>, you could show and hide multiple elements at once. Way simpler than having to search for each element with Javascript and update its <code>style</code> attribute accordingly. Plus you can also do crazy stuff with <code>::before</code> and <code>::after</code> pseudo-elements.</p>
-<p>There are times, though, when the classes approach will fail. When the styles you want to update are computed at runtime by your Javascript (eg. the width of a progress bar) and you can&#39;t plan in advance what they will be. In this case, falling back to the <code>style</code> attribute is your best option.</p>
+<p>This also allows to take advantage of the CSS selectors to do multiple presentation updates at once. For example, by setting a class on the <code>&#x3C;body></code>, you could show and hide multiple elements at once. Way simpler than having to search for each element with Javascript and update its <code>style</code> attribute accordingly. Plus you can also do crazy stuff with <code>::before</code> and <code>::after</code> pseudo-elements.</p>
+<p>There are times, though, when the classes approach will fail. When the styles you want to update are computed at runtime by your Javascript (eg. the width of a progress bar) and you can't plan in advance what they will be. In this case, falling back to the <code>style</code> attribute is your best option.</p>
 <h2 id="wrapping-it-up">Wrapping it up</h2>
-<p>To update styles using Javascript, marking elements with classes and keeping the presentation in the stylesheets make things easier to maintain. For the times when the styles are too dynamic, the <code>style</code> attribute provides a good fallback. Definitely simpler than inserting <code>&lt;style&gt;</code> elements to keep working with classes.</p>
+<p>To update styles using Javascript, marking elements with classes and keeping the presentation in the stylesheets make things easier to maintain. For the times when the styles are too dynamic, the <code>style</code> attribute provides a good fallback. Definitely simpler than inserting <code>&#x3C;style></code> elements to keep working with classes.</p>
 ]]></description>
-		<guid isPermaLink="false">http://rhumaric.com/?p=382</guid>
+		<guid ispermalink="false">http://rhumaric.com/?p=382</guid>
 		</item>
-	</channel>
+	</atom:link></channel>
 </rss>
+</body></html>

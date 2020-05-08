@@ -9,7 +9,6 @@ module.exports = function attacher() {
         if (node.properties.src) {
           return /wp-includes/.test(node.properties.src) || /contact-form-7/.test(node.properties.src)
         } else {
-          console.error(node)
           return /wpemoji/.test(node.children[0].value) || /wpcf7/.test(node.children[0].value);
         }
       }

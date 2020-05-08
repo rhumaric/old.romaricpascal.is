@@ -1,70 +1,64 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
-	xmlns:content="http://purl.org/rss/1.0/modules/content/"
-	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
-	xmlns:dc="http://purl.org/dc/elements/1.1/"
-	xmlns:atom="http://www.w3.org/2005/Atom"
-	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
-	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
-	>
+<!--?xml version="1.0" encoding="UTF-8"?--><html><head></head><body><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/">
 
 <channel>
-	<title>Livereload magic, Gulp style! &#8211; Romaric Pascal</title>
-	<atom:link href="/writing-about/livereload-magic-gulp-style/feed/" rel="self" type="application/rss+xml" />
-	<link></link>
-	<description>Lettering &#38; web development</description>
-	<lastBuildDate>Thu, 13 Feb 2020 11:35:45 +0000</lastBuildDate>
+	<title>Livereload magic, Gulp style! – Romaric Pascal</title>
+	<atom:link href="/writing-about/livereload-magic-gulp-style/feed/" rel="self" type="application/rss+xml">
+	<link>
+	<description>Lettering &#x26; web development</description>
+	<lastbuilddate>Thu, 13 Feb 2020 11:35:45 +0000</lastbuilddate>
 	<language>en-US</language>
-	<sy:updatePeriod>hourly</sy:updatePeriod>
-	<sy:updateFrequency>1</sy:updateFrequency>
+	<sy:updateperiod>hourly</sy:updateperiod>
+	<sy:updatefrequency>1</sy:updatefrequency>
 	<generator>https://wordpress.org/?v=4.8.13</generator>
 	<item>
 		<title>Livereload magic, Gulp style!</title>
-		<link>/writing-about/livereload-magic-gulp-style/</link>
-		<pubDate>Wed, 22 Jan 2014 16:27:51 +0000</pubDate>
-		<dc:creator><![CDATA[romaricpascal]]></dc:creator>
-				<category><![CDATA[Uncategorized]]></category>
-		<description><![CDATA[<p>There&#39;s been a new name making some buzz in world of JS task runners lately: <a href="http://gulpjs.com/">Gulp</a>. Curious, I&#39;ve given it a quick go to see how hard it would be to get the <a href="/keeping-old-stuff/renewing-the-grunt-livereload-magic/">minimal express &amp; livereload setup I did with Grunt</a>.</p>
-<h2 id="what&#39;s-that-gulp-thing">What&#39;s that Gulp thing</h2>
-<p>Pretty much like Grunt, Gulp allows you to define a set of tasks and run them from the command line. The most interesting point for me was the structure of the configuration file, which is more &#8220;programmatic&#8221; and less declarative. I find this makes things easier to read, but this is pretty subjective ;). Gulp is also meant to work a lot with streams doing small processings, `pipe()`-ing them to one another to create small treatment pipelines for each task. This apparently adds some performance improvements to the readability, though I have not really paid attention to that. To give a quick example, this is how a <a href="https://gist.github.com/rhumaric/8559206#file-jshint-task-example-js">Gulp task for Javascript validation with JSHint</a> looks like:</p>
+		<link>/writing-about/livereload-magic-gulp-style/
+		<pubdate>Wed, 22 Jan 2014 16:27:51 +0000</pubdate>
+		<dc:creator><!--[CDATA[romaricpascal]]--></dc:creator>
+				<category><!--[CDATA[Uncategorized]]--></category>
+		<description><!--[CDATA[<p-->There's been a new name making some buzz in world of JS task runners lately: <a href="http://gulpjs.com/">Gulp</a>. Curious, I've given it a quick go to see how hard it would be to get the <a href="/keeping-old-stuff/renewing-the-grunt-livereload-magic/">minimal express &#x26; livereload setup I did with Grunt</a>.<p></p>
+<h2 id="what&#x27;s-that-gulp-thing">What's that Gulp thing</h2>
+<p>Pretty much like Grunt, Gulp allows you to define a set of tasks and run them from the command line. The most interesting point for me was the structure of the configuration file, which is more “programmatic” and less declarative. I find this makes things easier to read, but this is pretty subjective ;). Gulp is also meant to work a lot with streams doing small processings, `pipe()`-ing them to one another to create small treatment pipelines for each task. This apparently adds some performance improvements to the readability, though I have not really paid attention to that. To give a quick example, this is how a <a href="https://gist.github.com/rhumaric/8559206#file-jshint-task-example-js">Gulp task for Javascript validation with JSHint</a> looks like:</p>
 <p><script src="https://gist.github.com/rhumaric/8559206.js?file=jshint-task-example.js"></script></p>
 <h2 id="a-bit-of-setup">A bit of setup</h2>
-<p>So let&#39;s get started on this Gulp + Express + Livereload configuration. We&#39;ll split this in two steps and start with the Express setup. Then we&#8217;ll add the livereload configuration.</p>
-<p>But first of all, you&#39;ll need the <code>gulp</code> CLI installed on your system. A quick <code>npm</code> call will sort that (don&#39;t forget to <code>sudo</code> if your system requires it, I always do :s): <code>npm install -g gulp</code>.</p>
-<p>Now the <code>gulp</code> command is available, let&#39;s bootstrap our project. As a starting point, we&#8217;ll use a simple folder containing:</p>
+<p>So let's get started on this Gulp + Express + Livereload configuration. We'll split this in two steps and start with the Express setup. Then we’ll add the livereload configuration.</p>
+<p>But first of all, you'll need the <code>gulp</code> CLI installed on your system. A quick <code>npm</code> call will sort that (don't forget to <code>sudo</code> if your system requires it, I always do :s): <code>npm install -g gulp</code>.</p>
+<p>Now the <code>gulp</code> command is available, let's bootstrap our project. As a starting point, we’ll use a simple folder containing:</p>
 <ul>
-<li>an <code>index.html</code> file (content is up to you, just make sure it has a <code>&lt;body&gt;</code>),</li>
-<li>a <code>package.json</code> file to store the project&#39;s dependencies (<code>npm init</code> will help you scaffold one),</li>
-<li>a local install of <code>gulp</code> in your project (<code>npm install gulp</code> from your project&#39;s folder, no <code>-g</code> this time),</li>
+<li>an <code>index.html</code> file (content is up to you, just make sure it has a <code>&#x3C;body></code>),</li>
+<li>a <code>package.json</code> file to store the project's dependencies (<code>npm init</code> will help you scaffold one),</li>
+<li>a local install of <code>gulp</code> in your project (<code>npm install gulp</code> from your project's folder, no <code>-g</code> this time),</li>
 <li>a <code>Gulpfile.js</code> file to store Gulp configuration:</li>
 </ul>
-<p>If you don&#8217;t want to leave your Gulpfile empty and already start playing with Gulp, you could fill it with the following <a href="https://gist.github.com/rhumaric/8559206#file-gulpfile-initial-js">code that provides a default &#8220;Hello world&#8221;-ish Gulp task</a>. To run your &#8220;build&#8221;, just go <code>gulp</code> in your command line. As the command provides no specific task, it will run whatever <code>default</code> defines.</p>
+<p>If you don’t want to leave your Gulpfile empty and already start playing with Gulp, you could fill it with the following <a href="https://gist.github.com/rhumaric/8559206#file-gulpfile-initial-js">code that provides a default “Hello world”-ish Gulp task</a>. To run your “build”, just go <code>gulp</code> in your command line. As the command provides no specific task, it will run whatever <code>default</code> defines.</p>
 <p><script src="https://gist.github.com/rhumaric/8559206.js?file=Gulpfile.initial.js"></script></p>
 <h2 id="express-setup">Express setup</h2>
-<p>To get <a href="http://expressjs.com">Express</a> to host our project&#39;s file, we&#39;ll need a new dependency in the project. Let&#39;s just <code>npm install express --save-dev</code>
+<p>To get <a href="http://expressjs.com">Express</a> to host our project's file, we'll need a new dependency in the project. Let's just <code>npm install express --save-dev</code>
 </p>
-<p>You&#39;ll notice we&#39;re installing the actual <code>express</code> package and not a specific plugin for Gulp. Gulp encourages to use the libraries as is when the task has nothing to do with manipulating streams, like popping up a web server, launching tests&#8230; This makes running Express with Gulp pretty much the same as when creating a standalone Express app. This gives us the following <a href="https://gist.github.com/rhumaric/8559206#file-gulpfile-express-js">Gulp configuration to start up Express.</a></p>
+<p>You'll notice we're installing the actual <code>express</code> package and not a specific plugin for Gulp. Gulp encourages to use the libraries as is when the task has nothing to do with manipulating streams, like popping up a web server, launching tests… This makes running Express with Gulp pretty much the same as when creating a standalone Express app. This gives us the following <a href="https://gist.github.com/rhumaric/8559206#file-gulpfile-express-js">Gulp configuration to start up Express.</a></p>
 <p><script src="https://gist.github.com/rhumaric/8559206.js?file=Gulpfile.express.js"></script></p>
 <p>The <code>gulp</code> command now pops up a server, and if you point your browser to <a href="https://localhost:4000" rel="nofollow">https://localhost:4000</a>, you should see the content of you <code>index.html</code></p>
-<p>The express startup could also have been a task of its own. We&#39;d just needed to wrap it in a <code>gulp.task</code> call. Then we could have called it via <code>gulp.run</code> inside the default task. It all depends on wether you need to launch express on its own or just use it when running other tasks.</p>
+<p>The express startup could also have been a task of its own. We'd just needed to wrap it in a <code>gulp.task</code> call. Then we could have called it via <code>gulp.run</code> inside the default task. It all depends on wether you need to launch express on its own or just use it when running other tasks.</p>
 <h2 id="adding-some-livereload-magic">Adding some livereload magic</h2>
-<p>As for starting up an Express server, starting up a livereload server doesn&#39;t have much to do with manipulating streams. This means no need for a specific Gulp plugin, we&#39;ll just use <code>tiny-lr</code>. We&#39;ll also need the <code>connect-livereload</code> middleware to inject the Javascript communicating with livereload in the pages served by Express. So let&#39;s add these dependencies:</p>
+<p>As for starting up an Express server, starting up a livereload server doesn't have much to do with manipulating streams. This means no need for a specific Gulp plugin, we'll just use <code>tiny-lr</code>. We'll also need the <code>connect-livereload</code> middleware to inject the Javascript communicating with livereload in the pages served by Express. So let's add these dependencies:</p>
 <p><code>npm install tiny-lr connect-livereload --save-dev</code></p>
-<p>This makes us 3 steps away from having livereload set up. First on, starting up livereload! As with Express, we&#39;ll wrap <a href="https://gist.github.com/rhumaric/8559206#file-tinylr-snippet-js">tinylr bootstrap in a specific function</a> (don&#8217;t forget to call it in the <code>default</code> task 😉 ).</p>
+<p>This makes us 3 steps away from having livereload set up. First on, starting up livereload! As with Express, we'll wrap <a href="https://gist.github.com/rhumaric/8559206#file-tinylr-snippet-js">tinylr bootstrap in a specific function</a> (don’t forget to call it in the <code>default</code> task 😉 ).</p>
 <p><script src="https://gist.github.com/rhumaric/8559206.js?file=tinylr.snippet.js"></script></p>
-<p><code>gulp</code> now starts up two services: Express on port 4000 and tinylr on port 35729. If you go to <a href="https://localhost:35729" rel="nofollow">https://localhost:35729</a>, you&#8217;ll get a warm JSON welcome from <code>tiny-lr</code>.</p>
-<p>Next step is to get express to inject the livereload JS snippet in the HTML it serves. You can skip this if you&#39;re using a browser plugin to communicate with the livereload server. This is the job of the <code>connect-livereload</code> middleware. We just need to load it <strong>before</strong> the the <code>static()</code> configuration, which makes the <a href="https://gist.github.com/rhumaric/8559206#file-express-livereload-snippet-js"><code>startExpress()</code> function</a> look like this:</p>
+<p><code>gulp</code> now starts up two services: Express on port 4000 and tinylr on port 35729. If you go to <a href="https://localhost:35729" rel="nofollow">https://localhost:35729</a>, you’ll get a warm JSON welcome from <code>tiny-lr</code>.</p>
+<p>Next step is to get express to inject the livereload JS snippet in the HTML it serves. You can skip this if you're using a browser plugin to communicate with the livereload server. This is the job of the <code>connect-livereload</code> middleware. We just need to load it <strong>before</strong> the the <code>static()</code> configuration, which makes the <a href="https://gist.github.com/rhumaric/8559206#file-express-livereload-snippet-js"><code>startExpress()</code> function</a> look like this:</p>
 <p><script src="https://gist.github.com/rhumaric/8559206.js?file=express-livereload.snippet.js"></script></p>
-<p>The pages served by Express now have a small bit of JS injected just before their <code>body</code> closing tag. This will make them react to the livereload updates. All that&#39;s left now is sending livereload notification when file changes. Gulp comes in with a built in <code>watch()</code>method, so let&#8217;s take advantage of this and make a <a href="https://gist.github.com/rhumaric/8559206#file-gulpfile-final-js">final update to our Gulpfile</a>:</p>
+<p>The pages served by Express now have a small bit of JS injected just before their <code>body</code> closing tag. This will make them react to the livereload updates. All that's left now is sending livereload notification when file changes. Gulp comes in with a built in <code>watch()</code>method, so let’s take advantage of this and make a <a href="https://gist.github.com/rhumaric/8559206#file-gulpfile-final-js">final update to our Gulpfile</a>:</p>
 <p><script src="https://gist.github.com/rhumaric/8559206.js?file=Gulpfile.final.js"></script></p>
 <h2 id="what-about-gulp-livereload-?">What about gulp-livereload ?</h2>
-<p>If you look up on the NPM registry, you&#39;ll find a plugin for Gulp called <code>gulp-livereload</code>. It allows you to send notifications to the livereload server as part of your <code>pipe()</code> chain. This would make the <a href="https://gist.github.com/rhumaric/8559206#file-gulp-livereload-snippet-js"><code>notifyLivereload()</code> function a bit more concise:</a></p>
+<p>If you look up on the NPM registry, you'll find a plugin for Gulp called <code>gulp-livereload</code>. It allows you to send notifications to the livereload server as part of your <code>pipe()</code> chain. This would make the <a href="https://gist.github.com/rhumaric/8559206#file-gulp-livereload-snippet-js"><code>notifyLivereload()</code> function a bit more concise:</a></p>
 <p><script src="https://gist.github.com/rhumaric/8559206.js?file=gulp-livereload.snippet.js"></script></p>
-<p>As we&#8217;re not doing much with our HTML file in the current Gulpfile, this approach does not bring much besides conciseness. But when processing files more heavily, it saves you from having to watch both the source files and their processed results. You can just pipe to <code>gulp-livereload</code> once you&#8217;ve gone through, say, LESS processing and CSS minification, instead of monitoring the <code>.less</code> to trigger the processing, and the <code>.css</code> files to trigger livereload.</p>
+<p>As we’re not doing much with our HTML file in the current Gulpfile, this approach does not bring much besides conciseness. But when processing files more heavily, it saves you from having to watch both the source files and their processed results. You can just pipe to <code>gulp-livereload</code> once you’ve gone through, say, LESS processing and CSS minification, instead of monitoring the <code>.less</code> to trigger the processing, and the <code>.css</code> files to trigger livereload.</p>
 <h2 id="wrapping-it-up!">Wrapping it up!</h2>
-<p>Reproducing the express and livereload configuration I usually run with Grunt turned out pretty simple. I&#8217;m now really looking forward to trying out Gulp with the whole stream piping shebang to process my builds. The Gulpfile ends up maybe a bit more verbose than the Gruntfile, but I find function calls way more easy to read than lots of nested Javascript objects. But in the end, it&#8217;s as personal (well, sometimes &#8220;team-personal&#8221; :p) as any other tool choices: it&#8217;s just about what features it provides and how easy you find it to use.</p>
+<p>Reproducing the express and livereload configuration I usually run with Grunt turned out pretty simple. I’m now really looking forward to trying out Gulp with the whole stream piping shebang to process my builds. The Gulpfile ends up maybe a bit more verbose than the Gruntfile, but I find function calls way more easy to read than lots of nested Javascript objects. But in the end, it’s as personal (well, sometimes “team-personal” :p) as any other tool choices: it’s just about what features it provides and how easy you find it to use.</p>
 <p>Thanks for staying till the end! Happy Coding 😉</p>
 ]]></description>
-		<guid isPermaLink="false">http://rhumaric.com/?p=462</guid>
+		<guid ispermalink="false">http://rhumaric.com/?p=462</guid>
 		</item>
-	</channel>
+	</atom:link></channel>
 </rss>
+</body></html>

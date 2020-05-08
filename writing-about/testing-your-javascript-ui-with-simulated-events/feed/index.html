@@ -1,46 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
-	xmlns:content="http://purl.org/rss/1.0/modules/content/"
-	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
-	xmlns:dc="http://purl.org/dc/elements/1.1/"
-	xmlns:atom="http://www.w3.org/2005/Atom"
-	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
-	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
-	>
+<!--?xml version="1.0" encoding="UTF-8"?--><html><head></head><body><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/">
 
 <channel>
-	<title>Testing your Javascript UI with simulated events &#8211; Romaric Pascal</title>
-	<atom:link href="/writing-about/testing-your-javascript-ui-with-simulated-events/feed/" rel="self" type="application/rss+xml" />
-	<link></link>
-	<description>Lettering &#38; web development</description>
-	<lastBuildDate>Thu, 13 Feb 2020 11:35:45 +0000</lastBuildDate>
+	<title>Testing your Javascript UI with simulated events – Romaric Pascal</title>
+	<atom:link href="/writing-about/testing-your-javascript-ui-with-simulated-events/feed/" rel="self" type="application/rss+xml">
+	<link>
+	<description>Lettering &#x26; web development</description>
+	<lastbuilddate>Thu, 13 Feb 2020 11:35:45 +0000</lastbuilddate>
 	<language>en-US</language>
-	<sy:updatePeriod>hourly</sy:updatePeriod>
-	<sy:updateFrequency>1</sy:updateFrequency>
+	<sy:updateperiod>hourly</sy:updateperiod>
+	<sy:updatefrequency>1</sy:updatefrequency>
 	<generator>https://wordpress.org/?v=4.8.13</generator>
 	<item>
 		<title>Testing your Javascript UI with simulated events</title>
-		<link>/writing-about/testing-your-javascript-ui-with-simulated-events/</link>
-		<pubDate>Sat, 23 Nov 2013 12:20:17 +0000</pubDate>
-		<dc:creator><![CDATA[romaricpascal]]></dc:creator>
-				<category><![CDATA[Uncategorized]]></category>
-		<description><![CDATA[<p>When it comes to testing Javascript UI, two main options come to mind:</p>
+		<link>/writing-about/testing-your-javascript-ui-with-simulated-events/
+		<pubdate>Sat, 23 Nov 2013 12:20:17 +0000</pubdate>
+		<dc:creator><!--[CDATA[romaricpascal]]--></dc:creator>
+				<category><!--[CDATA[Uncategorized]]--></category>
+		<description><!--[CDATA[<p-->When it comes to testing Javascript UI, two main options come to mind:<p></p>
 <ul>
 <li>doing it by hand</li>
 <li>running something like Selenium or CasperJS/PhantomJS</li>
 </ul>
-<p>But a third option is available: creating and triggering events with Javascript code to &quot;unit test&quot; your UI. </p>
+<p>But a third option is available: creating and triggering events with Javascript code to "unit test" your UI. </p>
 <h2 id="why-would-i-do-that?">Why would I do that?</h2>
-<p>Of the 3 options above, the first one is the closest to what will actually happen when people use your app. A real person, with a real browser goes through scenarios and verifies what&#39;s displayed on the screen. Sounds slow and boring&#8230; and it is. But sometimes, it&#39;s the only way to test specific features in your app.</p>
+<p>Of the 3 options above, the first one is the closest to what will actually happen when people use your app. A real person, with a real browser goes through scenarios and verifies what's displayed on the screen. Sounds slow and boring… and it is. But sometimes, it's the only way to test specific features in your app.</p>
 <p>The second option brings in automation. No more boredom for a human, computer will run the tests on its own, faster than a human does. Tests are still bound to the latency of the HTTP requests your app makes, though, which can make them take some time to run, still. It is also tricky to isolate parts of the apps. But this option is great to automate end-to-end testing of your app.</p>
-<p>Simulating events in Javascript adds in isolation. It helps with the setup. You can run your test against a specific set of HTML, with a specific set of data&#8230; you don&#39;t need to navigate here and there to get to a specific screen. </p>
+<p>Simulating events in Javascript adds in isolation. It helps with the setup. You can run your test against a specific set of HTML, with a specific set of data… you don't need to navigate here and there to get to a specific screen. </p>
 <p>It also gives more control over the validation. You can check the text contain in elements, the classes and attributes they have just like with Selenium/CasperJS/PhantomJS. But you also get access to deeper levels of your application. You can check that variables in your code actually get changed when the user interacts. This can also save you some navigation by just checking that your widget sends the appropriate HTTP request to your server upon interaction.</p>
 <h2 id="sounds-cool,-show-me!">Sounds cool, show me!</h2>
-<p>Just as with any other tests, there&#39;ll be two things you&#39;ll need to do when testing with simulated events: </p>
+<p>Just as with any other tests, there'll be two things you'll need to do when testing with simulated events: </p>
 <ul>
 <li>executing some actions</li>
 <li>validating their results</li>
 </ul>
-<p>Simulated events help with the former. So let&#39;s say we want to test this simple click counter: you click in a trigger, it increments the value in a display.</p>
+<p>Simulated events help with the former. So let's say we want to test this simple click counter: you click in a trigger, it increments the value in a display.</p>
 <div class="highlight">
 <pre><span class="kd">var</span> <span class="nx">clickCounter</span> <span class="o">=</span> <span class="p">{</span>
    <span class="nx">setup</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">display</span><span class="p">,</span> <span class="nx">trigger</span><span class="p">)</span> <span class="p">{</span>
@@ -48,7 +41,7 @@
      <span class="k">this</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="nx">display</span><span class="p">;</span>
      <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span> <span class="o">=</span> <span class="nx">trigger</span><span class="p">;</span>
 
-     <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">incrementCounter</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">incrementCounter</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
 
      <span class="k">this</span><span class="p">.</span><span class="nx">refreshDisplay</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
    <span class="p">},</span>
@@ -59,7 +52,7 @@
    <span class="nx">refreshDisplay</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
      <span class="k">this</span><span class="p">.</span><span class="nx">display</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
      <span class="k">if</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-       <span class="k">this</span><span class="p">.</span><span class="nx">display</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">&#39;clickCounter-notNull&#39;</span><span class="p">);</span>
+       <span class="k">this</span><span class="p">.</span><span class="nx">display</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">'clickCounter-notNull'</span><span class="p">);</span>
      <span class="p">}</span>
    <span class="p">}</span>
 <span class="p">};</span>
@@ -67,10 +60,10 @@
 </div>
 <p>The test needs a little bit of setup: one element to be the trigger, one element to be the display, and the <code>clickCounter</code> setup to use them. I ran into a few weird things when the elements are not actually in the page, especially when testing things relying on event bubbling. So I find it best to add the elements to the DOM during the setup and remove them during the teardown.</p>
 <div class="highlight">
-<pre><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;clickCounter&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<pre><span class="nx">describe</span><span class="p">(</span><span class="s1">'clickCounter'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
   <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">);</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'button'</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'div'</span><span class="p">);</span>
 
     <span class="nx">clickCounter</span><span class="p">.</span><span class="nx">setup</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">display</span><span class="p">);</span>
 
@@ -87,31 +80,32 @@
 <span class="p">}</span>
 </pre>
 </div>
-<p>First thing to do is to locate the element you want to trigger your event from. <code>querySelector</code>, jQuery&#39;s <code>$</code> or maybe the <code>el</code> property of a Backbone view, the options are plenty and the same you would use when you need to select an HTML element in your app. As the setup created specific elements for the test and stored them in the test context, no need to look them up 🙂</p>
-<p>And then comes the time to create the event and trigger it. IE (10 at least) has trouble with <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Events/Creating_and_triggering_events">the latest <code>new Event()</code> syntax</a>, so the test will use good ol&#39; <code>document.createEvent()</code> method.</p>
-<p>Regarding the validations, there are 3 things we can validate:<br />
- &#8211; that the <code>clickCounter.value</code> variable is actually incremented<br />
- &#8211; that the display actually shows the new value<br />
- &#8211; that the display gets a specific class when it displays a non null value.</p>
+<p>First thing to do is to locate the element you want to trigger your event from. <code>querySelector</code>, jQuery's <code>$</code> or maybe the <code>el</code> property of a Backbone view, the options are plenty and the same you would use when you need to select an HTML element in your app. As the setup created specific elements for the test and stored them in the test context, no need to look them up 🙂</p>
+<p>And then comes the time to create the event and trigger it. IE (10 at least) has trouble with <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Events/Creating_and_triggering_events">the latest <code>new Event()</code> syntax</a>, so the test will use good ol' <code>document.createEvent()</code> method.</p>
+<p>Regarding the validations, there are 3 things we can validate:<br>
+ – that the <code>clickCounter.value</code> variable is actually incremented<br>
+ – that the display actually shows the new value<br>
+ – that the display gets a specific class when it displays a non null value.</p>
 <p>This give us the following test:</p>
 <div class="highlight">
 <pre>  <span class="c1">// ... Continuing from where we left</span>
-  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;Should increment the value in the display&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">it</span><span class="p">(</span><span class="s1">'Should increment the value in the display'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
 
-    <span class="kd">var</span> <span class="nx">event</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createEvent</span><span class="p">(</span><span class="s1">&#39;MouseEvent&#39;</span><span class="p">);</span>
-    <span class="nx">event</span><span class="p">.</span><span class="nx">initMouseEvent</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">event</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createEvent</span><span class="p">(</span><span class="s1">'MouseEvent'</span><span class="p">);</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">initMouseEvent</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">.</span><span class="nx">dispatchEvent</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
 
     <span class="nx">expect</span><span class="p">(</span><span class="nx">clickCounter</span><span class="p">.</span><span class="nx">value</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-    <span class="nx">expect</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">display</span><span class="p">.</span><span class="nx">textContent</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">);</span>
-    <span class="nx">expect</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">display</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="s1">&#39;clickCounter-notNull&#39;</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="kc">true</span><span class="p">;</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">display</span><span class="p">.</span><span class="nx">textContent</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="s1">'1'</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">display</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="s1">'clickCounter-notNull'</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="kc">true</span><span class="p">;</span>
   <span class="p">}</span>
 </pre>
 </div>
-<h2 id="conclusion">Awesome, I&#8217;ll just use those then!</h2>
-<p>Not quite. Each of the 3 options presented at the start has its place for testing your Javascript UI. Simulated events are great to &#8220;unit test&#8221; your UI functions and components, providing a first level of testing that will be fast to run. Selenium/CasperJS/PhantomJS will allow you to run wider end-to-end testing against a full deployment of your app. And for times when Selenium/CasperJS/PhantomJS doesn&#8217;t cut it, good ol&#8217; human testing comes to the rescue. So go ahead and start testing your UI with simulated events, but don&#8217;t forget the other methods 😉</p>
+<h2 id="conclusion">Awesome, I’ll just use those then!</h2>
+<p>Not quite. Each of the 3 options presented at the start has its place for testing your Javascript UI. Simulated events are great to “unit test” your UI functions and components, providing a first level of testing that will be fast to run. Selenium/CasperJS/PhantomJS will allow you to run wider end-to-end testing against a full deployment of your app. And for times when Selenium/CasperJS/PhantomJS doesn’t cut it, good ol’ human testing comes to the rescue. So go ahead and start testing your UI with simulated events, but don’t forget the other methods 😉</p>
 ]]></description>
-		<guid isPermaLink="false">http://rhumaric.com/?p=376</guid>
+		<guid ispermalink="false">http://rhumaric.com/?p=376</guid>
 		</item>
-	</channel>
+	</atom:link></channel>
 </rss>
+</body></html>
