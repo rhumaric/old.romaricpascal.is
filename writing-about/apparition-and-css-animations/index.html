@@ -50,7 +50,7 @@
     <meta name="twitter:image" content="/wp-content/themes/romaricpascal.is/assets/images/rp_with-padding_yellowbg_480.png">
 
     <link rel="dns-prefetch" href="//s.w.org">
-<link rel="alternate" type="application/rss+xml" title="Romaric Pascal » Apparition and CSS Animations Comments Feed" href="/writing-about/apparition-and-css-animations/feed/">
+
 		
 		<style type="text/css">
 img.wp-smiley,
@@ -143,7 +143,7 @@ img.emoji {
 <p><iframe width="100%" height="450" src="https://jsfiddle.net/rhumaric/eFu4L/embedded/result,js,css,html/" allowfullscreen frameborder="0"></iframe></p>
 <p>There are a few things to keep in mind when using this method:</p>
 <ul>
-<li><strong>how cloning is done</strong>: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node.cloneNode" &#x26;#x3c;code="">Node.cloneNode()</a> is the simplest way of cloning the container. However, the container might be the parent of a complex DOM structure you might not want to clone entirely everytime an element is added. Creating placeholders of the container’s children could make things simpler there. All that’s needed to measure the new element is the container and its child sizes, position and display properties.</li>
+<li><strong>how cloning is done</strong>: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node.cloneNode" &#x26;#x26;#x3c;code="">Node.cloneNode()</a> is the simplest way of cloning the container. However, the container might be the parent of a complex DOM structure you might not want to clone entirely everytime an element is added. Creating placeholders of the container’s children could make things simpler there. All that’s needed to measure the new element is the container and its child sizes, position and display properties.</li>
 <li><strong>how the element is inserted in the clone</strong>: depending on how your container and its children are styled, you might not need to insert the element the same exact way it would be inserted in the document. A simple <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node.appendChild">Node.appendChild</a> can do the trick (like in the example).
 </li><li><strong>what to measure</strong>: obviously, you’ll want the dimensions (and maybe the position) of the inserted element. The insertion of and element will also shift its siblings around. Sometimes, the animation of the new element will also smoothly shift the siblings. But you might need to measure the new siblings positions and sizes and create them custom animations… if you want to animate them, of course!</li>
 </ul>
