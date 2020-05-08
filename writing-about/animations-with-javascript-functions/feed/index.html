@@ -23,8 +23,8 @@
 <h2 id="a-simple-starting-point"><a class="headeranchor-link" href="#a-simple-starting-point" name="user-content-a-simple-starting-point" aria-hidden="true"></a>A simple starting point</h2>
 <p>Before diving into complex animations driven by scroll, let’s start with a more restricted case: a simple time driven fade-in. Written in plain JS, this goes like this:</p>
 <figure><script src="https://gist.github.com/rhumaric/c6c2c5b7382d4148df6119b5f1d473a8.js?file=time-from-scratch.js "></script><p></p>
-<div class="o-ratio o-ratio--16:9"><iframe src="/wp-content/uploads/demo/animation-with-functions/intro/time-from-scratch/" width="300" height="150">&#x3C;br />
-&#x3C;a href="wp-content/uploads/demo/animation-with-functions/intro/time-from-scratch/">Demo fading a button on click&#x3C;/a>&#x3C;br />
+<div class="o-ratio o-ratio--16:9"><iframe src="/wp-content/uploads/demo/animation-with-functions/intro/time-from-scratch/" width="300" height="150">&#x26;#x26;#x3C;br />
+&#x26;#x26;#x3C;a href="wp-content/uploads/demo/animation-with-functions/intro/time-from-scratch/">Demo fading a button on click&#x26;#x26;#x3C;/a>&#x26;#x26;#x3C;br />
 </iframe></div>
 </figure>
 <p>Definitely smaller than embedding a library. But while it’s nice to know how to write it all from scratch by hand, a bit of abstraction would help to reuse things from one animation to another.</p>
@@ -34,8 +34,8 @@
 – interpolating this <code>progress</code> into updates of the UI (here with <code>target.style.opacity</code>)</p>
 <p>So let’s split things up accordingly.</p>
 <figure><script src="https://gist.github.com/rhumaric/c6c2c5b7382d4148df6119b5f1d473a8.js?file=time-split.js "></script><p></p>
-<div class="o-ratio o-ratio--16:9"><iframe src="/wp-content/uploads/demo/animation-with-functions/intro/time-split/" width="300" height="150">&#x3C;br />
-&#x3C;a href="wp-content/uploads/demo/animation-with-functions/intro/time-split/">Demo fading the button again on click&#x3C;/a>&#x3C;br />
+<div class="o-ratio o-ratio--16:9"><iframe src="/wp-content/uploads/demo/animation-with-functions/intro/time-split/" width="300" height="150">&#x26;#x26;#x3C;br />
+&#x26;#x26;#x3C;a href="wp-content/uploads/demo/animation-with-functions/intro/time-split/">Demo fading the button again on click&#x26;#x26;#x3C;/a>&#x26;#x26;#x3C;br />
 </iframe></div>
 </figure>
 <p>That’s a first step! We can use our <code>timer</code> to power all kinds of animations. And control the <code>fadeIn</code> from other sources of progress… the scroll position maybe.</p>
@@ -43,8 +43,8 @@
 <p>A time-based source of progress works like this: “run for N ms (after a delay of D ms maybe)”. In the same spirit, a scroll based source of progress would go “run for N% of the scroll (after a delay of D% maybe)”. Pixels would work too, but given the diversity of screen heights around… best use percents.</p>
 <p>So let’s create just that (ignoring for now that the viewportHeight might change when resizing the browser):</p>
 <figure><script src="https://gist.github.com/rhumaric/c6c2c5b7382d4148df6119b5f1d473a8.js?file=scroll-basic.js "></script><p></p>
-<div class="o-ratio o-ratio--16:9"><iframe src="/wp-content/uploads/demo/animation-with-functions/intro/scroll-basic/" width="300" height="150">&#x3C;br />
-&#x3C;a href="wp-content/uploads/demo/animation-with-functions/intro/scroll-basic/">Demo&#x3C;/a>&#x3C;br />
+<div class="o-ratio o-ratio--16:9"><iframe src="/wp-content/uploads/demo/animation-with-functions/intro/scroll-basic/" width="300" height="150">&#x26;#x26;#x3C;br />
+&#x26;#x26;#x3C;a href="wp-content/uploads/demo/animation-with-functions/intro/scroll-basic/">Demo&#x26;#x26;#x3C;/a>&#x26;#x26;#x3C;br />
 </iframe></div>
 </figure>
 <h2 id="going-further"><a class="headeranchor-link" href="#going-further" name="user-content-going-further" aria-hidden="true"></a>Going further</h2>
