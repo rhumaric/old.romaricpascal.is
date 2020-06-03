@@ -1,7 +1,4 @@
-<!doctype html>
-<html lang="en-US">
-
-<head>
+<!doctype html><html lang="en-US"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -26,41 +23,31 @@
     </script>
 
     <link rel="stylesheet" href="/wp-content/themes/romaricpascal.is/style.css">
-    <link rel="alternate" type="application/rss+xml" title="Romaric Pascal | Lettering &#x26; web development"
-        href="/feed">
+    <link rel="alternate" type="application/rss+xml" title="Romaric Pascal | Lettering &#x26; web development" href="/feed">
 
     <title> Animations with JavaScript functions | Romaric Pascal</title>
     <meta name="description" content="Lettering &#x26; web development">
 
-    <link rel="apple-touch-icon" sizes="180x180"
-        href="/wp-content/themes/romaricpascal.is/assets/images/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32"
-        href="/wp-content/themes/romaricpascal.is/assets/images/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16"
-        href="/wp-content/themes/romaricpascal.is/assets/images/favicons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/wp-content/themes/romaricpascal.is/assets/images/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/wp-content/themes/romaricpascal.is/assets/images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/wp-content/themes/romaricpascal.is/assets/images/favicons/favicon-16x16.png">
     <link rel="manifest" href="/wp-content/themes/romaricpascal.is/assets/images/favicons/manifest.json">
-    <link rel="mask-icon" href="/wp-content/themes/romaricpascal.is/assets/images/favicons/safari-pinned-tab.svg"
-        color="#022950">
+    <link rel="mask-icon" href="/wp-content/themes/romaricpascal.is/assets/images/favicons/safari-pinned-tab.svg" color="#022950">
     <link rel="shortcut icon" href="/wp-content/themes/romaricpascal.is/assets/images/favicons/favicon.ico">
-    <meta name="msapplication-config"
-        content="/wp-content/themes/romaricpascal.is/assets/images/favicons/browserconfig.xml">
+    <meta name="msapplication-config" content="/wp-content/themes/romaricpascal.is/assets/images/favicons/browserconfig.xml">
     <meta name="theme-color" content="#ffc744">
     <!-- FB OpenGraph info -->
-    <meta prefix="og:http://ogp.me/ns#" property="og:url"
-        content="/writing-about/animations-with-javascript-functions/">
-    <meta prefix="og:http://ogp.me/ns#" property="og:title"
-        content="   Animations with JavaScript functions | Romaric Pascal">
+    <meta prefix="og:http://ogp.me/ns#" property="og:url" content="/writing-about/animations-with-javascript-functions/">
+    <meta prefix="og:http://ogp.me/ns#" property="og:title" content="   Animations with JavaScript functions | Romaric Pascal">
     <meta prefix="og:http://ogp.me/ns#" property="og:description" content="Lettering &#x26; web development">
-    <meta prefix="og:http://ogp.me/ns#" property="og:image"
-        content="/wp-content/themes/romaricpascal.is/assets/images/rp_with-padding_yellowbg_480.png">
+    <meta prefix="og:http://ogp.me/ns#" property="og:image" content="/wp-content/themes/romaricpascal.is/assets/images/rp_with-padding_yellowbg_480.png">
 
     <!-- Twitter cards -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@romaricpascal">
     <meta name="twitter:title" content="   Animations with JavaScript functions | Romaric Pascal">
     <meta name="twitter:description" content="Lettering &#x26; web development">
-    <meta name="twitter:image"
-        content="/wp-content/themes/romaricpascal.is/assets/images/rp_with-padding_yellowbg_480.png">
+    <meta name="twitter:image" content="/wp-content/themes/romaricpascal.is/assets/images/rp_with-padding_yellowbg_480.png">
 
     <link rel="dns-prefetch" href="//s.w.org">
 
@@ -86,14 +73,19 @@
 </head>
 
 <body class="post-template-default single single-post postid-1102 single-format-standard flexbug3Wrapper">
-    <header id="#header" class="rp-Header">
+    <header id="#header" class="rp-Header"><p class="rp-Banner">
+            You're currently viewing an old version of this website,
+            kept to not destroy content. 
+            <br>
+            If you're after the latest content,
+            please head to <a href="https://romaricpascal.is">the newest version</a>.
+          </p><div class="rp-HeaderContent">
         <a class="rp-Logo" href="/" title="Home">
             <img src="/wp-content/themes/romaricpascal.is/assets/images/rp-letters_144.png" alt="R-P monogram">
         </a>
         <nav class="rp-BreadcrumbNav">
             <div class="rp-CollapsedItemsMenu">
-                <a class="rp-BreadcrumbLink rp-CollapsedItemsMenuToggle js-toggle" data-toggle-group="overlays"
-                    data-toggle-target=".rp-CollapsedItems">
+                <a class="rp-BreadcrumbLink rp-CollapsedItemsMenuToggle js-toggle" data-toggle-group="overlays" data-toggle-target=".rp-CollapsedItems">
                     <span class="rp-BreadcrumbLinkSeparator"></span>
                     <span class="rp-BreadcrumbLink__title">...</span>
                 </a>
@@ -108,55 +100,36 @@
         </nav>
         <nav class="rp-MainNav">
             <a class="t-hidden-visually" tabindex="1" href="#content">Skip to content</a>
-            <a href="#main-nav" class="js-toggle" data-toggle-group="overlays"
-                data-toggle-target=".rp-MenuContainer">Menu</a>
+            <a href="#main-nav" class="js-toggle" data-toggle-group="overlays" data-toggle-target=".rp-MenuContainer">Menu</a>
             <div class="rp-MenuContainer js-outsideToggle" id="main-nav">
                 <a class="rp-NavLogo" href="/" title="Home">
                     <img src="/wp-content/themes/romaricpascal.is/assets/images/rp-knockout_shade_144.png" alt="Home">
                 </a>
                 <div class="menu-site-navigation-container">
                     <ul id="menu-site-navigation" class="rp-Menu rp-Header__menuI">
-                        <li id="menu-item-936"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-936">
+                        <li id="menu-item-936" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-936">
                             <a href="/">Home</a></li>
-                        <li id="menu-item-960"
-                            class="menu-item menu-item-type-post_type_archive menu-item-object-project menu-item-has-children menu-item-960">
+                        <li id="menu-item-960" class="menu-item menu-item-type-post_type_archive menu-item-object-project menu-item-has-children menu-item-960">
                             <a href="/proud-of/">Portfolio</a>
                             <ul class="sub-menu">
-                                <li id="menu-item-942"
-                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-942"><a
-                                        href="/proud-of/logo-brand-designs">Logo &#x26; Brand</a></li>
-                                <li id="menu-item-954"
-                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-954"><a
-                                        href="/proud-of/tshirts-merch-designs/">T-shirts &#x26; merch</a></li>
-                                <li id="menu-item-957"
-                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-957"><a
-                                        href="/proud-of/print-illustration-designs">Print &#x26; illustration</a></li>
+                                <li id="menu-item-942" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-942"><a href="/proud-of/logo-brand-designs">Logo &#x26; Brand</a></li>
+                                <li id="menu-item-954" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-954"><a href="/proud-of/tshirts-merch-designs/">T-shirts &#x26; merch</a></li>
+                                <li id="menu-item-957" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-957"><a href="/proud-of/print-illustration-designs">Print &#x26; illustration</a></li>
                             </ul>
                         </li>
-                        <li id="menu-item-964"
-                            class="menu-item menu-item-type-post_type_archive menu-item-object-artwork menu-item-964"><a
-                                href="/drawing-letters/">Artworks</a></li>
-                        <li id="menu-item-935"
-                            class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-935">
+                        <li id="menu-item-964" class="menu-item menu-item-type-post_type_archive menu-item-object-artwork menu-item-964"><a href="/drawing-letters/">Artworks</a></li>
+                        <li id="menu-item-935" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-935">
                             <a href="/writing-about/">Blog</a></li>
-                        <li id="menu-item-933"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-933"><a
-                                href="/happy-to-chat/">Contact</a></li>
-                        <li id="menu-item-1022"
-                            class="menu-item menu-item-type-taxonomy menu-item-object-craft current-post-ancestor current-menu-parent current-post-parent menu-item-1022">
+                        <li id="menu-item-933" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-933"><a href="/happy-to-chat/">Contact</a></li>
+                        <li id="menu-item-1022" class="menu-item menu-item-type-taxonomy menu-item-object-craft current-post-ancestor current-menu-parent current-post-parent menu-item-1022">
                             <a href="/writing-about/craft/web/">Web</a></li>
-                        <li id="menu-item-934"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-934"><a
-                                target="_blank" href="/selling-nice-stuff/">Shop</a></li>
+                        <li id="menu-item-934" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-934"><a target="_blank" href="/selling-nice-stuff/">Shop</a></li>
                     </ul>
-                </div> <a class="rp-MenuToggle js-toggle" href="#" data-toggle-group="overlays"
-                    data-toggle-target=".rp-MenuContainer">Close menu</a>
-                <small class="rp-Legal l-Container">© Romaric Pascal (trading name of <a
-                        href="https://beta.companieshouse.gov.uk/company/08544032">Rhumaric Ltd</a>)</small>
+                </div> <a class="rp-MenuToggle js-toggle" href="#" data-toggle-group="overlays" data-toggle-target=".rp-MenuContainer">Close menu</a>
+                <small class="rp-Legal l-Container">© Romaric Pascal (trading name of <a href="https://beta.companieshouse.gov.uk/company/08544032">Rhumaric Ltd</a>)</small>
             </div>
         </nav>
-    </header>
+    </div></header>
     <div class="rp-Viewport l-vertCentered u-mh-100vh">
 
 
@@ -164,18 +137,12 @@
             <header class="rp-HeaderWithSubhead u-mb-2">
                 <h1 class="rp-HeaderWithSubhead__heading">
                     Animations with JavaScript functions </h1>
-                <p><time datetime="2017-10-27T19:36:54+00:00">27 Oct 2017</time> — An article about: <a
-                        href="/writing-about/craft/web/" rel="tag">Web</a> - <a
-                        href="/writing-about/category/js/animations/" rel="category tag">Animations</a> - <a
-                        href="/writing-about/category/js/" rel="category tag">JS</a></p>
+                <p><time datetime="2017-10-27T19:36:54+00:00">27 Oct 2017</time> — An article about: <a href="/writing-about/craft/web/" rel="tag">Web</a> - <a href="/writing-about/category/js/animations/" rel="category tag">Animations</a> - <a href="/writing-about/category/js/" rel="category tag">JS</a></p>
             </header>
             <main>
                 <p>This all started when I was looking to add scroll based animations to the home page of this
                     portfolio. I set out to find a library to help a bit with that. There’s quite a few in the wild.
-                    Time-based animations libraries that I could then tie to the scroll position (like <a
-                        href="https://greensock.com/">greensock</a>, <a href="http://animejs.com">anime.js</a>, <a
-                        href="http://velocityjs.org">velocity</a> or <a
-                        href="https://github.com/tweenjs/tween.js/">tweenjs</a>). Or more scroll specific things (like
+                    Time-based animations libraries that I could then tie to the scroll position (like <a href="https://greensock.com/">greensock</a>, <a href="http://animejs.com">anime.js</a>, <a href="http://velocityjs.org">velocity</a> or <a href="https://github.com/tweenjs/tween.js/">tweenjs</a>). Or more scroll specific things (like
                     <a href="http://scrollmagic.io">scrollmagic</a>).</p>
                 <p>While they all seemed to do a pretty good job (a lot of websites use them in production), they all
                     had one major flaw to me. They’re all quite monolithic. They provide plenty, and your users download
@@ -183,48 +150,38 @@
                 <p>I used this as an excuse to explore how animations could be expressed through functions, rather than
                     OOP APIs. Looking to compose just the features that the animations needed to limit what visitors
                     would have to download. Let’s see how it went!</p>
-                <h2 id="a-simple-starting-point"><a class="headeranchor-link" href="#a-simple-starting-point"
-                        name="user-content-a-simple-starting-point" aria-hidden="true"></a>A simple starting point</h2>
+                <h2 id="a-simple-starting-point"><a class="headeranchor-link" href="#a-simple-starting-point" name="user-content-a-simple-starting-point" aria-hidden="true"></a>A simple starting point</h2>
                 <p>Before diving into complex animations driven by scroll, let’s start with a more restricted case: a
                     simple time driven fade-in. Written in plain JS, this goes like this:</p>
                 <figure>
-                    <script
-                        src="https://gist.github.com/rhumaric/c6c2c5b7382d4148df6119b5f1d473a8.js?file=time-from-scratch.js "></script>
+                    <script src="https://gist.github.com/rhumaric/c6c2c5b7382d4148df6119b5f1d473a8.js?file=time-from-scratch.js "></script>
                     <p></p>
-                    <div class="o-ratio o-ratio--16:9"><iframe
-                            src="/wp-content/uploads/demo/animation-with-functions/intro/time-from-scratch/" width="300"
-                            height="150"><br />
-                            <a href="/wp-content/uploads/demo/animation-with-functions/intro/time-from-scratch/">Demo
-                                fading a button on click</a><br />
+                    <div class="o-ratio o-ratio--16:9"><iframe src="/wp-content/uploads/demo/animation-with-functions/intro/time-from-scratch/" width="300" height="150">&#x3C;br />
+                            &#x3C;a href="/wp-content/uploads/demo/animation-with-functions/intro/time-from-scratch/">Demo
+                                fading a button on click&#x3C;/a>&#x3C;br />
                         </iframe></div>
                 </figure>
                 <p>Definitely smaller than embedding a library. But while it’s nice to know how to write it all from
                     scratch by hand, a bit of abstraction would help to reuse things from one animation to another.</p>
-                <h2 id="divide-and-conquer"><a class="headeranchor-link" href="#divide-and-conquer"
-                        name="user-content-divide-and-conquer" aria-hidden="true"></a>Divide and conquer</h2>
+                <h2 id="divide-and-conquer"><a class="headeranchor-link" href="#divide-and-conquer" name="user-content-divide-and-conquer" aria-hidden="true"></a>Divide and conquer</h2>
                 <p>The code above mixes two main parts of the animation:<br>
-                    – generating some measure of <code>progress</code> (here using <a
-                        href="https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame">requestAnimationFrame</a>
+                    – generating some measure of <code>progress</code> (here using <a href="https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame">requestAnimationFrame</a>
                     ticks)<br>
                     – interpolating this <code>progress</code> into updates of the UI (here with
                     <code>target.style.opacity</code>)</p>
                 <p>So let’s split things up accordingly.</p>
                 <figure>
-                    <script
-                        src="https://gist.github.com/rhumaric/c6c2c5b7382d4148df6119b5f1d473a8.js?file=time-split.js "></script>
+                    <script src="https://gist.github.com/rhumaric/c6c2c5b7382d4148df6119b5f1d473a8.js?file=time-split.js "></script>
                     <p></p>
-                    <div class="o-ratio o-ratio--16:9"><iframe
-                            src="/wp-content/uploads/demo/animation-with-functions/intro/time-split/" width="300"
-                            height="150"><br />
-                            <a href="/wp-content/uploads/demo/animation-with-functions/intro/time-split/">Demo fading
+                    <div class="o-ratio o-ratio--16:9"><iframe src="/wp-content/uploads/demo/animation-with-functions/intro/time-split/" width="300" height="150">&#x3C;br />
+                            &#x3C;a href="/wp-content/uploads/demo/animation-with-functions/intro/time-split/">Demo fading
                                 the
-                                button again on click</a><br />
+                                button again on click&#x3C;/a>&#x3C;br />
                         </iframe></div>
                 </figure>
                 <p>That’s a first step! We can use our <code>timer</code> to power all kinds of animations. And control
                     the <code>fadeIn</code> from other sources of progress… the scroll position maybe.</p>
-                <h2 id="progress-on-scroll"><a class="headeranchor-link" href="#progress-on-scroll"
-                        name="user-content-progress-on-scroll" aria-hidden="true"></a>Progress on scroll</h2>
+                <h2 id="progress-on-scroll"><a class="headeranchor-link" href="#progress-on-scroll" name="user-content-progress-on-scroll" aria-hidden="true"></a>Progress on scroll</h2>
                 <p>A time-based source of progress works like this: “run for N ms (after a delay of D ms maybe)”. In the
                     same spirit, a scroll based source of progress would go “run for N% of the scroll (after a delay of
                     D% maybe)”. Pixels would work too, but given the diversity of screen heights around… best use
@@ -232,18 +189,14 @@
                 <p>So let’s create just that (ignoring for now that the viewportHeight might change when resizing the
                     browser):</p>
                 <figure>
-                    <script
-                        src="https://gist.github.com/rhumaric/c6c2c5b7382d4148df6119b5f1d473a8.js?file=scroll-basic.js "></script>
+                    <script src="https://gist.github.com/rhumaric/c6c2c5b7382d4148df6119b5f1d473a8.js?file=scroll-basic.js "></script>
                     <p></p>
-                    <div class="o-ratio o-ratio--16:9"><iframe
-                            src="/wp-content/uploads/demo/animation-with-functions/intro/scroll-basic/" width="300"
-                            height="150"><br />
-                            <a
-                                href="/wp-content/uploads/demo/animation-with-functions/intro/scroll-basic/">Demo</a><br />
+                    <div class="o-ratio o-ratio--16:9"><iframe src="/wp-content/uploads/demo/animation-with-functions/intro/scroll-basic/" width="300" height="150">&#x3C;br />
+                            &#x3C;a
+                                href="/wp-content/uploads/demo/animation-with-functions/intro/scroll-basic/">Demo&#x3C;/a>&#x3C;br />
                         </iframe></div>
                 </figure>
-                <h2 id="going-further"><a class="headeranchor-link" href="#going-further"
-                        name="user-content-going-further" aria-hidden="true"></a>Going further</h2>
+                <h2 id="going-further"><a class="headeranchor-link" href="#going-further" name="user-content-going-further" aria-hidden="true"></a>Going further</h2>
                 <p>This is just a simple base to start with. From there, there’s plenty more to explore, keeping this
                     idea of composing functions to create animations. While creating this portfolio, I touched on:</p>
                 <ul>
@@ -259,8 +212,7 @@
                     <li><a href="https://github.com/rhumaric/tinymation/issues/5">splitting the computation of values
                             from their use</a>, so they can be applied via CSS variables (to keep specificity low), used
                         with canvas…</li>
-                    <li><a href="https://github.com/rhumaric/tinymation/issues/6">listening on progress</a>, <a
-                            href="https://github.com/rhumaric/tinymation/issues/7">obtaining a promise of animation
+                    <li><a href="https://github.com/rhumaric/tinymation/issues/6">listening on progress</a>, <a href="https://github.com/rhumaric/tinymation/issues/7">obtaining a promise of animation
                             completion</a></li>
                     <li><a href="https://github.com/rhumaric/tinymation/issues">…</a></li>
                 </ul>
@@ -274,13 +226,9 @@
 
             </aside>
             <nav class="rp-PrevNextNav">
-                <a class="rp-PrevNextLink rp-PrevNextLink-prev rp-PrevNextNav__previous"
-                    href="/writing-about/inktober-a-look-back-at-2016/" rel="prev" accesskey="j" data-key="left"
-                    title="Inktober - A look back at 2016">
+                <a class="rp-PrevNextLink rp-PrevNextLink-prev rp-PrevNextNav__previous" href="/writing-about/inktober-a-look-back-at-2016/" rel="prev" accesskey="j" data-key="left" title="Inktober - A look back at 2016">
                     title </a>
-                <a class="rp-PrevNextLink rp-PrevNextLink-next rp-PrevNextNav__next"
-                    href="/writing-about/expressive-scroll-animations/" rel="next" accesskey="k" data-key="right"
-                    title="Expressive scroll animations">
+                <a class="rp-PrevNextLink rp-PrevNextLink-next rp-PrevNextNav__next" href="/writing-about/expressive-scroll-animations/" rel="next" accesskey="k" data-key="right" title="Expressive scroll animations">
                     title </a>
             </nav>
         </article>
@@ -290,6 +238,7 @@
 
     <script defer src="/wp-content/themes/romaricpascal.is/main.js"></script>
 
-</body>
 
-</html>
+
+
+</body></html>
