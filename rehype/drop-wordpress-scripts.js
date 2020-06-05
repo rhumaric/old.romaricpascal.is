@@ -13,7 +13,10 @@ module.exports = function attacher() {
         }
       }
       if (node.tagName === 'link') {
-        return /wp-content\/plugins/.test(node.properties.href);
+        return /(wp-content\/plugins|s.w.org)/.test(node.properties.href);
+      }
+      if (node.tagName === 'style') {
+        return /img.emoji/.test(node.children[0].value)
       }
       return false;
     })
