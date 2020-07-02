@@ -6,11 +6,10 @@ const h = require('hastscript');
 const BANNER_CLASSNAME = 'rp-Banner'
 const BANNER_HTML = `
           <p class="${BANNER_CLASSNAME}">
-            You're currently viewing an old version of this website,
-            kept to not destroy content. 
+            I'm no longer doing lettering professionally, to re-focus on web development. 
+            A <a href="https://romaricpascal.is">newer version of this site</a> is being built to reflect this.
             <br>
-            If you're after the latest content,
-            please head to <a href="https://romaricpascal.is">the newest version</a>.
+            This version is kept as an archive to ensure its <a href="https://4042302.org/">content don't disappear as I update my site</a>
           </p>
         `
 
@@ -31,6 +30,13 @@ module.exports = function() {
         
         // And finally replace the content of the header with it
         firstChild.children = [banner, existingHeaderWrapper];
+      } else {
+        // Then create the banner
+        const c = rehype().parse(BANNER_HTML);
+        const banner = select('body > *', c);
+
+        const [existingBanner,...otherChildren] = firstChild.children;
+        firstChild.children = [banner, ...otherChildren];
       }
     }
   }
